@@ -1,10 +1,17 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+const path = require(`path`)
 
 module.exports = {
-  /* Your site config here */
-  plugins: [],
+  plugins: [
+    "gatsby-plugin-emotion",
+    "gatsby-plugin-react-helmet",
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `assets`, `images`),
+      },
+    },
+  ],
 }
