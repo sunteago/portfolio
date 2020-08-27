@@ -1,5 +1,16 @@
 import React from "react"
 import { css } from "@emotion/core"
+import styled from "@emotion/styled"
+import { TriangleIcon } from "./icons"
+
+const Title = styled.h2`
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  svg {
+    vertical-align: middle;
+  }
+`
 
 export default function Works() {
   return (
@@ -8,6 +19,10 @@ export default function Works() {
         grid-area: wrk;
       `}
     >
+      <Title>
+        <TriangleIcon position="B" width={35} />
+        Works
+      </Title>
       <div
         css={css`
           color: var(--light);

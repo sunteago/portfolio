@@ -1,5 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
+import { breakpoints } from "../utils"
 
 export default function Skills() {
   return (
@@ -7,7 +8,9 @@ export default function Skills() {
       css={css`
         height: 200px;
         background: var(--dark);
-        grid-area: skls;
+        media (min-width: ${breakpoints.md}) {
+          grid-area: skls;
+        }
       `}
     >
       Skills

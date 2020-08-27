@@ -1,16 +1,24 @@
 import React from "react"
-import { css } from "@emotion/core"
+import styled from "@emotion/styled"
+import { TriangleIcon } from "./icons"
+import { breakpoints } from "../utils"
+const Greet = styled.h1`
+  font-size: 3rem;
+  font-weight: 300;
+  grid-area: pres;
+  svg {
+    vertical-align: middle;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    font-size: 3.75rem;
+    width: 100%;
+`
 
 export default function Presentation() {
   return (
-    <h1
-      css={css`
-        font-size: 3.75rem;
-        font-weight: 300;
-        grid-area: pres;
-      `}
-    >
-      Hi, i am Santiago Vallejo, Frontend developer
-    </h1>
+    <Greet>
+      Hi, i am Santiago Vallejo, Frontend developer{" "}
+      <TriangleIcon width={38} height={38} position="A" />
+    </Greet>
   )
 }
