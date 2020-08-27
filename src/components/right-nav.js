@@ -50,16 +50,13 @@ const NavLink = styled(Link)`
   cursor: pointer;
   user-select: none;
   ${props => props.active && "font-weight: 400;"}
-  :hover {
-    border-bottom: 2px solid var(--light);
-  }
 `
 
 export default function RightNav() {
   return (
     <NavBarContainer>
       <NavBar>
-        <NavLink active>Works</NavLink>
+        <NavLink active="true">Works</NavLink>
         <NavLink>About</NavLink>
         <NavLink>Contact</NavLink>
         <NavLink>Resume</NavLink>

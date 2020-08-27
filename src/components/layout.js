@@ -11,22 +11,23 @@ import RightNav from "../components/right-nav"
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
   background-color: var(--light);
-  height: 100vh;
+  height: 100%;
 `
 
 const PageContainer = styled.main`
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-      "pres pres pres netwrk"
-      "wrk wrk wrk wrk"
-      "skls cntc cntc rnav";
+    "pres pres pres netwrk"
+    "wrk wrk wrk wrk"
+    "skls cntc cntc rnav";
 
   width: 100%;
   height: 100%;
   padding: 2rem;
-  grid-gap: 4rem 2rem;
-  media (min-width: ${breakpoints.md}) {
+  grid-gap: 5rem 2rem;
+  @media (min-width: ${breakpoints.md}) {
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
       ". . lang . . . . . . . netwrk rnav"
@@ -74,8 +75,11 @@ export default function Layout({ children }) {
           body {
             font-family: Raleway, sans-serif;
             color: var(--dark);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            @media (min-width: ${breakpoints.md}) {
+              height: 100vh;
+              overflow: hidden;
+            }
           }
         `}
       />

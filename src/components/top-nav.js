@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../utils"
-import { GithubIcon, LinkedinIcon } from "./icons"
+import { GithubIcon, LinkedinIcon } from "./common"
 
 const Lang = styled.span`
 @media (min-width: ${breakpoints.md} {

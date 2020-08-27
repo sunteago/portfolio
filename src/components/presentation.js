@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { TriangleIcon } from "./icons"
+import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
 const Greet = styled.h1`
   font-size: 3rem;
