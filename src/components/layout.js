@@ -29,7 +29,7 @@ const PageContainer = styled.main`
   width: 100%;
   height: 100%;
   padding: 2rem;
-  grid-gap: 5rem 2rem;
+  grid-gap: 3rem 2rem;
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
