@@ -1,18 +1,19 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { breakpoints } from "../utils"
 import { SectionContainer } from "./common"
 
 const FooterBox = styled.div`
   width: 100%;
   overflow: hidden;
-  height: 6rem;
+  height: 25vw;
   div {
     background: var(--dark);
     position: relative;
-    height: 10rem;
+    height: 40vw;
     width: 120%;
     left: -10%;
-    transform: rotate(11deg);
+    transform: rotate(13deg);
     transform-origin: left top;
     p {
       position: absolute;
@@ -28,6 +29,9 @@ const FooterBox = styled.div`
       top: 0;
       color: var(--light);
     }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    display: none;
   }
 `
 
