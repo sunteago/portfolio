@@ -8,7 +8,9 @@ const useProjects = () => {
           frontmatter {
             title
             slug
-            tools
+            description
+            github
+            demo
             image {
               sharp: childImageSharp {
                 fluid {
@@ -26,7 +28,9 @@ const useProjects = () => {
   return data.allMdx.nodes.map(project => ({
     title: project.frontmatter.title,
     slug: project.frontmatter.slug,
-    tools: project.frontmatter.tools,
+    description: project.frontmatter.description,
+    demo: project.frontmatter.demo,
+    github: project.frontmatter.github,
     image: project.frontmatter.image,
     excerpt: project.excerpt,
   }))

@@ -7,6 +7,7 @@ import { breakpoints } from "../utils"
 import BackgroundImage from "gatsby-background-image"
 import TopNav from "../components/top-nav"
 import RightNav from "../components/right-nav"
+import Footer from "../components/footer"
 
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
@@ -17,11 +18,13 @@ const BackgroundImg = styled(BackgroundImage)`
 const PageContainer = styled.main`
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "pres pres pres netwrk"
     "wrk wrk wrk wrk"
-    "skls cntc cntc rnav";
+    "skls skls skls skls"
+    "cntc cntc cntc cntc"
+    "fotr fotr fotr fotr";
 
   width: 100%;
   height: 100%;
@@ -35,8 +38,6 @@ const PageContainer = styled.main`
       ". . wrk wrk wrk wrk . skls skls . . rnav "
       ". . wrk wrk wrk wrk . cntc cntc . . rnav "
       ". . . . . . . . . . . rnav";
-    width: 100%;
-    height: 100%;
   }
 `
 
@@ -89,6 +90,7 @@ export default function Layout({ children }) {
           {children}
           <RightNav />
         </PageContainer>
+        <Footer />
       </BackgroundImg>
     </>
   )

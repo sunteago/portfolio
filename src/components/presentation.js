@@ -12,12 +12,13 @@ const Greet = styled.h1`
   @media (min-width: ${breakpoints.md}) {
     font-size: 3.75rem;
     width: 100%;
+  }
 `
 
 export default function Presentation() {
   return (
     <Greet>
-      Hi, i am Santiago Vallejo, Frontend developer{" "}
+      Hi, I am Santiago Vallejo, Frontend developer{" "}
       <TriangleIcon width={38} height={38} position="A" />
     </Greet>
   )

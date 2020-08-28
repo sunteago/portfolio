@@ -1,6 +1,11 @@
 import React from "react"
 import { Title } from "./common"
+import SectionContainer from "./common/SectionContainer"
 
-export default function Contact() {
-  return <Title>Contact</Title>
+export default function Skills() {
+  return (
+    <SectionContainer gridArea="cntc">
+      <Title>Contact</Title>
+    </SectionContainer>
+  )
 }

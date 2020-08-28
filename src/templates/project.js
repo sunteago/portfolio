@@ -9,7 +9,9 @@ export const query = graphql`
       frontmatter {
         slug
         title
-        tools
+        description
+        github
+        demo
       }
       body
     }

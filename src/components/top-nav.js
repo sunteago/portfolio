@@ -4,9 +4,11 @@ import { breakpoints } from "../utils"
 import { GithubIcon, LinkedinIcon } from "./common"
 
 const Lang = styled.span`
-@media (min-width: ${breakpoints.md} {
-  grid-area: lang;
-})
+  display: none;
+  @media (min-width: ${breakpoints.md}) {
+    display: block;
+    grid-area: netwrk;
+  }
 `
 
 const NetworkContainer = styled.div`

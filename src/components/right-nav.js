@@ -56,10 +56,12 @@ export default function RightNav() {
   return (
     <NavBarContainer>
       <NavBar>
-        <NavLink active="true">Works</NavLink>
-        <NavLink>About</NavLink>
-        <NavLink>Contact</NavLink>
-        <NavLink>Resume</NavLink>
+        <NavLink active="true" to="/">
+          Works
+        </NavLink>
+        <NavLink to="/">About</NavLink>
+        <NavLink to="/">Contact</NavLink>
+        <NavLink to="/">Resume</NavLink>
       </NavBar>
     </NavBarContainer>
   )
