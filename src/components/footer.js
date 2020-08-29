@@ -7,6 +7,7 @@ const FooterBox = styled.div`
   width: 100%;
   overflow: hidden;
   height: 25vw;
+  height: calc(25vw + 16px);
   div {
     background: var(--dark);
     position: relative;

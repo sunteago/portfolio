@@ -30,7 +30,8 @@ const PageContainer = styled.main`
   height: 100%;
   padding: 2rem;
   grid-gap: 3rem 2rem;
-  @media (min-width: ${breakpoints.md}) {
+
+  @media (min-width: ${breakpoints.lg}) {
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
       ". . lang . . . . . . . netwrk rnav"
@@ -77,7 +78,7 @@ export default function Layout({ children }) {
             font-family: Raleway, sans-serif;
             color: var(--dark);
             min-height: 100vh;
-            @media (min-width: ${breakpoints.md}) {
+            @media (min-width: ${breakpoints.lg}) {
               height: 100vh;
               overflow: hidden;
             }

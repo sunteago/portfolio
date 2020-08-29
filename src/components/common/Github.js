@@ -12,10 +12,10 @@ export default function GithubIcon({
       <IconLink href={link}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="38"
-          height="37"
+          width={width}
+          height={height}
           fill="none"
-          viewBox="0 0 38 37"
+          viewBox={`0 0 ${width} ${height}`}
         >
           <path
             fill="currentColor"

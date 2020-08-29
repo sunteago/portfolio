@@ -4,7 +4,7 @@ import { Title } from "./common"
 import SectionContainer from "./common/SectionContainer"
 
 const ListContainer = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 0 auto;
   ul {
     padding-left: 3rem;

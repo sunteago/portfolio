@@ -8,10 +8,10 @@ export default function LinkedinIcon({ width = 38, height = width }) {
       <IconLink href={linkedinLink}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="40"
+          width={width}
+          height={height}
           fill="none"
-          viewBox="0 0 35 40"
+          viewBox={`0 0 ${width} ${height}`}
         >
           <path
             fill="currentColor"

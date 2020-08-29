@@ -5,40 +5,41 @@ import SectionContainer from "./common/SectionContainer"
 import { GithubIcon, LinkedinIcon } from "./common"
 
 const ContactContainer = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 0 auto;
   ul {
-    padding-left: 3rem;
     list-style: none;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    li {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      margin-bottom: 1rem;
+      div {
+        margin-right: 0.5rem;
+      }
+    }
   }
 `
-
-const ContactItem = styled.li`
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  div {
-    margin-right: 1rem;
-  }
-`
-
 export default function Skills() {
   return (
     <SectionContainer gridArea="cntc">
       <Title>Contact</Title>
       <ContactContainer>
         <ul>
-          <ContactItem>
+          <li>
             <GithubIcon />
             santi.vallejo@gmail.com
-          </ContactItem>
-          <ContactItem>
+          </li>
+          <li>
             <GithubIcon /> GitHub
-          </ContactItem>
-          <ContactItem>
+          </li>
+          <li>
             <LinkedinIcon />
             LinkedIn
-          </ContactItem>
+          </li>
         </ul>
       </ContactContainer>
     </SectionContainer>

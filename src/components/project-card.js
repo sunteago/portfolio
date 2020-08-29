@@ -2,14 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
 import styled from "@emotion/styled"
-import { GithubIcon } from "./common"
+import { GithubIcon, DemoIcon, InfoIcon } from "./common"
 
 const Card = styled.article`
   font-size: 1.75rem;
   font-family: Oswald, "Franklin Gothic Medium", "Arial Narrow", Arial,
     sans-serif;
   text-align: center;
-  a {
+  > a {
     text-decoration: none;
     margin-top: 1rem;
     display: block;
@@ -45,6 +45,15 @@ const Content = styled.p`
 const IconsContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  & > div {
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    & > div {
+      margin-right: 0.3rem;
+    }
+  }
 `
 
 export default function ProjectCard({ project }) {
@@ -58,8 +67,18 @@ export default function ProjectCard({ project }) {
       </ImageLink>
       <Content>{description}</Content>
       <IconsContainer>
-        <GithubIcon link={github} />
-        <GithubIcon link={demo} />
+        <div>
+          <InfoIcon width={45} link={slug} />
+          <p>info</p>
+        </div>
+        <div>
+          <GithubIcon link={github} />
+          <p>code</p>
+        </div>
+        <div>
+          <DemoIcon width={45} link={demo} />
+          <p>demo</p>
+        </div>
       </IconsContainer>
     </Card>
   )
