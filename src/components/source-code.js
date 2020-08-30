@@ -8,7 +8,7 @@ const SourceText = styled.div`
   bottom: 0;
   left: 1rem;
   user-select: none;
-  font-size: 1.5rem;
+  font-size: calc(0.5rem + 1vw);
   display: none;
   > div {
     margin-left: 0.5rem;

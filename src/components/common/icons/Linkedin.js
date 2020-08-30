@@ -1,6 +1,6 @@
 import React from "react"
-import IconLink from "./IconLink"
-import { linkedinLink } from "../../utils"
+import IconLink from "../IconLink"
+import { linkedinLink } from "../../../utils"
 
 export default function LinkedinIcon({ width = 38, height = width }) {
   return (

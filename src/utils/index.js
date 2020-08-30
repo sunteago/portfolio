@@ -1,9 +1,9 @@
 export const breakpoints = {
-  xs: "386px",
-  sm: "576px",
-  md: "768px",
-  lg: "992px",
-  xl: "1200px",
+  xs: "387px",
+  sm: "577px",
+  md: "769px",
+  lg: "993px",
+  xl: "1369px",
 }
 
 export const defaultGithubLink = "https://github.com/sunteago/"

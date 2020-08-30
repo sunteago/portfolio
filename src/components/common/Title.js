@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/core"
-import TriangleIcon from "./Triangle"
+import TriangleIcon from "./icons/Triangle"
 import { breakpoints } from "../../utils"
 
 export default function Title({ children }) {
@@ -13,8 +13,10 @@ export default function Title({ children }) {
         svg {
           vertical-align: middle;
         }
+
         @media (min-width: ${breakpoints.lg}) {
           text-align: left;
+          margin-bottom: 1rem;
         }
       `}
     >

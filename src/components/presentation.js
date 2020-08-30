@@ -23,7 +23,7 @@ const Greet = styled.h1`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    font-size: 3.5rem;
+    font-size: calc(2rem + 1vw);
     width: 100%;
     margin-bottom: 1rem;
   }

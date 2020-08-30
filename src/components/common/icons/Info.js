@@ -1,5 +1,5 @@
 import React from "react"
-import IconLink from "./IconLink"
+import IconLink from "../IconLink"
 
 export default function DemoIcon({ link, width = 38, height = width }) {
   return (

@@ -1,6 +1,6 @@
 import React from "react"
-import { defaultGithubLink } from "../../utils"
-import IconLink from "./IconLink"
+import { defaultGithubLink } from "../../../utils"
+import IconLink from "../IconLink"
 
 export default function GithubIcon({
   link = defaultGithubLink,

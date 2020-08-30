@@ -4,13 +4,13 @@ import { css } from "@emotion/core"
 export default function SectionContainer({
   children,
   gridArea,
-  justifySelf = "unset",
+  extraStyles = ``,
 }) {
   return (
     <div
       css={css`
         grid-area: ${gridArea};
-        justify-self: ${justifySelf};
+        ${extraStyles}
       `}
     >
       {children}

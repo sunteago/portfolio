@@ -1,8 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Title } from "./common"
 import SectionContainer from "./common/SectionContainer"
-import { GithubIcon, LinkedinIcon } from "./common"
+import { Title, GithubIcon, LinkedinIcon, EnvelopeIcon } from "./common"
 
 const ContactContainer = styled.div`
   font-size: 1.25rem;
@@ -30,7 +29,7 @@ export default function Skills() {
       <ContactContainer>
         <ul>
           <li>
-            <GithubIcon />
+            <EnvelopeIcon />
             santi.vallejo@gmail.com
           </li>
           <li>

@@ -19,7 +19,7 @@ export default function ProjectCard({ projects }) {
     <CardContainer>
       <Swiper
         effect="fade"
-        autoplay
+        //autoplay
         spaceBetween={30}
         loop={true}
         mousewheel={{
@@ -177,7 +177,7 @@ const CardContainer = styled.div`
   padding: 0 25px;
   border-radius: var(--radius);
   transition: all 0.3s;
-  max-width: 620px;
+  max-width: 550px;
   &::after {
     content: "";
     position: absolute;
@@ -197,6 +197,9 @@ const CardContainer = styled.div`
     overflow: visible;
   }
 
+  @media (min-width: ${breakpoints.sm}) {
+    width: 80%;
+  }
   @media (min-width: ${breakpoints.md}) {
     margin-top: 50px;
   }

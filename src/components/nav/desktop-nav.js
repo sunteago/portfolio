@@ -33,7 +33,7 @@ const NavBarContainer = styled.div`
     position: absolute;
     top: -10vh;
     right: 0;
-    width: 140px;
+    width: calc(5vh + 80px);
     background: var(--dark);
     transform-origin: 50% 50%;
     height: 120vh;
@@ -51,7 +51,7 @@ const NavBarContainer = styled.div`
       background: var(--dark);
     }
     :hover {
-      width: 160px;
+      width: calc(5vh + 100px);
     }
   }
 `
@@ -67,8 +67,8 @@ const NavBar = styled.nav`
 
 const NavLink = styled(Link)`
   color: var(--light);
-  font-size: 3rem;
-  margin: 1.5rem;
+  font-size: calc(4vh + 0.5rem);
+  margin: 1.5rem calc(1vw + 0.3rem);
   font-weight: 300;
   display: block;
   text-align: center;
