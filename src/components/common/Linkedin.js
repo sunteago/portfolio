@@ -11,7 +11,7 @@ export default function LinkedinIcon({ width = 38, height = width }) {
           width={width}
           height={height}
           fill="none"
-          viewBox={`0 0 ${width} ${height}`}
+          viewBox={`0 0 37 38`}
         >
           <path
             fill="currentColor"

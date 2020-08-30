@@ -5,18 +5,18 @@ import { Global, css } from "@emotion/core"
 import { breakpoints } from "../utils"
 
 import BackgroundImage from "gatsby-background-image"
-import TopNav from "../components/top-nav"
+import Networks from "./networks"
+import Lang from "./lang"
 import Nav from "../components/nav/nav"
 import Footer from "../components/footer"
+import SourceCode from "../components/source-code"
 
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
   background-color: var(--light);
-  height: 100%;
 `
 
 const PageContainer = styled.main`
-  min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
@@ -24,21 +24,36 @@ const PageContainer = styled.main`
     "wrk wrk wrk wrk"
     "skls skls skls skls"
     "cntc cntc cntc cntc"
-    "fotr fotr fotr fotr";
+    "fotr fotr fotr src";
 
   width: 100%;
-  height: 100%;
   padding: 2rem;
-  grid-gap: 3rem 2rem;
+  grid-gap: 5rem 1rem;
 
   @media (min-width: ${breakpoints.lg}) {
-    grid-template-columns: repeat(12, 1fr);
+    height: 100vh;
+    grid-gap: 3rem 2rem;
+    grid-template-rows: 120px 2fr 7fr 6fr 1fr;
+    grid-template-columns: 2fr repeat(11, 1fr);
     grid-template-areas:
-      ". . lang . . . . . . . netwrk rnav"
+      ". lang . . . . . . . . netwrk netwrk"
       ". . pres pres pres pres pres . . . . rnav"
-      ". . wrk wrk wrk wrk . skls skls . . rnav "
-      ". . wrk wrk wrk wrk . cntc cntc . . rnav "
-      ". . . . . . . . . . . rnav";
+      ". . wrk wrk wrk wrk wrk skls skls . . rnav "
+      ". . wrk wrk wrk wrk wrk cntc cntc . . rnav "
+      "src src . . . . . . . . . rnav";
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    height: 100vh;
+    grid-gap: 3rem 2rem;
+    grid-template-rows: 120px 2fr 7fr 6fr 1fr;
+    grid-template-columns: 2fr repeat(11, 1fr);
+    grid-template-areas:
+      ". lang . . . . . . . . netwrk netwrk"
+      ". . pres pres pres pres pres . . . . rnav"
+      ". . wrk wrk wrk wrk wrk skls skls . . rnav "
+      ". . wrk wrk wrk wrk wrk cntc cntc . . rnav "
+      "src src . . . . . . . . . rnav";
   }
 `
 
@@ -78,8 +93,8 @@ export default function Layout({ children }) {
           body {
             font-family: Raleway, sans-serif;
             color: var(--dark);
-            min-height: 100vh;
             @media (min-width: ${breakpoints.lg}) {
+              width: 100vw;
               height: 100vh;
               overflow: hidden;
             }
@@ -88,9 +103,11 @@ export default function Layout({ children }) {
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
         <PageContainer>
-          <TopNav />
-          {children}
+          <Lang />
+          <Networks />
           <Nav />
+          {children}
+          <SourceCode />
         </PageContainer>
         <Footer />
       </BackgroundImg>
