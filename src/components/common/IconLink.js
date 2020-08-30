@@ -1,17 +1,18 @@
 import React from "react"
+import { Link } from "gatsby"
 
 const StandardLink = props => <a {...props}>{props.children}</a>
 
-export default ({ href, children, component }) => {
+export default ({ href, children, internal }) => {
   let LinkComponent = StandardLink
-  if (component) LinkComponent = component
+  internal && (LinkComponent = Link)
 
   return (
     <LinkComponent
       rel="noopener noreferrer"
       target="_blank"
-      href={component === undefined && href}
-      to={component !== undefined && href}
+      href={!internal ? href : undefined}
+      to={internal ? href : undefined}
       style={{ color: "unset" }}
     >
       {children}

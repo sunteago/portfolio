@@ -15,7 +15,7 @@ export default function GithubIcon({
           width={width}
           height={height}
           fill="none"
-          viewBox={`0 0 ${width} ${height}`}
+          viewBox={`0 0 38 37`}
         >
           <path
             fill="currentColor"

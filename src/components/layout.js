@@ -72,6 +72,7 @@ export default function Layout({ children }) {
             --light: #f5d6ba;
             --dark: #2c2c54;
             --accent: #a40e4c;
+            --radius: 3px;
           }
 
           body {

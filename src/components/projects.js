@@ -1,7 +1,7 @@
 import React from "react"
 import { Title } from "./common"
 import useProjects from "../hooks/use-projects"
-import ProjectCard from "./project-card"
+import ProjectCard from "./project-card/project-card"
 import SectionContainer from "./common/SectionContainer"
 
 export default function Works() {
@@ -10,9 +10,7 @@ export default function Works() {
   return (
     <SectionContainer gridArea="wrk">
       <Title>Projects</Title>
-      {projects.map(project => (
-        <ProjectCard key={project.slug} project={project} />
-      ))}
+      <ProjectCard projects={projects} />
     </SectionContainer>
   )
 }

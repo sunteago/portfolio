@@ -22,11 +22,11 @@ const FooterBox = styled.div`
       font-size: 1.5rem;
       left: 50%;
     }
-    p:nth-child(1) {
+    p:nth-of-type(1) {
       top: -2rem;
       color: var(--dark);
     }
-    p:nth-child(2) {
+    p:nth-of-type(2) {
       top: 0;
       color: var(--light);
     }
