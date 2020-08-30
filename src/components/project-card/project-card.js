@@ -19,7 +19,7 @@ export default function ProjectCard({ projects }) {
     <CardContainer>
       <Swiper
         effect="fade"
-        //autoplay
+        autoplay
         spaceBetween={30}
         loop={true}
         mousewheel={{
