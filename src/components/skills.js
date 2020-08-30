@@ -9,6 +9,7 @@ const ListContainer = styled.div`
   ul {
     padding-left: 3rem;
     column-count: 2;
+    column-gap: 4rem;
     li {
       margin-bottom: 1rem;
     }
@@ -17,7 +18,7 @@ const ListContainer = styled.div`
 
 export default function Skills() {
   return (
-    <SectionContainer gridArea="skls">
+    <SectionContainer gridArea="skls" justifySelf="start">
       <Title>Skills</Title>
       <ListContainer>
         <ul>

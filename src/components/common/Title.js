@@ -9,7 +9,7 @@ export default function Title({ children }) {
       css={css`
         text-align: center;
         font-size: 2.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         svg {
           vertical-align: middle;
         }

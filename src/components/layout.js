@@ -33,26 +33,13 @@ const PageContainer = styled.main`
   @media (min-width: ${breakpoints.lg}) {
     height: 100vh;
     grid-gap: 3rem 2rem;
-    grid-template-rows: 120px 2fr 7fr 6fr 1fr;
+    grid-template-rows: 50px 2fr 7fr 6fr 1fr;
     grid-template-columns: 2fr repeat(11, 1fr);
     grid-template-areas:
       ". lang . . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls . . rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc . . rnav "
-      "src src . . . . . . . . . rnav";
-  }
-
-  @media (min-width: ${breakpoints.lg}) {
-    height: 100vh;
-    grid-gap: 3rem 2rem;
-    grid-template-rows: 120px 2fr 7fr 6fr 1fr;
-    grid-template-columns: 2fr repeat(11, 1fr);
-    grid-template-areas:
-      ". lang . . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls . . rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc . . rnav "
+      ". . pres pres pres pres pres pres . . . rnav"
+      ". . wrk wrk wrk wrk wrk skls skls skls . rnav "
+      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
       "src src . . . . . . . . . rnav";
   }
 `

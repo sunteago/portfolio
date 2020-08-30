@@ -23,9 +23,9 @@ const Greet = styled.h1`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    font-size: 3.75rem;
+    font-size: 3.5rem;
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 `
 

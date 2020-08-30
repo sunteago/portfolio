@@ -177,7 +177,7 @@ const CardContainer = styled.div`
   padding: 0 25px;
   border-radius: var(--radius);
   transition: all 0.3s;
-  max-width: 680px;
+  max-width: 620px;
   &::after {
     content: "";
     position: absolute;

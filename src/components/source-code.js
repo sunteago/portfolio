@@ -1,21 +1,25 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { GithubIcon, SectionContainer } from "./common"
+import { GithubIcon } from "./common"
+import { breakpoints } from "../utils"
 
 const SourceText = styled.div`
   position: fixed;
   bottom: 0;
   left: 1rem;
   user-select: none;
-  display: flex;
-  align-items: center;
   font-size: 1.5rem;
+  display: none;
   > div {
     margin-left: 0.5rem;
   }
   > a {
     text-decoration: none;
     color: var(--dark);
+  }
+  @media (min-width: ${breakpoints.md}) {
+    display: flex;
+    align-items: center;
   }
 `
 
