@@ -1,12 +1,34 @@
 import React from "react"
 import { Link } from "gatsby"
-import { breakpoints } from "../utils"
-
+import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
+
+export default function RightNav() {
+  return (
+    <>
+      <NavBarContainer>
+        <NavBar>
+          <NavLink title="Works" active="true" to="/">
+            Works
+          </NavLink>
+          <NavLink title="About" to="/">
+            About
+          </NavLink>
+          <NavLink title="Contact" to="/">
+            Contact
+          </NavLink>
+          <NavLink title="Resume" to="/">
+            Resume
+          </NavLink>
+        </NavBar>
+      </NavBarContainer>
+    </>
+  )
+}
 
 const NavBarContainer = styled.div`
   display: none;
-  @media (min-width: ${breakpoints.xl}) {
+  @media (min-width: ${breakpoints.lg}) {
     display: block;
     position: absolute;
     top: -10vh;
@@ -38,8 +60,9 @@ const NavBar = styled.nav`
   transform: rotate(-90deg) translate(-50%, 0);
   transform-origin: left top;
   position: absolute;
-  left: 0.2rem;
+  left: -1.3rem;
   top: 50%;
+  display: flex;
 `
 
 const NavLink = styled(Link)`
@@ -47,22 +70,21 @@ const NavLink = styled(Link)`
   font-size: 3rem;
   margin: 1.5rem;
   font-weight: 300;
-  cursor: pointer;
+  display: block;
+  text-align: center;
   user-select: none;
+  text-decoration: none;
+
+  :hover {
+    font-weight: 400;
+  }
+  ::before {
+    display: block;
+    content: attr(title);
+    font-weight: 400;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
   ${props => props.active && "font-weight: 400;"}
 `
-
-export default function RightNav() {
-  return (
-    <NavBarContainer>
-      <NavBar>
-        <NavLink active="true" to="/">
-          Works
-        </NavLink>
-        <NavLink to="/">About</NavLink>
-        <NavLink to="/">Contact</NavLink>
-        <NavLink to="/">Resume</NavLink>
-      </NavBar>
-    </NavBarContainer>
-  )
-}

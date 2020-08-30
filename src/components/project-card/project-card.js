@@ -2,18 +2,24 @@ import React from "react"
 import styled from "@emotion/styled"
 import Image from "gatsby-image"
 import { Swiper, SwiperSlide } from "swiper/react"
-import SwiperCore, { Pagination, EffectFade } from "swiper"
+import SwiperCore, {
+  Pagination,
+  EffectFade,
+  Mousewheel,
+  Autoplay,
+} from "swiper"
 import "swiper/swiper-bundle.min.css"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
 
-SwiperCore.use([Pagination, EffectFade])
+SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
 export default function ProjectCard({ projects }) {
   return (
     <CardContainer>
       <Swiper
         effect="fade"
+        //autoplay
         spaceBetween={30}
         loop={true}
         mousewheel={{
@@ -176,12 +182,16 @@ const CardContainer = styled.div`
     content: "";
     position: absolute;
     top: -5px;
-    left: 13px;
+    left: 9px;
     width: 99%;
     height: 99%;
     background: var(--light);
     border: 3px solid var(--dark);
     z-index: -1;
+    @media (min-width: ${breakpoints.md}) {
+      top: -5px;
+      left: 13px;
+    }
   }
   > div {
     overflow: visible;

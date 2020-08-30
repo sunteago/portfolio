@@ -6,7 +6,7 @@ import { breakpoints } from "../utils"
 
 import BackgroundImage from "gatsby-background-image"
 import TopNav from "../components/top-nav"
-import RightNav from "../components/right-nav"
+import Nav from "../components/nav/nav"
 import Footer from "../components/footer"
 
 const BackgroundImg = styled(BackgroundImage)`
@@ -90,7 +90,7 @@ export default function Layout({ children }) {
         <PageContainer>
           <TopNav />
           {children}
-          <RightNav />
+          <Nav />
         </PageContainer>
         <Footer />
       </BackgroundImg>
