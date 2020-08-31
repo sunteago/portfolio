@@ -5,7 +5,7 @@ import { breakpoints } from "../utils"
 import { Title, GithubIcon, LinkedinIcon, EnvelopeIcon } from "./common"
 
 const ContactContainer = styled.div`
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin: 0 auto;
   ul {
     list-style: none;
@@ -37,14 +37,14 @@ export default function Skills() {
       <ContactContainer>
         <ul>
           <li>
-            <EnvelopeIcon />
+            <EnvelopeIcon hover />
             santi.vallejo@gmail.com
           </li>
           <li>
-            <GithubIcon /> GitHub
+            <GithubIcon hover /> GitHub
           </li>
           <li>
-            <LinkedinIcon />
+            <LinkedinIcon hover />
             LinkedIn
           </li>
         </ul>

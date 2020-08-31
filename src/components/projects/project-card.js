@@ -36,14 +36,14 @@ export default function ProjectCard({ projects }) {
             <CardContent className="project-card-content">
               <h2>{project.title}</h2>
               <p>{project.description} </p>
-              <Button href="#">
+              <Bar href="#">
                 <InfoIcon width={35} link={project.slug} />
                 <span>Details</span>
                 <GithubIcon width={28} link={project.github} />
                 <span>Github</span>
                 <DemoIcon width={28} link={project.demo} />
                 <span>Demo</span>
-              </Button>
+              </Bar>
             </CardContent>
           </SwiperSlide>
         ))}
@@ -78,8 +78,8 @@ const ProjectImage = styled(Image)`
     width: 200px;
   }
   @media screen and (min-width: ${breakpoints.xl}) {
-    width: 275px;
-    height: 275px;
+    width: 250px;
+    height: 250px;
   }
 
   &::after {
@@ -133,7 +133,7 @@ const CardContent = styled.div`
   }
 `
 
-const Button = styled.div`
+const Bar = styled.div`
   position: absolute;
   bottom: -7%;
   transform: translate(-50%, 0) !important;

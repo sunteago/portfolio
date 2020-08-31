@@ -6,10 +6,11 @@ export default function GithubIcon({
   link = defaultGithubLink,
   width = 38,
   height = width,
+  hover,
 }) {
   return (
     <div>
-      <IconLink href={link}>
+      <IconLink href={link} hover={hover}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={width}

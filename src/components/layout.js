@@ -38,7 +38,7 @@ const PageContainer = styled.main`
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
       ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres pres . . . rnav"
+      ". . pres pres pres pres pres . . . . rnav"
       ". . . . . . . . . . . rnav"
       ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
       ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "

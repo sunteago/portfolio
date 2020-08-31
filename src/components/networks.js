@@ -25,8 +25,8 @@ const Networks = styled.div`
 export default function TopNav() {
   return (
     <Networks>
-      <GithubIcon width={34} />
-      <LinkedinIcon width={34} />
+      <GithubIcon width={34} hover />
+      <LinkedinIcon width={34} hover />
     </Networks>
   )
 }

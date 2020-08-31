@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-export default function SeeMore() {
-  return <SeeMoreBtn>See more</SeeMoreBtn>
+export default function Button(props) {
+  return <Btn {...props}>{props.children}</Btn>
 }
 
-const SeeMoreBtn = styled.button`
+const Btn = styled.button`
   position: relative;
   background: var(--dark);
   display: block;
@@ -13,7 +13,7 @@ const SeeMoreBtn = styled.button`
   color: var(--light);
   font-size: 1.25rem;
   padding: 0.7rem;
-  margin: 4rem 0 2rem auto;
+  margin: 3rem 0 2rem auto;
   z-index: 1;
   transition: background 0.1s ease-in;
   cursor: pointer;

@@ -3,7 +3,7 @@ import { Title } from "../common"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
 import SectionContainer from "../common/SectionContainer"
-import SeeMore from "./see-more"
+import Button from "../common/Button"
 
 export default function Works() {
   const projects = useProjects()
@@ -15,7 +15,7 @@ export default function Works() {
     >
       <Title>Projects</Title>
       <ProjectCard projects={projects} />
-      <SeeMore />
+      <Button>See more</Button>
     </SectionContainer>
   )
 }
