@@ -125,6 +125,7 @@ const CardContent = styled.div`
     font-family: Oswald, sans-serif;
     color: var(--light);
     margin-bottom: 20px;
+    margin-top: 1rem;
   }
   p {
     color: var(--light);
@@ -237,7 +238,7 @@ const CardContainer = styled.div`
     transform: translateX(-50%);
     z-index: 21;
     left: 50% !important;
-    top: 260px;
+    top: 175px;
     width: 100% !important;
     display: inline-flex;
     justify-content: center;
