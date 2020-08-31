@@ -13,7 +13,7 @@ const Btn = styled.button`
   border: none;
   font-size: 1.25rem;
   padding: 0.7rem;
-  margin: calc(1vw + 1rem) 0 2rem auto;
+  margin: 3rem 0 2rem auto;
   z-index: 1;
   transition: background 0.15s ease-in;
   cursor: pointer;
@@ -37,7 +37,10 @@ const Btn = styled.button`
       border: 2px solid var(--accent);
     }
   }
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: calc(1.3vw + 1rem);
+  }
   @media (min-width: ${breakpoints.lg}) {
-    font-size: calc(0.6vw + 0.6rem);
+    font-size: calc(0.2vw + 0.8rem);
   }
 `
