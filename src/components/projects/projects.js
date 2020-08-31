@@ -9,7 +9,10 @@ export default function Works() {
   const projects = useProjects()
 
   return (
-    <SectionContainer gridArea="wrk" justifySelf="start">
+    <SectionContainer
+      gridArea="wrk"
+      extraStyles={`justify-self: start; width: 95%`}
+    >
       <Title>Projects</Title>
       <ProjectCard projects={projects} />
       <SeeMore />

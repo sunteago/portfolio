@@ -66,16 +66,20 @@ const ProjectImage = styled(Image)`
   width: 95%;
   transform: translateY(-20%);
   flex-shrink: 0;
-  height: 300px;
+  height: 200px;
   border-radius: var(--radius);
   overflow: hidden;
 
   @media screen and (min-width: ${breakpoints.sm}) {
     width: 90%;
   }
-  @media screen and (min-width: ${breakpoints.md}) {
-    transform: translate(-70px, 40px);
-    width: 300px;
+  @media screen and (min-width: ${breakpoints.lg}) {
+    transform: translate(-70px, 20px);
+    width: 200px;
+  }
+  @media screen and (min-width: ${breakpoints.xl}) {
+    width: 275px;
+    height: 275px;
   }
 
   &::after {
@@ -104,14 +108,12 @@ const CardContent = styled.div`
   text-align: center;
   margin-left: 0;
   padding: 0;
-  @media screen and (min-width: ${breakpoints.sm}) {
-    padding: 0 30px;
+  @media (min-width: ${breakpoints.sm}) {
   }
-  @media screen and (min-width: ${breakpoints.md}) {
-    margin-left: -30px;
-    padding-right: 25px;
-    padding: 0 30px;
+  @media (min-width: ${breakpoints.lg}) {
+    margin-left: -50px;
     text-align: left;
+    padding-right: 20px;
   }
   & > * {
     opacity: 0;
@@ -119,7 +121,7 @@ const CardContent = styled.div`
     transition: all 0.4s;
   }
   h2 {
-    font-size: 24px;
+    font-size: 1.4rem;
     font-family: Oswald, sans-serif;
     color: var(--light);
     margin-bottom: 20px;
@@ -146,7 +148,7 @@ const Button = styled.div`
   letter-spacing: 1px;
   display: inline-flex;
 
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
     left: auto;
     top: auto;
     right: -20%;
@@ -160,7 +162,7 @@ const Button = styled.div`
   }
   & > span {
     display: none;
-    @media (min-width: ${breakpoints.md}) {
+    @media (min-width: ${breakpoints.lg}) {
       display: inline;
       font-family: Oswald, sans-serif;
       font-size: 1.25rem;
@@ -169,15 +171,13 @@ const Button = styled.div`
 `
 
 const CardContainer = styled.div`
-  width: 85vw;
   position: relative;
   margin: auto;
   margin-top: 100px;
   background: var(--dark);
-  padding: 0 25px;
+  padding: 0 15px;
   border-radius: var(--radius);
   transition: all 0.3s;
-  max-width: 550px;
   &::after {
     content: "";
     position: absolute;
@@ -188,7 +188,7 @@ const CardContainer = styled.div`
     background: var(--light);
     border: 3px solid var(--dark);
     z-index: -1;
-    @media (min-width: ${breakpoints.md}) {
+    @media (min-width: ${breakpoints.lg}) {
       top: -5px;
       left: 13px;
     }
@@ -197,18 +197,18 @@ const CardContainer = styled.div`
     overflow: visible;
   }
 
-  @media (min-width: ${breakpoints.sm}) {
-    width: 80%;
-  }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
     margin-top: 50px;
+  }
+  @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
+    margin-top: 24px;
   }
 
   .swiper-slide {
     display: flex;
     align-items: center;
     flex-direction: column;
-    @media screen and (min-width: ${breakpoints.md}) {
+    @media screen and (min-width: ${breakpoints.lg}) {
       flex-direction: row;
     }
     &-active {
@@ -241,10 +241,10 @@ const CardContainer = styled.div`
     width: 100% !important;
     display: inline-flex;
     justify-content: center;
-    @media screen and (min-width: ${breakpoints.md}) {
+    @media screen and (min-width: ${breakpoints.lg}) {
       display: block;
       transform: translateY(-50%);
-      right: 20px;
+      right: 0;
       width: 11px !important;
       left: auto !important;
       top: 50%;
@@ -263,12 +263,12 @@ const CardContainer = styled.div`
         background: var(--accent);
         height: 11px;
         width: 30px;
-        @media screen and (min-width: ${breakpoints.md}) {
+        @media screen and (min-width: ${breakpoints.lg}) {
           width: 11px;
           height: 30px;
         }
       }
-      @media screen and (min-width: ${breakpoints.md}) {
+      @media screen and (min-width: ${breakpoints.lg}) {
         margin: 8px 0 !important;
       }
     }

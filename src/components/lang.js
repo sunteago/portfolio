@@ -4,7 +4,8 @@ import { breakpoints } from "../utils"
 
 const Lang = styled.span`
   display: none;
-  @media (min-width: ${breakpoints.md}) {
+  grid-area: netwrk;
+  @media (min-width: ${breakpoints.lg}) {
     font-weight: bold;
     font-size: 2rem;
     display: block;

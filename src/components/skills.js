@@ -16,6 +16,16 @@ const ListContainer = styled.div`
       margin-bottom: 1rem;
     }
   }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.7rem + 0.5vw);
+  }
+  @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
+    ul {
+      li {
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
 `
 
 export default function Skills() {

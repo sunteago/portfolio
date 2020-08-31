@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import SectionContainer from "./common/SectionContainer"
+import { breakpoints } from "../utils"
 import { Title, GithubIcon, LinkedinIcon, EnvelopeIcon } from "./common"
 
 const ContactContainer = styled.div`
@@ -16,6 +17,13 @@ const ContactContainer = styled.div`
       align-items: center;
       width: 80%;
       margin-bottom: 1rem;
+      @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
+        margin-bottom: 0.3rem;
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
       div {
         margin-right: 0.5rem;
       }

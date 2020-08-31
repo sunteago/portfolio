@@ -33,25 +33,16 @@ const PageContainer = styled.main`
   @media (min-width: ${breakpoints.lg}) {
     padding: 1rem;
     height: 100vh;
-    grid-gap: 1.5rem 2rem;
-    grid-template-rows: 50px 2fr 7fr 6fr 1fr;
+    grid-gap: 1rem;
+    grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas:
       ". lang lang . . . . . . . netwrk netwrk"
       ". . pres pres pres pres pres pres . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls . rnav "
+      ". . . . . . . . . . . rnav"
+      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
       ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      "src src . . . . . . . . . rnav";
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    grid-gap: 3rem 2rem;
-    padding: 2rem;
-    grid-template-areas:
-      ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls . rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      "src src . . . . . . . . . rnav";
+      ". . . . . . . . . . . rnav";
   }
 `
 
