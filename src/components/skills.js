@@ -2,22 +2,43 @@ import React from "react"
 import styled from "@emotion/styled"
 import { Title } from "./common"
 import SectionContainer from "./common/SectionContainer"
+import { breakpoints } from "../utils"
 
 const ListContainer = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 0 auto;
   ul {
-    padding-left: 3rem;
     column-count: 2;
+    column-gap: 4rem;
+    padding-left: 3rem;
+
     li {
       margin-bottom: 1rem;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.7rem + 0.5vw);
+  }
+  @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
+    ul {
+      li {
+        margin-bottom: 0.3rem;
+      }
     }
   }
 `
 
 export default function Skills() {
   return (
-    <SectionContainer gridArea="skls">
+    <SectionContainer
+      gridArea="skls"
+      extraStyles={`
+      justify-self: center;
+      @media(min-width: ${breakpoints.md}) {
+        justify-self: start;
+      }
+    `}
+    >
       <Title>Skills</Title>
       <ListContainer>
         <ul>

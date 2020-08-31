@@ -1,8 +1,11 @@
 export const breakpoints = {
-  md: "768px",
-  lg: "992px",
-  xl: "1200px",
+  xs: "387px",
+  sm: "577px",
+  md: "769px",
+  lg: "993px",
+  xl: "1369px",
 }
 
 export const defaultGithubLink = "https://github.com/sunteago/"
 export const linkedinLink = "https://www.linkedin.com/in/santiago-vallejo-dev/"
+export const contactMail = "mailto:santi.vallejo@gmail.com"
