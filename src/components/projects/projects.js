@@ -12,7 +12,7 @@ export default function Works() {
   return (
     <SectionContainer
       gridArea="wrk"
-      extraStyles={`justify-self: start; width: 95%`}
+      extraStyles={`justify-self: center; width: 95%`}
     >
       <Title>Projects</Title>
       <ProjectCard projects={projects} />

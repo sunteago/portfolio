@@ -1,21 +1,21 @@
 import React from "react"
 import styled from "@emotion/styled"
-
+import { breakpoints } from "../../utils"
 export default function Button(props) {
   return <Btn {...props}>{props.children}</Btn>
 }
 
 const Btn = styled.button`
+  display: block;
   position: relative;
   background: var(--dark);
-  display: block;
-  border: none;
   color: var(--light);
-  font-size: calc(0.6vw + 0.6rem);
+  border: none;
+  font-size: 1.25rem;
   padding: 0.7rem;
   margin: calc(1vw + 1rem) 0 2rem auto;
   z-index: 1;
-  transition: background 0.1s ease-in;
+  transition: background 0.15s ease-in;
   cursor: pointer;
   &::after {
     content: "";
@@ -26,7 +26,7 @@ const Btn = styled.button`
     top: -4px;
     left: 3px;
     border: 2px solid var(--dark);
-    transition: all 0.1s ease-in;
+    transition: all 0.15s ease-in;
   }
   :hover,
   :focus {
@@ -36,5 +36,8 @@ const Btn = styled.button`
       left: 5px;
       border: 2px solid var(--accent);
     }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.6vw + 0.6rem);
   }
 `

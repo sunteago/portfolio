@@ -27,7 +27,7 @@ const MobileNavbar = styled.nav`
   background: var(--accent);
   z-index: 1000;
   transform-origin: left bottom;
-  transition: all 0.2s ease-in;
+  transition: all 0.15s ease-in;
   opacity: 0.8;
   & > div {
     width: 35px;
@@ -35,7 +35,7 @@ const MobileNavbar = styled.nav`
     bottom: 8px;
     left: 8px;
     transform: rotate(-45deg);
-    transition: all 0.2s ease-in;
+    transition: all 0.15s ease-in;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;

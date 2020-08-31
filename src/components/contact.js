@@ -17,11 +17,15 @@ const ContactContainer = styled.div`
       align-items: center;
       width: 80%;
       margin-bottom: 0.3rem;
+
       @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
         svg {
           width: 24px;
           height: 24px;
         }
+      }
+      &:first-of-type div {
+        margin-right: 1rem;
       }
       div {
         margin-right: 0.5rem;

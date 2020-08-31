@@ -8,14 +8,21 @@ const SourceText = styled.div`
   bottom: 0;
   left: 1rem;
   user-select: none;
-  font-size: calc(0.5rem + 1vw);
+  font-size: calc(0.5rem + 0.7vw);
   display: none;
+  :hover {
+    a {
+      color: var(--accent);
+      font-weight: bold;
+    }
+  }
   > div {
     margin-left: 0.5rem;
   }
   > a {
     text-decoration: none;
     color: var(--dark);
+    transition: color 0.15s ease-in;
   }
   @media (min-width: ${breakpoints.md}) {
     display: flex;
@@ -29,11 +36,11 @@ export default function SourceCode() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://github.com/sunteago/portfolio"
+        href="https://github.com/sunteago /portfolio"
       >
         source code
       </a>
-      <GithubIcon link="https://github.com/sunteago/portfolio" />
+      <GithubIcon hover link="https://github.com/sunteago/portfolio" />
     </SourceText>
   )
 }

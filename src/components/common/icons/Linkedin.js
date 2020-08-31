@@ -2,10 +2,15 @@ import React from "react"
 import IconLink from "../IconLink"
 import { linkedinLink } from "../../../utils"
 
-export default function LinkedinIcon({ width = 38, height = width, hover }) {
+export default function LinkedinIcon({
+  link,
+  width = 38,
+  height = width,
+  hover,
+}) {
   return (
     <div>
-      <IconLink href={linkedinLink} hover={hover}>
+      <IconLink href={link} hover={hover}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={width}

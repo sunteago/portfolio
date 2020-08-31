@@ -35,7 +35,7 @@ const PageContainer = styled.main`
     height: 100vh;
     grid-gap: 1rem;
     grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: 2fr repeat(11, 1fr);
     grid-template-areas:
       ". lang lang . . . . . . . netwrk netwrk"
       ". . pres pres pres pres pres pres . . . rnav"
@@ -72,7 +72,7 @@ export default function Layout({ children }) {
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;700&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;500&display=swap");
           *,
           *::after,
           *::before {
@@ -91,6 +91,7 @@ export default function Layout({ children }) {
           body {
             font-family: Raleway, sans-serif;
             color: var(--dark);
+            background: var(--light);
             @media (min-width: ${breakpoints.lg}) {
               width: 100vw;
               height: 100vh;

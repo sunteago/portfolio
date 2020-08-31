@@ -38,7 +38,7 @@ const NavBarContainer = styled.div`
     transform-origin: 50% 50%;
     height: 120vh;
     transform: rotate(7deg);
-    transition: 0.1s width ease-out;
+    transition: width 0.15s ease-out;
     ::after {
       content: "";
       z-index: 2;
@@ -76,12 +76,12 @@ const NavLink = styled(Link)`
   text-decoration: none;
 
   :hover {
-    font-weight: 400;
+    font-weight: 500;
   }
   ::before {
     display: block;
     content: attr(title);
-    font-weight: 400;
+    font-weight: 500;
     height: 0;
     overflow: hidden;
     visibility: hidden;

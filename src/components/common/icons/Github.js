@@ -1,9 +1,8 @@
 import React from "react"
-import { defaultGithubLink } from "../../../utils"
 import IconLink from "../IconLink"
 
 export default function GithubIcon({
-  link = defaultGithubLink,
+  link,
   width = 38,
   height = width,
   hover,

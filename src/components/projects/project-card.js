@@ -11,6 +11,7 @@ import SwiperCore, {
 import "swiper/swiper-bundle.min.css"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
+import { Link } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
@@ -35,14 +36,22 @@ export default function ProjectCard({ projects }) {
             />
             <CardContent className="project-card-content">
               <h2>{project.title}</h2>
-              <p>{project.description} </p>
-              <Bar href="#">
-                <InfoIcon width={35} link={project.slug} />
-                <span>Details</span>
-                <GithubIcon width={28} link={project.github} />
-                <span>Github</span>
-                <DemoIcon width={28} link={project.demo} />
-                <span>Demo</span>
+              <Divider />
+              <h3>{project.subtitle}</h3>
+              <p>{project.description}</p>
+              <Bar>
+                <BarLink to={project.slug}>
+                  <InfoIcon width={28} />
+                  <span>Details</span>
+                </BarLink>
+                <BarLink to={project.github}>
+                  <GithubIcon width={24} />
+                  <span>Github</span>
+                </BarLink>
+                <BarLink to={project.demo}>
+                  <DemoIcon width={24} />
+                  <span>Demo</span>
+                </BarLink>
               </Bar>
             </CardContent>
           </SwiperSlide>
@@ -104,13 +113,15 @@ const ProjectImage = styled(Image)`
 `
 
 const CardContent = styled.div`
-  margin-top: -12px;
-  text-align: center;
+  margin-top: -1rem;
   margin-left: 0;
+  text-align: center;
+  flex: 0 1 100%;
+  height: 100%;
   padding: 0;
-  @media (min-width: ${breakpoints.sm}) {
-  }
   @media (min-width: ${breakpoints.lg}) {
+    align-self: start;
+    margin-top: 1rem;
     margin-left: -50px;
     text-align: left;
     padding-right: 20px;
@@ -124,8 +135,14 @@ const CardContent = styled.div`
     font-size: 1.4rem;
     font-family: Oswald, sans-serif;
     color: var(--light);
-    margin-bottom: 20px;
+    margin-bottom: 0.3rem;
     margin-top: 1rem;
+  }
+  h3 {
+    font-family: Oswald, sans-serif;
+    color: var(--light);
+    margin-bottom: 20px;
+    font-weight: 300;
   }
   p {
     color: var(--light);
@@ -136,14 +153,13 @@ const CardContent = styled.div`
 
 const Bar = styled.div`
   position: absolute;
-  bottom: -7%;
+  bottom: -20px;
   transform: translate(-50%, 0) !important;
   background: var(--accent);
-  padding: 0.4rem;
+  padding: 0.2rem 0.4rem;
   border-radius: var(--radius);
-  color: #fff;
+  color: var(--light);
   text-decoration: none;
-  font-weight: 500;
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
@@ -152,22 +168,31 @@ const Bar = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     left: auto;
     top: auto;
-    right: -20%;
+    right: 5px;
+    transform: none !important;
   }
-  & > div {
-    margin: 0 0.5rem;
+  & > a {
+    margin: 0 0.4rem;
     flex: 0 1 20%;
     align-items: center;
     display: flex;
     color: var(--light);
-  }
-  & > span {
-    display: none;
-    @media (min-width: ${breakpoints.lg}) {
-      display: inline;
-      font-family: Oswald, sans-serif;
-      font-size: 1.25rem;
+    text-decoration: none;
+    & > span {
+      display: none;
+      margin-left: 0.3rem;
+      @media (min-width: ${breakpoints.xl}) {
+        display: inline;
+        font-family: Oswald, sans-serif;
+      }
     }
+  }
+`
+
+const BarLink = styled(Link)`
+  transition: color 0.2s ease-in;
+  :hover {
+    color: #fff;
   }
 `
 
@@ -183,16 +208,12 @@ const CardContainer = styled.div`
     content: "";
     position: absolute;
     top: -5px;
-    left: 9px;
-    width: 99%;
-    height: 99%;
+    left: 6px;
+    width: 100%;
+    height: 100%;
     background: var(--light);
     border: 3px solid var(--dark);
     z-index: -1;
-    @media (min-width: ${breakpoints.lg}) {
-      top: -5px;
-      left: 10px;
-    }
   }
   > div {
     overflow: visible;
@@ -203,6 +224,7 @@ const CardContainer = styled.div`
   }
 
   .swiper-slide {
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -270,5 +292,12 @@ const CardContainer = styled.div`
         margin: 8px 0 !important;
       }
     }
+  }
+`
+
+const Divider = styled.div`
+  @media (min-width: ${breakpoints.lg}) {
+    background: var(--light);
+    height: 1px;
   }
 `
