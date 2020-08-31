@@ -11,9 +11,9 @@ const Btn = styled.button`
   display: block;
   border: none;
   color: var(--light);
-  font-size: 1.25rem;
+  font-size: calc(0.6vw + 0.6rem);
   padding: 0.7rem;
-  margin: 3rem 0 2rem auto;
+  margin: calc(1vw + 1rem) 0 2rem auto;
   z-index: 1;
   transition: background 0.1s ease-in;
   cursor: pointer;

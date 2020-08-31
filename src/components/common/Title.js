@@ -16,7 +16,7 @@ export default function Title({ children }) {
 
         @media (min-width: ${breakpoints.lg}) {
           text-align: left;
-          margin-bottom: 1rem;
+          margin-bottom: calc(1vh);
           font-size: calc(1rem + 1vw);
         }
       `}

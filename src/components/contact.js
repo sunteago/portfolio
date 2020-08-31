@@ -16,9 +16,8 @@ const ContactContainer = styled.div`
       display: flex;
       align-items: center;
       width: 80%;
-      margin-bottom: 1rem;
+      margin-bottom: 0.3rem;
       @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
-        margin-bottom: 0.3rem;
         svg {
           width: 24px;
           height: 24px;
@@ -28,6 +27,9 @@ const ContactContainer = styled.div`
         margin-right: 0.5rem;
       }
     }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.7rem + 0.5vw);
   }
 `
 export default function Skills() {

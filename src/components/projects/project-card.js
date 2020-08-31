@@ -191,7 +191,7 @@ const CardContainer = styled.div`
     z-index: -1;
     @media (min-width: ${breakpoints.lg}) {
       top: -5px;
-      left: 13px;
+      left: 10px;
     }
   }
   > div {
@@ -199,9 +199,6 @@ const CardContainer = styled.div`
   }
 
   @media (min-width: ${breakpoints.lg}) {
-    margin-top: 50px;
-  }
-  @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
     margin-top: 24px;
   }
 

@@ -30,7 +30,7 @@ const NavBarContainer = styled.div`
   display: none;
   @media (min-width: ${breakpoints.lg}) {
     display: block;
-    position: absolute;
+    position: fixed;
     top: -10vh;
     right: 0;
     width: calc(5vh + 80px);
