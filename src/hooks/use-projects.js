@@ -8,6 +8,7 @@ const useProjects = () => {
           frontmatter {
             title
             slug
+            subtitle
             description
             github
             demo
@@ -24,10 +25,11 @@ const useProjects = () => {
       }
     }
   `)
-  console.log(data)
+
   return data.allMdx.nodes.map(project => ({
     title: project.frontmatter.title,
     slug: project.frontmatter.slug,
+    subtitle: project.frontmatter.subtitle,
     description: project.frontmatter.description,
     demo: project.frontmatter.demo,
     github: project.frontmatter.github,
