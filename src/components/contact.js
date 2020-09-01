@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import SectionContainer from "./common/SectionContainer"
+import { breakpoints } from "../utils"
 import {
   breakpoints,
   defaultGithubLink,
