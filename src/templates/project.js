@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { Title } from "../components/common"
 
 export const query = graphql`
   query($slug: String!) {
@@ -9,10 +10,12 @@ export const query = graphql`
       frontmatter {
         slug
         title
+        subtitle
         description
         github
         demo
       }
+      excerpt
       body
     }
   }
@@ -20,8 +23,8 @@ export const query = graphql`
 
 export default function ProjectTemplate({ data: { mdx: project } }) {
   return (
-    <Layout>
-      <h1>{project.frontmatter.title}</h1>
+    <Layout pageGrid="projectPage">
+      <Title>{project.frontmatter.title}</Title>
       <MDXRenderer>{project.body}</MDXRenderer>
     </Layout>
   )

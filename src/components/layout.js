@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
-import { breakpoints } from "../utils"
+import { breakpoints, grids } from "../utils"
 
 import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
@@ -29,13 +29,8 @@ const BackgroundParticles = styled(Particles)`
 
 const PageContainer = styled.main`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas:
-    "pres pres pres netwrk"
-    "wrk wrk wrk wrk"
-    "skls skls skls skls"
-    "cntc cntc cntc cntc"
-    "fotr fotr fotr src";
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: ${props => props.grid.sm};
 
   width: 100%;
   padding: 2rem;
@@ -47,26 +42,14 @@ const PageContainer = styled.main`
     grid-gap: 1rem;
     grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
     grid-template-columns: 2fr repeat(11, 1fr);
-    grid-template-areas:
-      ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres pres . . . rnav"
-      ". . . . . . . . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      ". . . . . . . . . . . rnav";
+    grid-template-areas: ${props => props.grid.lg};
   }
   @media (min-width: ${breakpoints.xl}) {
-    grid-template-areas:
-      ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres . . . . rnav"
-      ". . . . . . . . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      ". . . . . . . . . . . rnav";
+    grid-template-areas: ${props => props.grid.xl};
   }
 `
 
-export default function Layout({ children }) {
+export default function Layout({ children, pageGrid }) {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "asfalt-dark.png" }) {
@@ -78,7 +61,6 @@ export default function Layout({ children }) {
       }
     }
   `)
-
   return (
     <>
       <Global
@@ -112,7 +94,7 @@ export default function Layout({ children }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer>
+        <PageContainer grid={grids[pageGrid]}>
           <Lang />
           <Networks />
           <Nav />

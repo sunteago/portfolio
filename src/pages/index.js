@@ -7,7 +7,7 @@ import Skills from "../components/skills"
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout pageGrid="main">
       <Presentation />
       <Projects />
       <Contact />
