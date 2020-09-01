@@ -140,7 +140,7 @@ const CardContent = styled.div`
       sans-serif;
     font-size: 1.5rem;
     margin-bottom: 0.3rem;
-    margin-top: 0 ;
+    margin-top: 0;
     @media (min-width: ${breakpoints.md}) {
       margin-top: 0rem;
     }
@@ -160,7 +160,7 @@ const CardContent = styled.div`
       margin-bottom: 0;
     }
   }
-
+  h2 {
     font-size: 1.5rem;
     font-family: Oswald, sans-serif;
     color: var(--light);
@@ -183,13 +183,6 @@ const CardContent = styled.div`
       margin-bottom: 0;
     }
   }
-`
-
-const CardContentLink = styled(Link)`
-  text-decoration: none;
-  cursor: pointer;
-  z-index: 1000;
-  position: relative;
 `
 
 const Bar = styled.div`
