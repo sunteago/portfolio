@@ -140,9 +140,9 @@ const CardContent = styled.div`
       sans-serif;
     font-size: 1.5rem;
     margin-bottom: 0.3rem;
-    margin-top: 2rem;
+    margin-top: 0 ;
     @media (min-width: ${breakpoints.md}) {
-      margin-top: 0.75rem;
+      margin-top: 0rem;
     }
   }
   h3 {
@@ -160,6 +160,36 @@ const CardContent = styled.div`
       margin-bottom: 0;
     }
   }
+
+    font-size: 1.5rem;
+    font-family: Oswald, sans-serif;
+    color: var(--light);
+    margin-bottom: 0.3rem;
+    margin-top: 0.75rem;
+  }
+  h3 {
+    font-family: Oswald, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--light);
+    margin-bottom: 20px;
+  }
+  p {
+    color: var(--light);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5em;
+    @media (min-width: ${breakpoints.md}) {
+      margin-bottom: 0;
+    }
+  }
+`
+
+const CardContentLink = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000;
+  position: relative;
 `
 
 const Bar = styled.div`
