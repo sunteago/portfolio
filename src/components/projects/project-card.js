@@ -1,10 +1,8 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
 import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
-import { Link, navigate } from "gatsby"
 import IconLink from "../common/IconLink"
 
 import { Swiper, SwiperSlide } from "swiper/react"
