@@ -6,7 +6,6 @@ import { breakpoints } from "../utils"
 import Particles from "react-particles-js"
 import particles from "../utils/particles.json"
 
-import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
 import BackgroundImage from "gatsby-background-image"
 import Networks from "./networks"

@@ -40,7 +40,6 @@ export default function Footer() {
     <FooterBox>
       <div>
         <p>Designed by</p>
-
         <p>Santiago Vallejo</p>
       </div>
     </FooterBox>
