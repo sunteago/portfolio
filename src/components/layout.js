@@ -4,6 +4,8 @@ import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 import { breakpoints } from "../utils"
 
+import Particles from "react-particles-js"
+import particlesConfig from "../utils/particles.json"
 import BackgroundImage from "gatsby-background-image"
 import Networks from "./networks"
 import Lang from "./lang"
@@ -14,6 +16,15 @@ import SourceCode from "../components/source-code"
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
   background-color: var(--light);
+`
+
+const BackgroundParticles = styled(Particles)`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 `
 
 const PageContainer = styled.main`
@@ -108,6 +119,7 @@ export default function Layout({ children }) {
           {children}
           <SourceCode />
         </PageContainer>
+        <BackgroundParticles params={particlesConfig} />
         <Footer />
       </BackgroundImg>
     </>
