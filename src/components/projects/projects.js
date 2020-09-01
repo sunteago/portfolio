@@ -1,5 +1,4 @@
 import React from "react"
-import { css } from "@emotion/core"
 import { Title } from "../common"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"

@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../utils"
-import { SectionContainer } from "./common"
 
 const FooterBox = styled.div`
   width: 100%;
@@ -38,14 +37,11 @@ const FooterBox = styled.div`
 
 export default function Footer() {
   return (
-    <SectionContainer gridArea="fotr">
-      <FooterBox>
-        <div>
-          <p>Designed by</p>
-
-          <p>Santiago Vallejo</p>
-        </div>
-      </FooterBox>
-    </SectionContainer>
+    <FooterBox>
+      <div>
+        <p>Designed by</p>
+        <p>Santiago Vallejo</p>
+      </div>
+    </FooterBox>
   )
 }

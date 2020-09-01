@@ -1,6 +1,5 @@
 import React from "react"
 import IconLink from "../IconLink"
-import { linkedinLink } from "../../../utils"
 
 export default function LinkedinIcon({
   link,

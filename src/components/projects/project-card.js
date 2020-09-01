@@ -1,6 +1,12 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import Image from "gatsby-image"
+import { breakpoints } from "../../utils"
+import { GithubIcon, InfoIcon, DemoIcon } from "../common"
+import { Link, navigate } from "gatsby"
+import IconLink from "../common/IconLink"
+
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
   Pagination,
@@ -9,9 +15,6 @@ import SwiperCore, {
   Autoplay,
 } from "swiper"
 import "swiper/swiper-bundle.min.css"
-import { breakpoints } from "../../utils"
-import { GithubIcon, InfoIcon, DemoIcon } from "../common"
-import { Link } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
@@ -20,7 +23,7 @@ export default function ProjectCard({ projects }) {
     <CardContainer>
       <Swiper
         effect="fade"
-        //autoplay
+        autoplay
         spaceBetween={30}
         loop={true}
         mousewheel={{
@@ -35,23 +38,25 @@ export default function ProjectCard({ projects }) {
               alt={project.title}
             />
             <CardContent className="project-card-content">
-              <h2>{project.title}</h2>
-              <Divider />
-              <h3>{project.subtitle}</h3>
-              <p>{project.description}</p>
+              <div>
+                <h2>{project.title}</h2>
+                <Divider />
+                <h3>{project.subtitle}</h3>
+                <p>{project.description}</p>
+              </div>
               <Bar>
-                <BarLink to={project.slug}>
+                <IconLink internal href={project.slug}>
                   <InfoIcon width={28} />
                   <span>Details</span>
-                </BarLink>
-                <BarLink to={project.github}>
+                </IconLink>
+                <IconLink href={project.github}>
                   <GithubIcon width={24} />
                   <span>Github</span>
-                </BarLink>
-                <BarLink to={project.demo}>
+                </IconLink>
+                <IconLink href={project.demo}>
                   <DemoIcon width={24} />
                   <span>Demo</span>
-                </BarLink>
+                </IconLink>
               </Bar>
             </CardContent>
           </SwiperSlide>
@@ -75,22 +80,20 @@ const ProjectImage = styled(Image)`
   width: 95%;
   transform: translateY(-20%);
   flex-shrink: 0;
-  height: 200px;
+  height: 175px;
   border-radius: var(--radius);
   overflow: hidden;
-
   @media screen and (min-width: ${breakpoints.sm}) {
     width: 90%;
   }
   @media screen and (min-width: ${breakpoints.lg}) {
     transform: translate(-70px, 20px);
-    width: 200px;
+    width: 175px;
   }
   @media screen and (min-width: ${breakpoints.xl}) {
     width: 250px;
     height: 250px;
   }
-
   &::after {
     content: "";
     position: absolute;
@@ -119,9 +122,10 @@ const CardContent = styled.div`
   flex: 0 1 100%;
   height: 100%;
   padding: 0;
+  color: var(--light);
   @media (min-width: ${breakpoints.lg}) {
     align-self: start;
-    margin-top: 1rem;
+    padding-top: 1rem;
     margin-left: -50px;
     text-align: left;
     padding-right: 20px;
@@ -132,22 +136,29 @@ const CardContent = styled.div`
     transition: all 0.4s;
   }
   h2 {
-    font-size: 1.4rem;
-    font-family: Oswald, sans-serif;
-    color: var(--light);
+    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
+      sans-serif;
+    font-size: 1.5rem;
     margin-bottom: 0.3rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    @media (min-width: ${breakpoints.md}) {
+      margin-top: 0.75rem;
+    }
   }
   h3 {
-    font-family: Oswald, sans-serif;
-    color: var(--light);
-    margin-bottom: 20px;
+    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
+      sans-serif;
+    font-size: 1.125rem;
     font-weight: 300;
+    margin-bottom: 20px;
   }
   p {
-    color: var(--light);
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
+    font-size: 1rem;
     line-height: 1.5em;
+    @media (min-width: ${breakpoints.md}) {
+      margin-bottom: 0;
+    }
   }
 `
 
@@ -164,7 +175,6 @@ const Bar = styled.div`
   align-items: center;
   letter-spacing: 1px;
   display: inline-flex;
-
   @media (min-width: ${breakpoints.lg}) {
     left: auto;
     top: auto;
@@ -186,13 +196,6 @@ const Bar = styled.div`
         font-family: Oswald, sans-serif;
       }
     }
-  }
-`
-
-const BarLink = styled(Link)`
-  transition: color 0.2s ease-in;
-  :hover {
-    color: #fff;
   }
 `
 
@@ -218,33 +221,34 @@ const CardContainer = styled.div`
   > div {
     overflow: visible;
   }
-
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 24px;
   }
-
-  .swiper-slide {
-    height: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    @media screen and (min-width: ${breakpoints.lg}) {
-      flex-direction: row;
+  .swiper {
+    &-wrapper {
+      z-index: 23;
     }
-    &-active {
-      img {
-        opacity: 1;
-        transition-delay: 0.3s;
+    &-slide {
+      height: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      @media screen and (min-width: ${breakpoints.lg}) {
+        flex-direction: row;
       }
-      .project-card-content > * {
-        opacity: 1;
-        transform: none;
+      &-active {
+        img {
+          opacity: 1;
+          transition-delay: 0.3s;
+        }
+        .project-card-content > * {
+          opacity: 1;
+          transform: none;
+        }
       }
     }
   }
-
   ${() => generateFade(8)}
-
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
@@ -255,9 +259,9 @@ const CardContainer = styled.div`
   .swiper-pagination {
     position: absolute;
     transform: translateX(-50%);
-    z-index: 21;
+    z-index: 25;
     left: 50% !important;
-    top: 175px;
+    top: 160px;
     width: 100% !important;
     display: inline-flex;
     justify-content: center;
