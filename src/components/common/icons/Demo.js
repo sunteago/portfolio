@@ -1,10 +1,10 @@
 import React from "react"
-import IconLink from "./IconLink"
+import IconLink from "../IconLink"
 
-export default function DemoIcon({ link, width = 38, height = width }) {
+export default function DemoIcon({ link, width = 38, height = width, hover }) {
   return (
     <div>
-      <IconLink href={link}>
+      <IconLink href={link} hover={hover}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={width}

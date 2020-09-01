@@ -1,21 +1,21 @@
 import React from "react"
-import { defaultGithubLink } from "../../utils"
-import IconLink from "./IconLink"
+import IconLink from "../IconLink"
 
 export default function GithubIcon({
-  link = defaultGithubLink,
+  link,
   width = 38,
   height = width,
+  hover,
 }) {
   return (
     <div>
-      <IconLink href={link}>
+      <IconLink href={link} hover={hover}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={width}
           height={height}
           fill="none"
-          viewBox={`0 0 ${width} ${height}`}
+          viewBox={`0 0 38 37`}
         >
           <path
             fill="currentColor"

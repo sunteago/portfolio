@@ -4,19 +4,30 @@ import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 import { breakpoints } from "../utils"
 
+import Particles from "react-particles-js"
+import particlesConfig from "../utils/particles.json"
 import BackgroundImage from "gatsby-background-image"
-import TopNav from "../components/top-nav"
-import RightNav from "../components/right-nav"
+import Networks from "./networks"
+import Lang from "./lang"
+import Nav from "../components/nav/nav"
 import Footer from "../components/footer"
+import SourceCode from "../components/source-code"
 
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
   background-color: var(--light);
+`
+
+const BackgroundParticles = styled(Particles)`
+  width: 100%;
   height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 `
 
 const PageContainer = styled.main`
-  min-height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
@@ -24,20 +35,33 @@ const PageContainer = styled.main`
     "wrk wrk wrk wrk"
     "skls skls skls skls"
     "cntc cntc cntc cntc"
-    "fotr fotr fotr fotr";
+    "fotr fotr fotr src";
 
   width: 100%;
-  height: 100%;
   padding: 2rem;
-  grid-gap: 3rem 2rem;
+  grid-gap: 5rem 1rem;
 
   @media (min-width: ${breakpoints.lg}) {
-    grid-template-columns: repeat(12, 1fr);
+    padding: 1rem;
+    height: 100vh;
+    grid-gap: 1rem;
+    grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
+    grid-template-columns: 2fr repeat(11, 1fr);
     grid-template-areas:
-      ". . lang . . . . . . . netwrk rnav"
+      ". lang lang . . . . . . . netwrk netwrk"
+      ". . pres pres pres pres pres pres . . . rnav"
+      ". . . . . . . . . . . rnav"
+      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
+      ". . . . . . . . . . . rnav";
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    grid-template-areas:
+      ". lang lang . . . . . . . netwrk netwrk"
       ". . pres pres pres pres pres . . . . rnav"
-      ". . wrk wrk wrk wrk . skls skls . . rnav "
-      ". . wrk wrk wrk wrk . cntc cntc . . rnav "
+      ". . . . . . . . . . . rnav"
+      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
       ". . . . . . . . . . . rnav";
   }
 `
@@ -59,7 +83,7 @@ export default function Layout({ children }) {
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;700&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;500&display=swap");
           *,
           *::after,
           *::before {
@@ -72,13 +96,15 @@ export default function Layout({ children }) {
             --light: #f5d6ba;
             --dark: #2c2c54;
             --accent: #a40e4c;
+            --radius: 3px;
           }
 
           body {
             font-family: Raleway, sans-serif;
             color: var(--dark);
-            min-height: 100vh;
+            background: var(--light);
             @media (min-width: ${breakpoints.lg}) {
+              width: 100vw;
               height: 100vh;
               overflow: hidden;
             }
@@ -87,11 +113,14 @@ export default function Layout({ children }) {
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
         <PageContainer>
-          <TopNav />
+          <Lang />
+          <Networks />
+          <Nav />
           {children}
-          <RightNav />
+          <SourceCode />
         </PageContainer>
         <Footer />
+        <BackgroundParticles params={particlesConfig} />
       </BackgroundImg>
     </>
   )

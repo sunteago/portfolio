@@ -1,11 +1,10 @@
 import React from "react"
-import IconLink from "./IconLink"
-import { Link } from "gatsby"
+import IconLink from "../IconLink"
 
 export default function DemoIcon({ link, width = 38, height = width }) {
   return (
     <div>
-      <IconLink component={Link} href={link}>
+      <IconLink internal href={link}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={width}
