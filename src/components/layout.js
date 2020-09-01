@@ -31,7 +31,7 @@ const PageContainer = styled.main`
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-areas: ${props => props.grid.sm};
-
+  min-height: 100vh;
   width: 100%;
   padding: 2rem;
   grid-gap: 5rem 1rem;

@@ -24,7 +24,7 @@ export default {
     sm: `
     "prjTitl prjTitl"
     "prjImg prjImg "
-    "prjNtwrk prjNtwrk"
+    "prjLinks prjLinks"
     "prjTchs prjTchs"
     "prjDtls prjDtls"
     "prjPrev prjPrev"
@@ -32,14 +32,14 @@ export default {
     lg: `
     ". lang lang . . . . . . . netwrk netwrk"
     ". . prjTitl prjTitl prjTitl prjImg prjImg prjImg . . . rnav"
-    ". . prjNtwrk prjNtwrk prjImg prjImg prjImg prjImg . . . rnav"
+    ". . prjLinks prjLinks prjImg prjImg prjImg prjImg . . . rnav"
     ". . . prjDtls prjDtls prjDtls prjPrev prjPrev . . . rnav "
     ". . . prjTchs prjTchs prjTchs prjPrev prjPrev . . . rnav "
     ". . . . . . . . . . . rnav"`,
     xl: `
     ". lang lang . . . . . . . netwrk netwrk"
     ". . prjTitl prjTitl prjTitl prjImg prjImg prjImg . . . rnav"
-    ". . prjNtwrk prjNtwrk prjImg prjImg prjImg prjImg . . . rnav"
+    ". . prjLinks prjLinks prjImg prjImg prjImg prjImg . . . rnav"
     ". . . prjDtls prjDtls prjDtls prjPrev prjPrev . . . rnav "
     ". . . prjTchs prjTchs prjTchs prjPrev prjPrev . . . rnav "
     ". . . . . . . . . . . rnav"`,
