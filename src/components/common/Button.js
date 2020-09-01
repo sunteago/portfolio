@@ -37,6 +37,7 @@ const Btn = styled.button`
       border: 2px solid var(--accent);
     }
   }
+
   @media (min-width: ${breakpoints.md}) {
     margin-top: calc(1.3vw + 1rem);
   }

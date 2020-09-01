@@ -97,6 +97,7 @@ const NavLink = styled(Link)`
   }
   ${props => props.active && "font-weight: 400;"}
 `
+
 const FooterBox = styled.div`
   position: absolute;
   bottom: 0;

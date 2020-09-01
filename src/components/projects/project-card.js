@@ -136,6 +136,25 @@ const CardContent = styled.div`
     transition: all 0.4s;
   }
   h2 {
+    font-size: 1.4rem;
+    font-family: Oswald, sans-serif;
+    color: var(--light);
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+  }
+  h3 {
+    font-family: Oswald, sans-serif;
+    color: var(--light);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  p {
+    color: var(--light);
+    margin-bottom: 30px;
+    line-height: 1.5em;
+  }
+`
+
     font-size: 1.5rem;
     font-family: Oswald, sans-serif;
     color: var(--light);
