@@ -20,7 +20,7 @@ export default function ProjectCard({ projects }) {
     <CardContainer>
       <Swiper
         effect="fade"
-        //autoplay
+        autoplay
         spaceBetween={30}
         loop={true}
         mousewheel={{
@@ -35,10 +35,14 @@ export default function ProjectCard({ projects }) {
               alt={project.title}
             />
             <CardContent className="project-card-content">
-              <h2>{project.title}</h2>
-              <Divider />
-              <h3>{project.subtitle}</h3>
-              <p>{project.description}</p>
+              <CardContentLink to={project.slug}>
+                <div>
+                  <h2>{project.title}</h2>
+                  <Divider />
+                  <h3>{project.subtitle}</h3>
+                  <p>{project.description}</p>
+                </div>
+              </CardContentLink>
               <Bar>
                 <BarLink to={project.slug}>
                   <InfoIcon width={28} />
@@ -75,7 +79,7 @@ const ProjectImage = styled(Image)`
   width: 95%;
   transform: translateY(-20%);
   flex-shrink: 0;
-  height: 200px;
+  height: 175px;
   border-radius: var(--radius);
   overflow: hidden;
 
@@ -84,7 +88,7 @@ const ProjectImage = styled(Image)`
   }
   @media screen and (min-width: ${breakpoints.lg}) {
     transform: translate(-70px, 20px);
-    width: 200px;
+    width: 175px;
   }
   @media screen and (min-width: ${breakpoints.xl}) {
     width: 250px;
@@ -121,7 +125,7 @@ const CardContent = styled.div`
   padding: 0;
   @media (min-width: ${breakpoints.lg}) {
     align-self: start;
-    margin-top: 1rem;
+    padding-top: 1rem;
     margin-left: -50px;
     text-align: left;
     padding-right: 20px;
@@ -149,6 +153,37 @@ const CardContent = styled.div`
     margin-bottom: 30px;
     line-height: 1.5em;
   }
+`
+
+    font-size: 1.5rem;
+    font-family: Oswald, sans-serif;
+    color: var(--light);
+    margin-bottom: 0.3rem;
+    margin-top: 0.75rem;
+  }
+  h3 {
+    font-family: Oswald, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--light);
+    margin-bottom: 20px;
+  }
+  p {
+    color: var(--light);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5em;
+    @media (min-width: ${breakpoints.md}) {
+      margin-bottom: 0;
+    }
+  }
+`
+
+const CardContentLink = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1000;
+  position: relative;
 `
 
 const Bar = styled.div`
@@ -223,22 +258,27 @@ const CardContainer = styled.div`
     margin-top: 24px;
   }
 
-  .swiper-slide {
-    height: auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    @media screen and (min-width: ${breakpoints.lg}) {
-      flex-direction: row;
+  .swiper {
+    &-wrapper {
+      z-index: 23;
     }
-    &-active {
-      img {
-        opacity: 1;
-        transition-delay: 0.3s;
+    &-slide {
+      height: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      @media screen and (min-width: ${breakpoints.lg}) {
+        flex-direction: row;
       }
-      .project-card-content > * {
-        opacity: 1;
-        transform: none;
+      &-active {
+        img {
+          opacity: 1;
+          transition-delay: 0.3s;
+        }
+        .project-card-content > * {
+          opacity: 1;
+          transform: none;
+        }
       }
     }
   }
@@ -255,7 +295,7 @@ const CardContainer = styled.div`
   .swiper-pagination {
     position: absolute;
     transform: translateX(-50%);
-    z-index: 21;
+    z-index: 25;
     left: 50% !important;
     top: 175px;
     width: 100% !important;

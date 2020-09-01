@@ -2,6 +2,12 @@ import React from "react"
 import styled from "@emotion/styled"
 import SectionContainer from "./common/SectionContainer"
 import { breakpoints } from "../utils"
+import {
+  breakpoints,
+  defaultGithubLink,
+  linkedinLink,
+  contactMail,
+} from "../utils"
 import { Title, GithubIcon, LinkedinIcon, EnvelopeIcon } from "./common"
 
 const ContactContainer = styled.div`
@@ -43,14 +49,14 @@ export default function Skills() {
       <ContactContainer>
         <ul>
           <li>
-            <EnvelopeIcon hover />
+            <EnvelopeIcon link={contactMail} hover />
             santi.vallejo@gmail.com
           </li>
           <li>
-            <GithubIcon hover /> GitHub
+            <GithubIcon link={defaultGithubLink} hover /> GitHub
           </li>
           <li>
-            <LinkedinIcon hover />
+            <LinkedinIcon link={linkedinLink} hover />
             LinkedIn
           </li>
         </ul>

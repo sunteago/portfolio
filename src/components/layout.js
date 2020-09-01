@@ -3,6 +3,8 @@ import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
 import { breakpoints } from "../utils"
+import Particles from "react-particles-js"
+import particles from "../utils/particles.json"
 
 import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
@@ -121,6 +123,7 @@ export default function Layout({ children }) {
         </PageContainer>
         <BackgroundParticles params={particlesConfig} />
         <Footer />
+        <BackgroundParticles params={particles} />
       </BackgroundImg>
     </>
   )
