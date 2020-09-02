@@ -26,7 +26,7 @@ export default function Button(props) {
         border: none;
         font-size: 1.25rem;
         padding: 0.7rem;
-        font-family: "Ralseway", sans-serif;
+        font-family: "Raleway", sans-serif;
 
         z-index: 1;
         transition: background 0.15s ease-in;
