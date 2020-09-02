@@ -1,5 +1,4 @@
-import React, { useContext } from "react"
-import { GridContext } from "../../context/gridContext"
+import React from "react"
 import { Title, Button } from "../common"
 import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
@@ -10,7 +9,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Works() {
   const projects = useProjects()
-  const { setPageGrid } = useContext(GridContext)
   return (
     <SectionContainer
       gridArea="wrk"
@@ -32,13 +30,7 @@ export default function Works() {
       >
         See more
       </Button>
-      <AniLink
-        swipe
-        direction="up"
-        to="composer-page"
-        bg="#2c2c54"
-        onClick={() => setPageGrid("projectPage")}
-      >
+      <AniLink fade to="composer-page" bg="#2c2c54">
         Go to Page 4
       </AniLink>
     </SectionContainer>

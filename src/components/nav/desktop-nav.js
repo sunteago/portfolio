@@ -2,19 +2,20 @@ import React from "react"
 import { Link } from "gatsby"
 import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function RightNav() {
   return (
     <>
       <NavBarContainer>
         <NavBar>
-          <NavLink title="Works" active="true" to="/">
+          <NavLink hex="#2c2c54" paintDrip title="Works" active="true" to="/">
             Works
           </NavLink>
-          <NavLink title="About" to="/">
+          <NavLink fade title="About" to="/composer-page">
             About
           </NavLink>
-          <NavLink title="Contact" to="/">
+          <NavLink cover bg="#2c2c54" title="Contact" to="/">
             Contact
           </NavLink>
           <NavLink title="Resume" to="/">
@@ -74,7 +75,7 @@ const NavBar = styled.nav`
   display: flex;
 `
 
-const NavLink = styled(Link)`
+const NavLink = styled(AniLink)`
   color: var(--light);
   font-size: calc(4vh + 0.5rem);
   margin: 1.5rem calc(1vw);
