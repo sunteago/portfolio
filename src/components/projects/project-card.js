@@ -4,6 +4,7 @@ import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
 import IconLink from "../common/IconLink"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
@@ -43,10 +44,10 @@ export default function ProjectCard({ projects }) {
                 <p>{project.description}</p>
               </div>
               <Bar>
-                <IconLink internal href={project.slug}>
+                <AniLink fade to={project.slug}>
                   <InfoIcon width={28} />
                   <span>Details</span>
-                </IconLink>
+                </AniLink>
                 <IconLink href={project.github}>
                   <GithubIcon width={24} />
                   <span>Github</span>

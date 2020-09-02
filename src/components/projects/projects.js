@@ -5,7 +5,6 @@ import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
 import SectionContainer from "../common/SectionContainer"
 import { css } from "@emotion/core"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Works() {
   const projects = useProjects()
@@ -16,23 +15,30 @@ export default function Works() {
     >
       <Title>Projects</Title>
       <ProjectCard projects={projects} />
-      <Button
+      <div
         css={css`
-          margin: 3rem 0 2rem auto;
-
-          @media (min-width: ${breakpoints.md}) {
-            margin-top: calc(1.3vw + 1rem);
-          }
-          @media (min-width: ${breakpoints.lg}) {
-            font-size: calc(0.2vw + 0.8rem);
-          }
+          display: flex;
+          justify-content: flex-end;
         `}
       >
-        See more
-      </Button>
-      <AniLink fade to="composer-page" bg="#2c2c54">
-        Go to Page 4
-      </AniLink>
+        <Button
+          css={css`
+            margin: 3rem 0 2rem auto;
+            width: auto;
+
+            @media (min-width: ${breakpoints.md}) {
+              margin-top: calc(1.3vw + 1rem);
+            }
+            @media (min-width: ${breakpoints.lg}) {
+              font-size: calc(0.2vw + 0.8rem);
+            }
+          `}
+          component="Link"
+          to="/projects"
+        >
+          See more
+        </Button>
+      </div>
     </SectionContainer>
   )
 }

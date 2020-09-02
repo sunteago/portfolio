@@ -104,7 +104,7 @@ export default function Layout({ children, pageContext }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer grid={grids[pageContext.layout || "main"]}>
+        <PageContainer grid={grids["main"]}>
           <Lang />
           <Networks />
           <Nav />
@@ -112,7 +112,7 @@ export default function Layout({ children, pageContext }) {
           <SourceCode />
         </PageContainer>
         <Footer />
-        <BackgroundParticles params={particlesConfig} />
+        {/* <BackgroundParticles params={particlesConfig} /> */}
       </BackgroundImg>
     </>
   )
