@@ -8,7 +8,6 @@ const Lang = styled.div`
   top: 1rem;
   left: 20%;
   @media (min-width: ${breakpoints.lg}) {
-    font-weight: bold;
     font-size: 2rem;
     display: block;
   }
@@ -49,7 +48,9 @@ const ToggleLangBtn = styled.span`
   ${props =>
     props.active &&
     `background: var(--dark);
-       color: var(--light);`}
+     color: var(--light);
+     font-weight: bold;
+       `}
   &#en {
     clip-path: polygon(0 0, 100% 0, 72% 100%, 0% 100%);
     padding: 0.3rem 1.2rem 0.3rem 0.5rem;
