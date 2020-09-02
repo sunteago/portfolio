@@ -51,11 +51,6 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 
   return (
     <>
-      <div
-        css={css`
-          grid-row: 1 / 2;
-        `}
-      ></div>
       <ProjectTitle>
         <Title
           heading="h1"
@@ -103,17 +98,15 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
         <Title>Details</Title>
         <MDXRenderer>{project.body}</MDXRenderer>
       </ProjectDetails>
-      {previewImages.length > 0 && (
-        <ProjectPreview>
-          <Title>Preview</Title>
+      <ProjectPreview>
+        <Title>Images</Title>
 
-          <div>
-            {previewImages.map(img => (
-              <Image key={Math.random()} fluid={img.sharp.fluid} fadeIn />
-            ))}
-          </div>
-        </ProjectPreview>
-      )}
+        <div>
+          {previewImages.map(img => (
+            <Image key={Math.random()} fluid={img.sharp.fluid} fadeIn />
+          ))}
+        </div>
+      </ProjectPreview>
       <GoBackButton>
         <Button
           component="Link"
@@ -130,23 +123,32 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 
 const ProjectTitle = styled.div`
   grid-area: 1 / 1 / 2 / 3;
-
+  @media (min-height: 768px) {
+    margin-top: 2rem;
+  }
+  margin-top: -1rem;
+  align-self: center;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 3 / 3 / 4 / 6;
+    grid-area: 2 / 3 / 3 / 7;
   }
   h1 {
     text-align: left;
-    font-size: calc(1vw + 2rem);
+    font-size: calc(3vw + 1rem);
+    font-weight: 200;
+    margin-bottom: 0;
   }
   p {
-    font-size: 1.25rem;
+    font-size: calc(0.7vw + 0.5rem);
   }
 `
 
 const ProjectImage = styled.div`
-  grid-area: 2/ 1 / 3/ 3;
+  grid-area: 2 / 1 / 3 / 3;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 3 / 6 / 5 / 10;
+    grid-area: 2 / 7 / 4 / 11;
+  }
+  @media (min-height: 768px) {
+    margin-top: 2rem;
   }
   width: 100%;
   > div {
@@ -191,20 +193,30 @@ const ProjectImage = styled.div`
   }
 `
 const ProjectLinks = styled.div`
-  grid-area: 3/ 1 / 4 / 3;
+  grid-area: 3 / 1 / 4 / 3;
 
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 3 / 5 / 6;
+    grid-area: 3 / 3 / 4 / 6;
   }
   align-self: start;
   display: flex;
+  justify-content: space-evenly;
+  @media (min-height: 768px) {
+    margin-top: -2rem;
+  }
   a {
     font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
       sans-serif;
     margin: 1rem 1.5rem 1rem 0;
     display: flex;
-    font-size: 1.25rem;
-    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+    &:nth-child(2) {
+      background: var(--accent);
+      ::after {
+        border-color: var(--accent);
+      }
+    }
     svg {
       margin-right: 0.5rem;
     }
@@ -212,19 +224,22 @@ const ProjectLinks = styled.div`
 `
 
 const ProjectTechs = styled.div`
-  grid-area: 4/ 1 / 5 / 3;
+  grid-area: 4 / 1 / 5 / 3;
 
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 5/ 3 / 6 / 7;
-    ul {
-      text-align: left;
-    }
-  }
   ul {
     list-style: none;
-    font-size: 1.25rem;
+    font-size: calc(1.125rem);
+
     text-align: center;
     line-height: 1.6;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    grid-area: 5 / 7 / 6 / 11;
+    ul {
+      text-align: left;
+      font-size: calc(0.7vw + 0.5rem);
+    }
   }
 `
 
@@ -232,12 +247,14 @@ const ProjectDetails = styled.div`
   grid-area: 5 / 1 / 6 / 3;
 
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 5 / 7 / 6 / 10;
+    grid-area: 4 / 7 / 5 / 11;
   }
   p {
-    font-size: 1.25rem;
+    font-size: calc(1.125rem);
+
     text-align: center;
     @media (min-width: ${breakpoints.lg}) {
+      font-size: calc(0.7vw + 0.5rem);
       text-align: left;
     }
   }
@@ -247,12 +264,12 @@ const ProjectPreview = styled.div`
   grid-area: 6 / 1 / 7 / 3;
 
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 6 / 3 / 7 / 9;
+    grid-area: 4 / 3 / 6 / 7;
     > div {
       display: flex;
-      height: 200px;
+      height: 50%;
       div {
-        flex: 1 1 30%;
+        flex: 0 1 40%;
         margin: 1rem;
         cursor: pointer;
       }

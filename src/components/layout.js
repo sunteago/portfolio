@@ -53,12 +53,9 @@ const PageContainer = styled.main`
     @media (min-width: ${breakpoints.lg}) {
       padding: 1rem;
       height: 100vh;
-      grid-gap: 2rem 1rem;
+      grid-gap: 1rem;
       grid-template-columns: 2fr repeat(11, 1fr);
-      grid-template-rows: ${props =>
-        props.layout === "projectPage"
-          ? "10vh 2fr 1fr 2fr 3fr 3fr 1fr"
-          : "32px 3fr 1fr 3fr 3fr 1fr"};
+      grid-template-rows: 60px 3fr 1fr 3fr 3fr 1fr;
       grid-template-areas:
         ". lang lang . . . . . . . netwrk netwrk"
         ". . pres pres pres pres pres pres . . . rnav"
@@ -76,6 +73,9 @@ const PageContainer = styled.main`
         ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
         ". . . . . . . . . . . rnav";
     }
+  }
+  @media (min-height: 768px) {
+    padding-top: 1rem;
   }
 `
 
@@ -95,7 +95,7 @@ export default function Layout({ children, pageContext }) {
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;500&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500&display=swap");
           *,
           *::after,
           *::before {

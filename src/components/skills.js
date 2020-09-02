@@ -10,8 +10,8 @@ const ListContainer = styled.div`
   ul {
     column-count: 2;
     column-gap: 4rem;
-    padding-left: 3rem;
-
+    padding-left: 2rem;
+    list-style: none;
     li {
       margin-bottom: 1rem;
     }
