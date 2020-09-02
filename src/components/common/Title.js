@@ -17,6 +17,7 @@ export default function Title({
   location = "A",
   children,
   fontFamily = "Raleway",
+  triangle = true,
   fontWeight = 600,
 }) {
   const HeadingCmp = createHeading(heading)
@@ -41,15 +42,19 @@ export default function Title({
         }
       `}
     >
-      {location === "A" ? (
-        <>
-          <TriangleIcon position={position} width={35} />
-          {children}
-        </>
+      {triangle ? (
+        location === "A" ? (
+          <>
+            <TriangleIcon position={position} width={35} />
+            {children}
+          </>
+        ) : (
+          <>
+            {children} <TriangleIcon position={position} width={35} />
+          </>
+        )
       ) : (
-        <>
-          {children} <TriangleIcon position={position} width={35} />
-        </>
+        children
       )}
     </HeadingCmp>
   )

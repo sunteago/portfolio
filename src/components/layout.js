@@ -39,7 +39,7 @@ const PageContainer = styled.main`
     }
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-areas: ${props => props.grid.sm};
+    grid-template-areas: ${props => grids[props.grid].sm.areas};
     min-height: 100vh;
     width: 100%;
     padding: 2rem;
@@ -49,12 +49,12 @@ const PageContainer = styled.main`
       padding: 1rem;
       height: 100vh;
       grid-gap: 1rem;
-      grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
       grid-template-columns: 2fr repeat(11, 1fr);
-      grid-template-areas: ${props => props.grid.lg};
+      grid-template-rows: ${props => grids[props.grid].lg.rows};
+      grid-template-areas: ${props => grids[props.grid].lg.areas};
     }
     @media (min-width: ${breakpoints.xl}) {
-      grid-template-areas: ${props => props.grid.xl};
+      grid-template-areas: ${props => grids[props.grid].xl.areas};
     }
   }
 `
@@ -104,7 +104,7 @@ export default function Layout({ children, pageContext }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer grid={grids["main"]}>
+        <PageContainer grid={pageContext.layout || "main"}>
           <Lang />
           <Networks />
           <Nav />
@@ -112,7 +112,7 @@ export default function Layout({ children, pageContext }) {
           <SourceCode />
         </PageContainer>
         <Footer />
-        {/* <BackgroundParticles params={particlesConfig} /> */}
+        <BackgroundParticles params={particlesConfig} />
       </BackgroundImg>
     </>
   )

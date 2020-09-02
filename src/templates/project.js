@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
 import { breakpoints } from "../utils"
+import { css } from "@emotion/core"
 
 export const query = graphql`
   query($slug: String!) {
@@ -50,20 +51,27 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 
   return (
     <>
+      <div
+        css={css`
+          grid-row: 1 / 2;
+        `}
+      ></div>
       <ProjectTitle>
         <Title
           heading="h1"
           fontFamily="Oswald"
           fontWeight="normal"
-          position="A"
-          location="B"
+          triangle={false}
         >
           {title}
         </Title>
         <p>{subtitle}</p>
       </ProjectTitle>
       <ProjectImage>
-        <Image fluid={image.sharp.fluid} fadeIn />
+        <div>
+          <Image fluid={image.sharp.fluid} fadeIn />
+          <Image fluid={image.sharp.fluid} fadeIn />
+        </div>
       </ProjectImage>
       <ProjectLinks>
         <Button
@@ -115,10 +123,11 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 
 const ProjectTitle = styled.div`
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 2 / 3 / 3 / 6;
+    grid-area: prjTitl;
   }
-  h2 {
+  h1 {
     text-align: left;
+    font-size: 3rem;
   }
   p {
     font-size: 1.5rem;
@@ -128,26 +137,49 @@ const ProjectTitle = styled.div`
 `
 
 const ProjectImage = styled.div`
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 2 / 6 / 3 / 9;
-  }
-  position: relative;
+  width: 100%;
+  > div {
+    display: flex;
+    justify-content: space-between;
 
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: var(--light);
-    border: 3px solid var(--dark);
-    width: 100%;
     height: 100%;
-    top: -5px;
-    left: 6px;
+    width: 100%;
+    > div {
+      position: relative;
+      width: 100%;
+      overflow: visible !important;
+      &:nth-of-type(1) {
+        @media (min-width: ${breakpoints.lg}) {
+          flex: 0 1 60%;
+        }
+      }
+      &:nth-of-type(2) {
+        display: none;
+        @media (min-width: ${breakpoints.lg}) {
+          display: block;
+          flex: 0 1 30%;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--light);
+        border: 3px solid var(--dark);
+        width: 100%;
+        height: 100%;
+        top: -5px;
+        left: 6px;
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    grid-area: prjImg;
   }
 `
 const ProjectLinks = styled.div`
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 3 / 3 / 4 / 5;
+    grid-area: prjLinks;
   }
   display: flex;
   justify-content: center;
@@ -172,15 +204,16 @@ const ProjectTechs = styled.div`
     line-height: 1.6;
   }
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 4 / 5 / 7;
+    grid-area: prjTchs;
     ul {
       text-align: left;
     }
   }
 `
+
 const ProjectDetails = styled.div`
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 7 / 5 / 10;
+    grid-area: prjDtls;
   }
   p {
     font-size: 1.25rem;
@@ -190,7 +223,7 @@ const ProjectDetails = styled.div`
 
 const ProjectPreview = styled.div`
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 5 / 4 / 6 / 9;
+    grid-area: prjPrev;
     > div {
       display: flex;
       height: 200px;
@@ -206,7 +239,7 @@ const ProjectPreview = styled.div`
   }
 `
 const GoBackButton = styled.div`
-  grid-area: auto;
+  grid-area: prjGoB;
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }
