@@ -27,10 +27,10 @@ const Greet = styled.h1`
   @media (min-width: ${breakpoints.md}) {
     font-size: calc(2rem + 1vw);
     width: 100%;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
   }
   @media (min-width: ${breakpoints.xl}) {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
   }
 `
 

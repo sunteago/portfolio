@@ -57,8 +57,8 @@ const PageContainer = styled.main`
       grid-template-columns: 2fr repeat(11, 1fr);
       grid-template-rows: ${props =>
         props.layout === "projectPage"
-          ? "32px 3fr 1fr 3fr 3fr 1fr"
-          : "10vh 2fr 1fr 2fr 3fr 3fr 1fr"};
+          ? "10vh 2fr 1fr 2fr 3fr 3fr 1fr"
+          : "32px 3fr 1fr 3fr 3fr 1fr"};
       grid-template-areas:
         ". lang lang . . . . . . . netwrk netwrk"
         ". . pres pres pres pres pres pres . . . rnav"
@@ -124,7 +124,7 @@ export default function Layout({ children, pageContext }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer grid={pageContext.layout || "main"}>
+        <PageContainer layout={pageContext.layout || "main"}>
           <Lang />
           <Networks />
           <Nav />

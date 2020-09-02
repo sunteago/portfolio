@@ -2,17 +2,6 @@ import React from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../utils"
 
-const Lang = styled.div`
-  display: none;
-  position: absolute;
-  top: 1rem;
-  left: 20%;
-  @media (min-width: ${breakpoints.lg}) {
-    font-size: 2rem;
-    display: block;
-  }
-`
-
 export default function TopNav() {
   const [lang, setLang] = React.useState("en")
 
@@ -40,6 +29,17 @@ export default function TopNav() {
   )
 }
 
+const Lang = styled.div`
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 20%;
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: 1.25rem;
+    display: block;
+  }
+`
+
 const ToggleLangBtn = styled.span`
   color: var(--dark);
   display: inline-block;
@@ -58,6 +58,6 @@ const ToggleLangBtn = styled.span`
   &#es {
     clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%);
     padding: 0.3rem 0.5rem 0.3rem 1.2rem;
-    margin-left: -20px;
+    margin-left: -14px;
   }
 `
