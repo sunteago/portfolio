@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { breakpoints } from "../../utils"
 export default function Button(props) {
   return <Btn {...props}>{props.children}</Btn>
 }

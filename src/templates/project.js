@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
@@ -38,18 +37,10 @@ export const query = graphql`
 `
 
 export default function ProjectTemplate({ data: { mdx: project } }) {
-  const {
-    title,
-    subtitle,
-    tools,
-    image,
-    github,
-    demo,
-    previewImages,
-  } = project.frontmatter
+  const { title, subtitle, tools, image, previewImages } = project.frontmatter
 
   return (
-    <Layout pageGrid="projectPage">
+    <>
       <ProjectTitle>
         <Title
           heading="h1"
@@ -99,7 +90,7 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
       <GoBackButton>
         <Button>Go Back</Button>
       </GoBackButton>
-    </Layout>
+    </>
   )
 }
 

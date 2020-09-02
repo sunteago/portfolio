@@ -28,28 +28,35 @@ const BackgroundParticles = styled(Particles)`
 `
 
 const PageContainer = styled.main`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: ${props => props.grid.sm};
-  min-height: 100vh;
-  width: 100%;
-  padding: 2rem;
-  grid-gap: 5rem 1rem;
-
-  @media (min-width: ${breakpoints.lg}) {
-    padding: 1rem;
-    height: 100vh;
-    grid-gap: 1rem;
-    grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
-    grid-template-columns: 2fr repeat(11, 1fr);
-    grid-template-areas: ${props => props.grid.lg};
+  .tl-edges {
+    width: 100% !important;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
   }
-  @media (min-width: ${breakpoints.xl}) {
-    grid-template-areas: ${props => props.grid.xl};
+  .tl-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: ${props => props.grid.sm};
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    grid-gap: 5rem 1rem;
+
+    @media (min-width: ${breakpoints.lg}) {
+      padding: 1rem;
+      height: 100vh;
+      grid-gap: 1rem;
+      grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
+      grid-template-columns: 2fr repeat(11, 1fr);
+      grid-template-areas: ${props => props.grid.lg};
+    }
+    @media (min-width: ${breakpoints.xl}) {
+      grid-template-areas: ${props => props.grid.xl};
+    }
   }
 `
 
-export default function Layout({ children, pageGrid }) {
+export default function Layout({ children, pageContext }) {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "asfalt-dark.png" }) {
@@ -94,7 +101,7 @@ export default function Layout({ children, pageGrid }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer grid={grids[pageGrid]}>
+        <PageContainer grid={grids[pageContext.layout || "main"]}>
           <Lang />
           <Networks />
           <Nav />

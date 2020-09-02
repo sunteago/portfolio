@@ -6,7 +6,12 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        layout: require.resolve(`./src/components/layout.js`),
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
