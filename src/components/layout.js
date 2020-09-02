@@ -29,11 +29,14 @@ const BackgroundParticles = styled(Particles)`
 
 const PageContainer = styled.main`
   .tl-edges {
-    width: 100% !important;
     overflow: hidden !important;
     overflow-y: hidden !important;
+    pointer-events: none;
   }
   .tl-wrapper {
+    > * {
+      pointer-events: all;
+    }
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-areas: ${props => props.grid.sm};
