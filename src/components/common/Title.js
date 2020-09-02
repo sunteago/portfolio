@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import TriangleIcon from "./icons/Triangle"
 import { breakpoints } from "../../utils"
 
-const HeadingComponent = heading => props => {
+const createHeading = heading => props => {
   const element = {
     h1: <h1 {...props}>{props.children}</h1>,
     h2: <h2 {...props}>{props.children}</h2>,
@@ -19,7 +19,7 @@ export default function Title({
   fontFamily = "Raleway",
   fontWeight = 600,
 }) {
-  let HeadingCmp = HeadingComponent(heading)
+  const HeadingCmp = createHeading(heading)
 
   return (
     <HeadingCmp

@@ -85,15 +85,17 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
         <Title>Details</Title>
         <MDXRenderer>{project.body}</MDXRenderer>
       </ProjectDetails>
-      <ProjectPreview>
-        <Title>Preview</Title>
+      {previewImages.length > 0 && (
+        <ProjectPreview>
+          <Title>Preview</Title>
 
-        {previewImages.map(img => (
-          <article key={Math.random()}>
-            <Image fluid={img.sharp.fluid} fadeIn />
-          </article>
-        ))}
-      </ProjectPreview>
+          {previewImages.map(img => (
+            <article key={Math.random()}>
+              <Image fluid={img.sharp.fluid} fadeIn />
+            </article>
+          ))}
+        </ProjectPreview>
+      )}
       <GoBackButton>
         <Button>Go Back</Button>
       </GoBackButton>
