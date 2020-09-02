@@ -2,7 +2,9 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
-import { breakpoints, grids } from "../utils"
+import { breakpoints } from "../utils"
+import { GridState } from "../context/gridContext"
+import PageContainer from "./page-container"
 
 import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
@@ -27,29 +29,7 @@ const BackgroundParticles = styled(Particles)`
   pointer-events: none;
 `
 
-const PageContainer = styled.main`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: ${props => props.grid.sm};
-  min-height: 100vh;
-  width: 100%;
-  padding: 2rem;
-  grid-gap: 5rem 1rem;
-
-  @media (min-width: ${breakpoints.lg}) {
-    padding: 1rem;
-    height: 100vh;
-    grid-gap: 1rem;
-    grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
-    grid-template-columns: 2fr repeat(11, 1fr);
-    grid-template-areas: ${props => props.grid.lg};
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    grid-template-areas: ${props => props.grid.xl};
-  }
-`
-
-export default function Layout({ children, pageGrid }) {
+export default function Layout({ children }) {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "asfalt-dark.png" }) {
@@ -61,6 +41,7 @@ export default function Layout({ children, pageGrid }) {
       }
     }
   `)
+
   return (
     <>
       <Global
@@ -94,14 +75,16 @@ export default function Layout({ children, pageGrid }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer grid={grids[pageGrid]}>
-          <Lang />
-          <Networks />
-          <Nav />
-          {children}
-          <SourceCode />
-        </PageContainer>
-        <Footer />
+        <GridState>
+          <PageContainer>
+            <Lang />
+            <Networks />
+            <Nav />
+            {children}
+            <SourceCode />
+          </PageContainer>
+          <Footer />
+        </GridState>
         <BackgroundParticles params={particlesConfig} />
       </BackgroundImg>
     </>

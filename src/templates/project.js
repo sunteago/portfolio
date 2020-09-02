@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import { GridContext } from "../context/gridContext"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
@@ -48,8 +48,14 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
     previewImages,
   } = project.frontmatter
 
+  const { setPageGrid } = useContext(GridContext)
+
+  React.useEffect(() => {
+    setPageGrid("projectPage")
+  }, [])
+
   return (
-    <Layout pageGrid="projectPage">
+    <>
       <ProjectTitle>
         <Title
           heading="h1"
@@ -99,7 +105,7 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
       <GoBackButton>
         <Button>Go Back</Button>
       </GoBackButton>
-    </Layout>
+    </>
   )
 }
 

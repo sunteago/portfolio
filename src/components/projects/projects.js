@@ -1,14 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
+import { GridContext } from "../../context/gridContext"
 import { Title, Button } from "../common"
 import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
 import SectionContainer from "../common/SectionContainer"
 import { css } from "@emotion/core"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Works() {
   const projects = useProjects()
-
+  const { setPageGrid } = useContext(GridContext)
   return (
     <SectionContainer
       gridArea="wrk"
@@ -30,6 +32,15 @@ export default function Works() {
       >
         See more
       </Button>
+      <AniLink
+        swipe
+        direction="up"
+        to="composer-page"
+        bg="#2c2c54"
+        onClick={() => setPageGrid("projectPage")}
+      >
+        Go to Page 4
+      </AniLink>
     </SectionContainer>
   )
 }
