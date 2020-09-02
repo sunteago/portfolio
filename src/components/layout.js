@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
-import { breakpoints, grids } from "../utils"
+import { breakpoints } from "../utils"
 
 import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
@@ -39,22 +39,42 @@ const PageContainer = styled.main`
     }
     display: grid;
     grid-template-columns: 3fr 1fr;
-    grid-template-areas: ${props => grids[props.grid].sm.areas};
+    grid-template-areas:
+      "pres netwrk"
+      "wrk wrk"
+      "skls skls"
+      "cntc cntc"
+      "fotr fotr";
     min-height: 100vh;
     width: 100%;
     padding: 2rem;
-    grid-gap: 5rem 1rem;
+    grid-gap: 4rem 1rem;
 
     @media (min-width: ${breakpoints.lg}) {
       padding: 1rem;
       height: 100vh;
-      grid-gap: 1rem;
+      grid-gap: 2rem 1rem;
       grid-template-columns: 2fr repeat(11, 1fr);
-      grid-template-rows: ${props => grids[props.grid].lg.rows};
-      grid-template-areas: ${props => grids[props.grid].lg.areas};
+      grid-template-rows: ${props =>
+        props.layout === "projectPage"
+          ? "32px 3fr 1fr 3fr 3fr 1fr"
+          : "10vh 2fr 1fr 2fr 3fr 3fr 1fr"};
+      grid-template-areas:
+        ". lang lang . . . . . . . netwrk netwrk"
+        ". . pres pres pres pres pres pres . . . rnav"
+        ". . . . . . . . . . . rnav"
+        ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+        ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
+        ". . . . . . . . . . . rnav";
     }
     @media (min-width: ${breakpoints.xl}) {
-      grid-template-areas: ${props => grids[props.grid].xl.areas};
+      grid-template-areas:
+        ". lang lang . . . . . . . netwrk netwrk"
+        ". . pres pres pres pres pres . . . . rnav"
+        ". . . . . . . . . . . rnav"
+        ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+        ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
+        ". . . . . . . . . . . rnav";
     }
   }
 `
@@ -112,7 +132,7 @@ export default function Layout({ children, pageContext }) {
           <SourceCode />
         </PageContainer>
         <Footer />
-        <BackgroundParticles params={particlesConfig} />
+        {/* <BackgroundParticles params={particlesConfig} /> */}
       </BackgroundImg>
     </>
   )

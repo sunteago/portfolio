@@ -29,9 +29,6 @@ const ContactContainer = styled.div`
           height: 24px;
         }
       }
-      &:first-of-type div {
-        margin-right: 1rem;
-      }
       div {
         margin-right: 0.5rem;
       }

@@ -37,7 +37,7 @@ export default function Title({
 
         @media (min-width: ${breakpoints.lg}) {
           text-align: left;
-          margin-bottom: calc(1vh);
+          margin-bottom: 1vh;
           font-size: calc(1rem + 1vw);
         }
       `}
