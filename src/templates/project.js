@@ -132,13 +132,20 @@ const ProjectTitle = styled.div`
     grid-area: 2 / 3 / 3 / 7;
   }
   h1 {
+    font-size: 3rem;
+    font-weight: 300;
     text-align: left;
-    font-size: calc(3vw + 1rem);
-    font-weight: 200;
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: calc(3vw + 1rem);
+      font-weight: 200;
+    }
     margin-bottom: 0;
   }
   p {
-    font-size: calc(0.7vw + 0.5rem);
+    font-size: 1.25rem;
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: calc(0.7vw + 0.5rem);
+    }
   }
 `
 
@@ -194,7 +201,6 @@ const ProjectImage = styled.div`
 `
 const ProjectLinks = styled.div`
   grid-area: 3 / 1 / 4 / 3;
-
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 3 / 3 / 4 / 6;
   }
@@ -207,10 +213,13 @@ const ProjectLinks = styled.div`
   a {
     font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
       sans-serif;
+    font-size: 1.5rem;
     margin: 1rem 1.5rem 1rem 0;
     display: flex;
-    font-size: 1rem;
     padding: 0.3rem 0.7rem;
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: 1rem;
+    }
     &:nth-child(2) {
       background: var(--accent);
       ::after {
@@ -278,6 +287,8 @@ const ProjectPreview = styled.div`
 `
 const GoBackButton = styled.div`
   grid-area: 7 / 1 / 8 / 3;
+  display: flex;
+  justify-content: flex-end;
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }

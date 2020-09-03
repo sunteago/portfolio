@@ -10,6 +10,7 @@ const Networks = styled.div`
   position: absolute;
   right: 1.5rem;
   top: 2.5rem;
+  z-index: 2;
 
   > div {
     margin: 0 0.5rem;
