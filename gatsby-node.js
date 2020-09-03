@@ -1,5 +1,3 @@
-const { Reporter } = require("gatsby")
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
@@ -25,6 +23,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: require.resolve("./src/templates/project.js"),
       context: {
         slug: project.frontmatter.slug,
+        layout: "projectPage",
       },
     })
   })

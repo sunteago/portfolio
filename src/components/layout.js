@@ -28,45 +28,58 @@ const BackgroundParticles = styled(Particles)`
 `
 
 const PageContainer = styled.main`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas:
-    "pres pres pres netwrk"
-    "wrk wrk wrk wrk"
-    "skls skls skls skls"
-    "cntc cntc cntc cntc"
-    "fotr fotr fotr src";
-
-  width: 100%;
-  padding: 2rem;
-  grid-gap: 5rem 1rem;
-
-  @media (min-width: ${breakpoints.lg}) {
-    padding: 1rem;
-    height: 100vh;
-    grid-gap: 1rem;
-    grid-template-rows: 32px 3fr 1fr 3fr 3fr 1fr;
-    grid-template-columns: 2fr repeat(11, 1fr);
-    grid-template-areas:
-      ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres pres . . . rnav"
-      ". . . . . . . . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      ". . . . . . . . . . . rnav";
+  .tl-edges {
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    pointer-events: none;
   }
-  @media (min-width: ${breakpoints.xl}) {
+  .tl-wrapper {
+    > * {
+      pointer-events: all;
+    }
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     grid-template-areas:
-      ". lang lang . . . . . . . netwrk netwrk"
-      ". . pres pres pres pres pres . . . . rnav"
-      ". . . . . . . . . . . rnav"
-      ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
-      ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
-      ". . . . . . . . . . . rnav";
+      "pres netwrk"
+      "wrk wrk"
+      "skls skls"
+      "cntc cntc"
+      "fotr fotr";
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
+    grid-gap: 4rem 1rem;
+
+    @media (min-width: ${breakpoints.lg}) {
+      padding: 1rem;
+      height: 100vh;
+      grid-gap: 1rem;
+      grid-template-columns: 2fr repeat(11, 1fr);
+      grid-template-rows: 60px 3fr 1fr 3fr 3fr 1fr;
+      grid-template-areas:
+        ". lang lang . . . . . . . netwrk netwrk"
+        ". . pres pres pres pres pres pres . . . rnav"
+        ". . . . . . . . . . . rnav"
+        ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+        ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
+        ". . . . . . . . . . . rnav";
+    }
+    @media (min-width: ${breakpoints.xl}) {
+      grid-template-areas:
+        ". lang lang . . . . . . . netwrk netwrk"
+        ". . pres pres pres pres pres . . . . rnav"
+        ". . . . . . . . . . . rnav"
+        ". . wrk wrk wrk wrk wrk skls skls skls skls rnav "
+        ". . wrk wrk wrk wrk wrk cntc cntc cntc . rnav "
+        ". . . . . . . . . . . rnav";
+    }
+  }
+  @media (min-height: 768px) {
+    padding-top: 1rem;
   }
 `
 
-export default function Layout({ children }) {
+export default function Layout({ children, pageContext }) {
   const { image } = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "asfalt-dark.png" }) {
@@ -78,12 +91,11 @@ export default function Layout({ children }) {
       }
     }
   `)
-
   return (
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Raleway:wght@300;400;500&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500&display=swap");
           *,
           *::after,
           *::before {
@@ -112,7 +124,7 @@ export default function Layout({ children }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer>
+        <PageContainer layout={pageContext.layout || "main"}>
           <Lang />
           <Networks />
           <Nav />
@@ -120,7 +132,7 @@ export default function Layout({ children }) {
           <SourceCode />
         </PageContainer>
         <Footer />
-        <BackgroundParticles params={particlesConfig} />
+        {/* <BackgroundParticles params={particlesConfig} /> */}
       </BackgroundImg>
     </>
   )

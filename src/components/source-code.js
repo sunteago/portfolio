@@ -24,7 +24,7 @@ const SourceText = styled.div`
     color: var(--dark);
     transition: color 0.15s ease-in;
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
     display: flex;
     align-items: center;
   }
