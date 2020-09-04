@@ -7,6 +7,7 @@ import EnvelopeIcon from "./icons/Envelope"
 import Title from "./Title"
 import SectionContainer from "./SectionContainer"
 import Button from "./Button"
+import IconLink from "./IconLink"
 
 export {
   GithubIcon,
@@ -18,4 +19,5 @@ export {
   Title,
   SectionContainer,
   Button,
+  IconLink,
 }

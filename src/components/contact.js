@@ -7,7 +7,13 @@ import {
   linkedinLink,
   contactMail,
 } from "../utils"
-import { Title, GithubIcon, LinkedinIcon, EnvelopeIcon } from "./common"
+import {
+  Title,
+  GithubIcon,
+  LinkedinIcon,
+  EnvelopeIcon,
+  IconLink,
+} from "./common"
 
 const ContactContainer = styled.div`
   font-size: 1.125rem;
@@ -18,10 +24,13 @@ const ContactContainer = styled.div`
     display: flex;
     align-items: center;
     li {
-      display: flex;
-      align-items: center;
       width: 80%;
       margin-bottom: 0.3rem;
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
 
       @media (min-width: ${breakpoints.lg}) and (max-width: ${breakpoints.xl}) {
         svg {
@@ -45,15 +54,21 @@ export default function Skills() {
       <ContactContainer>
         <ul>
           <li>
-            <EnvelopeIcon link={contactMail} hover />
-            santi.vallejo@gmail.com
+            <IconLink href={contactMail} hover>
+              <EnvelopeIcon />
+              <span>E-mail</span>
+            </IconLink>
           </li>
           <li>
-            <GithubIcon link={defaultGithubLink} hover /> GitHub
+            <IconLink href={defaultGithubLink} hover>
+              <GithubIcon /> <span>Github</span>
+            </IconLink>
           </li>
           <li>
-            <LinkedinIcon link={linkedinLink} hover />
-            LinkedIn
+            <IconLink href={linkedinLink} hover>
+              <LinkedinIcon />
+              <span>LinkedIn</span>
+            </IconLink>
           </li>
         </ul>
       </ContactContainer>

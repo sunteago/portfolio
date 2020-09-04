@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { GithubIcon } from "./common"
+import { GithubIcon, IconLink } from "./common"
 import { breakpoints } from "../utils"
 
 const SourceText = styled.div`
@@ -16,13 +16,14 @@ const SourceText = styled.div`
       font-weight: bold;
     }
   }
-  > div {
-    margin-left: 0.5rem;
-  }
   > a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
     color: var(--dark);
-    transition: color 0.15s ease-in;
+    > div {
+      margin-left: 0.5rem;
+    }
   }
   @media (min-width: ${breakpoints.lg}) {
     display: flex;
@@ -33,14 +34,10 @@ const SourceText = styled.div`
 export default function SourceCode() {
   return (
     <SourceText>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/sunteago /portfolio"
-      >
-        source code
-      </a>
-      <GithubIcon hover link="https://github.com/sunteago/portfolio" />
+      <IconLink hover href="https://github.com/sunteago/portfolio">
+        <span>source code</span>
+        <GithubIcon />
+      </IconLink>
     </SourceText>
   )
 }

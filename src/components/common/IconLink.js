@@ -21,7 +21,7 @@ export default ({ href, children, internal, hover }) => {
       to={internal ? href : undefined}
       css={css`
         color: unset;
-        transition: all 0.15s ease-in;
+        transition: color 0.15s ease-in;
         &:hover {
           ${hover ? "color: var(--accent);" : null}
         }
