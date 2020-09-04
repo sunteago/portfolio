@@ -16,7 +16,7 @@ export default function Title({
   position = "B",
   location = "A",
   children,
-  fontFamily = "Raleway",
+  fontFamily = "var(--font-primary);",
   triangle = true,
   fontWeight = 600,
 }) {

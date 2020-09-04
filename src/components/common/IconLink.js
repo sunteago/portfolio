@@ -12,11 +12,11 @@ export default ({ href, children, internal, hover }) => {
     if (internal) WrapperComponent = Link
     else WrapperComponent = StandardLink
   }
-
+  console.log(href, internal)
   return (
     <WrapperComponent
-      rel="noopener noreferrer"
-      target="_blank"
+      rel={href ? "noopener noreferrer" : undefined}
+      target={href ? "_blank" : undefined}
       href={!internal ? href : undefined}
       to={internal ? href : undefined}
       css={css`
