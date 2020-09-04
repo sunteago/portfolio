@@ -35,7 +35,7 @@ const MobileToggle = styled.div`
   top: 40vh;
   transform: translate(90%, 0%) rotate(45deg);
   background: var(--dark);
-  border-radius: 3px;
+  border-radius: 5px;
   border: 2px solid var(--light);
   box-shadow: 2px 2px 2px var(--dark);
   z-index: 1000;
@@ -50,7 +50,7 @@ const MobileToggle = styled.div`
       border: none;
   `}
   & > div {
-    width: 35px;
+    width: 25px;
     position: absolute;
     bottom: 29px;
     left: 12px;
@@ -117,7 +117,7 @@ const MobileToggle = styled.div`
 const MobileNavMenu = styled.nav`
   position: fixed;
   top: 0;
-  right: -100%;
+  right: -100vw;
   z-index: 100;
   height: 100vh;
   width: 100vw;
