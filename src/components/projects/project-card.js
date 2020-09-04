@@ -50,7 +50,7 @@ export default function ProjectCard({ projects }) {
                 </AniLink>
                 <IconLink href={project.github}>
                   <GithubIcon width={24} />
-                  <span>Github</span>
+                  <span>Code</span>
                 </IconLink>
                 <IconLink href={project.demo}>
                   <DemoIcon width={24} />
@@ -135,8 +135,7 @@ const CardContent = styled.div`
     transition: all 0.4s;
   }
   h2 {
-    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
-      sans-serif;
+    font-family: var(--font-secondary);
     font-size: 1.5rem;
     margin-bottom: 0.3rem;
     margin-top: 0;
@@ -145,8 +144,7 @@ const CardContent = styled.div`
     }
   }
   h3 {
-    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
-      sans-serif;
+    font-family: var(--font-secondary);
     font-size: 1.125rem;
     font-weight: 300;
     margin-bottom: 20px;
@@ -161,13 +159,13 @@ const CardContent = styled.div`
   }
   h2 {
     font-size: 1.5rem;
-    font-family: Oswald, sans-serif;
+    font-family: var(--font-secondary);
     color: var(--light);
     margin-bottom: 0.3rem;
     margin-top: 0.75rem;
   }
   h3 {
-    font-family: Oswald, sans-serif;
+    font-family: var(--font-secondary);
     font-size: 1.125rem;
     font-weight: 300;
     color: var(--light);
@@ -215,7 +213,7 @@ const Bar = styled.div`
       margin-left: 0.3rem;
       @media (min-width: ${breakpoints.xl}) {
         display: inline;
-        font-family: Oswald, sans-serif;
+        font-family: var(--font-secondary);
       }
     }
   }

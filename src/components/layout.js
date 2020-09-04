@@ -55,7 +55,10 @@ const PageContainer = styled.main`
       height: 100vh;
       grid-gap: 1rem;
       grid-template-columns: 2fr repeat(11, 1fr);
-      grid-template-rows: 60px 3fr 1fr 3fr 3fr 1fr;
+      grid-template-rows: ${props =>
+        props.layout === "main"
+          ? "60px 3fr 1fr 3fr 3fr 1fr"
+          : "60px 2fr 1fr 3fr 1fr 1fr"};
       grid-template-areas:
         ". lang lang . . . . . . . netwrk netwrk"
         ". . pres pres pres pres pres pres . . . rnav"
@@ -109,10 +112,13 @@ export default function Layout({ children, pageContext }) {
             --dark: #2c2c54;
             --accent: #a40e4c;
             --radius: 3px;
+            --font-primary: Raleway, Arial, Helvetica, sans-serif, sans-serif;
+            --font-secondary: Oswald, "Franklin Gothic Medium", "Arial Narrow",
+              Arial, sans-serif;
           }
 
           body {
-            font-family: Raleway, sans-serif;
+            font-family: var(--font-primary);
             color: var(--dark);
             background: var(--light);
             @media (min-width: ${breakpoints.lg}) {

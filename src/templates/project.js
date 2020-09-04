@@ -2,10 +2,10 @@ import React from "react"
 import styled from "@emotion/styled"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import IconLink from "../components/common/IconLink"
 import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
 import { breakpoints } from "../utils"
-import { css } from "@emotion/core"
 
 export const query = graphql`
   query($slug: String!) {
@@ -52,61 +52,51 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
   return (
     <>
       <ProjectTitle>
-        <Title
-          heading="h1"
-          fontFamily="Oswald"
-          fontWeight="normal"
-          triangle={false}
-        >
+        <Title heading="h1" fontWeight="normal" triangle={false}>
           {title}
         </Title>
         <p>{subtitle}</p>
       </ProjectTitle>
       <ProjectImage>
-        <div>
-          <Image fluid={image.sharp.fluid} fadeIn />
-          <Image fluid={image.sharp.fluid} fadeIn />
-        </div>
-      </ProjectImage>
-      <ProjectLinks>
-        <Button
-          component="a"
-          href={github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubIcon width={24} /> Code
-        </Button>
-        <Button
-          component="a"
-          href={demo}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <DemoIcon width={24} /> Demo
-        </Button>
-      </ProjectLinks>
-      <ProjectTechs>
-        <Title>Technologies</Title>
         <ul>
           {tools.map(tool => (
-            <li key={tool}>- {tool}</li>
+            <li key={tool}>{tool}</li>
           ))}
         </ul>
-      </ProjectTechs>
+        <Image fluid={image.sharp.fluid} fadeIn />
+      </ProjectImage>
       <ProjectDetails>
-        <Title>Details</Title>
-        <MDXRenderer>{project.body}</MDXRenderer>
+        <article>
+          <Title
+            fontWeight="400"
+            triangle={false}
+            fontFamily="var(--font-secondary)"
+          >
+            Description
+          </Title>
+          <MDXRenderer>{project.body}</MDXRenderer>
+        </article>
+
+        <ProjectLinks>
+          <IconLink hover href={github}>
+            <GithubIcon width={24} />
+            <span>Source code</span>
+          </IconLink>
+          <IconLink hover href={demo}>
+            <DemoIcon width={24} />
+            <span>Demo</span>
+          </IconLink>
+        </ProjectLinks>
       </ProjectDetails>
-      <ProjectPreview>
-        <Title>Images</Title>
+      {/* <ProjectPreview>
+        <Title fontFamily="var(--font-secondary)">Description</Title>
 
         <div>
           {previewImages.map(img => (
             <Image key={Math.random()} fluid={img.sharp.fluid} fadeIn />
           ))}
-        </div>
-      </ProjectPreview>
+        </div> 
+      </ProjectPreview>*/}
       <GoBackButton>
         <Button
           component="Link"
@@ -123,13 +113,18 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 
 const ProjectTitle = styled.div`
   grid-area: 1 / 1 / 2 / 3;
+  font-family: var(--font-primary);
   @media (min-height: 768px) {
     margin-top: 2rem;
   }
   margin-top: -1rem;
-  align-self: center;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 2 / 3 / 3 / 7;
+    grid-area: 2 / 3 / 4 / 10;
+    align-self: center;
+  }
+  @media (min-height: 768px) {
+    align-self: start;
+    margin-top: 3rem;
   }
   h1 {
     font-size: 3rem;
@@ -142,9 +137,12 @@ const ProjectTitle = styled.div`
     margin-bottom: 0;
   }
   p {
+    margin-top: 0.5rem;
     font-size: 1.25rem;
     @media (min-width: ${breakpoints.lg}) {
       font-size: calc(0.7vw + 0.5rem);
+      margin-top: 0;
+      margin-left: 1rem;
     }
   }
 `
@@ -152,141 +150,94 @@ const ProjectTitle = styled.div`
 const ProjectImage = styled.div`
   grid-area: 2 / 1 / 3 / 3;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 2 / 7 / 4 / 11;
-  }
-  @media (min-height: 768px) {
-    margin-top: 2rem;
-  }
-  width: 100%;
-  > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    grid-area: 4 / 6 / 6 / 11;
+    align-self: start;
     height: 100%;
-    width: 100%;
-    > div {
-      position: relative;
-      width: 100%;
-      overflow: visible !important;
-      @media (min-width: ${breakpoints.lg}) {
-        height: 0;
-      }
-      &:nth-of-type(1) {
-        @media (min-width: ${breakpoints.lg}) {
-          flex: 0 1 70%;
-          padding-bottom: calc(70% * 9 / 16);
-        }
-      }
-      &:nth-of-type(2) {
-        display: none;
-        @media (min-width: ${breakpoints.lg}) {
-          display: block;
-          flex: 0 1 25%;
-          padding-bottom: calc(25% * 16 / 10);
-        }
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        background: var(--light);
-        border: 3px solid var(--dark);
-        width: 100%;
-        height: 100%;
-        top: -5px;
-        left: 6px;
-      }
-    }
   }
-`
-const ProjectLinks = styled.div`
-  grid-area: 3 / 1 / 4 / 3;
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 3 / 3 / 4 / 6;
-  }
-  align-self: start;
-  display: flex;
-  justify-content: space-evenly;
-  @media (min-height: 768px) {
-    margin-top: -2rem;
-  }
-  a {
-    font-family: "Oswald", "Franklin Gothic Medium", "Arial Narrow", Arial,
-      sans-serif;
-    font-size: 1.5rem;
-    margin: 1rem 1.5rem 1rem 0;
-    display: flex;
-    padding: 0.3rem 0.7rem;
-    @media (min-width: ${breakpoints.lg}) {
-      font-size: 1rem;
-    }
-    &:nth-child(2) {
-      background: var(--accent);
-      ::after {
-        border-color: var(--accent);
-      }
-    }
-    svg {
-      margin-right: 0.5rem;
-    }
-  }
-`
-
-const ProjectTechs = styled.div`
-  grid-area: 4 / 1 / 5 / 3;
-
+  background: red;
+  position: relative;
   ul {
-    list-style: none;
-    font-size: calc(1.125rem);
-
-    text-align: center;
-    line-height: 1.6;
+    display: flex;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    position: absolute;
+    bottom: -2.5rem;
+    transform: translate(50%, 50%);
+    right: 50%;
+    @media (min-width: ${breakpoints.md}) {
+      top: -2.5rem;
+      right: 0;
+      bottom: auto;
+      transform: none;
+    }
+    li {
+      list-style: none;
+      margin-left: 0.5rem;
+    }
   }
+  > div {
+    position: relative;
+    overflow: visible !important;
+    height: 100%;
 
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 5 / 7 / 6 / 11;
-    ul {
-      text-align: left;
-      font-size: calc(0.7vw + 0.5rem);
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      background: var(--dark);
+      border: 3px solid var(--dark);
+      width: 100%;
+      height: 100%;
+      top: -5px;
+      left: 7px;
     }
   }
 `
 
 const ProjectDetails = styled.div`
-  grid-area: 5 / 1 / 6 / 3;
-
+  grid-area: 3 / 1 / 4 / 3;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 7 / 5 / 11;
+    grid-area: 4 / 3 / 6 / 6;
   }
-  p {
-    font-size: calc(1.125rem);
-
-    text-align: center;
-    @media (min-width: ${breakpoints.lg}) {
-      font-size: calc(0.7vw + 0.5rem);
-      text-align: left;
-    }
-  }
-`
-
-const ProjectPreview = styled.div`
-  grid-area: 6 / 1 / 7 / 3;
-
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 3 / 6 / 7;
-    > div {
-      display: flex;
-      height: 50%;
-      div {
-        flex: 0 1 40%;
-        margin: 1rem;
-        cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  article {
+    flex-grow: 1;
+    p {
+      font-size: calc(1.125rem);
+      text-align: center;
+      line-height: 1.6;
+      @media (min-width: ${breakpoints.lg}) {
+        font-size: calc(0.7vw + 0.5rem);
+        text-align: left;
       }
     }
   }
 `
+
+const ProjectLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  > a {
+    display: flex;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: calc(0.8rem + 0.8vw);
+    }
+    > div {
+      margin-right: 0.3rem;
+    }
+  }
+`
+
 const GoBackButton = styled.div`
-  grid-area: 7 / 1 / 8 / 3;
+  grid-area: 4 / 1 / 5 / 3;
   display: flex;
   justify-content: flex-end;
   @media (min-width: ${breakpoints.lg}) {
