@@ -12,7 +12,7 @@ export default ({ href, children, internal, hover }) => {
     if (internal) WrapperComponent = Link
     else WrapperComponent = StandardLink
   }
-  console.log(href, internal)
+
   return (
     <WrapperComponent
       rel={href ? "noopener noreferrer" : undefined}

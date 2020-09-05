@@ -6,8 +6,6 @@ import { breakpoints } from "../utils"
 const Greet = styled.h1`
   font-size: 3rem;
   font-weight: 300;
-  grid-area: pres;
-  align-self: end;
   position: relative;
   .accent {
     color: var(--accent);

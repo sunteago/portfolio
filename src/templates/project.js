@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import IconLink from "../components/common/IconLink"
@@ -52,7 +53,13 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
   return (
     <>
       <ProjectTitle>
-        <Title heading="h1" fontWeight="normal" triangle={false}>
+        <Title
+          heading="h1"
+          css={css`
+            font-weight: normal;
+          `}
+          triangle={false}
+        >
           {title}
         </Title>
         <p>{subtitle}</p>
@@ -68,9 +75,11 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
       <ProjectDetails>
         <article>
           <Title
-            fontWeight="400"
             triangle={false}
-            fontFamily="var(--font-secondary)"
+            css={css`
+              font-family: var(--font-secondary);
+              font-weight: 400;
+            `}
           >
             Description
           </Title>

@@ -11,15 +11,15 @@ const createHeading = heading => props => {
   return element[heading]
 }
 
-export default function Title({
-  heading = "h2",
-  position = "B",
-  location = "A",
-  children,
-  fontFamily = "var(--font-primary);",
-  triangle = true,
-  fontWeight = 600,
-}) {
+export default function Title(props) {
+  const {
+    heading = "h2",
+    position = "B",
+    location = "A",
+    triangle = true,
+    children,
+  } = props
+
   const HeadingCmp = createHeading(heading)
 
   return (
@@ -28,9 +28,8 @@ export default function Title({
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 1.5rem;
-        font-weight: ${fontWeight};
-        font-family: ${fontFamily}, "Franklin Gothic Medium", "Arial Narrow",
-          Arial, sans-serif;
+        font-weight: 600;
+        font-family: var(--font-primary);
         svg {
           vertical-align: middle;
         }
@@ -41,6 +40,7 @@ export default function Title({
           font-size: calc(1rem + 1vw);
         }
       `}
+      {...props}
     >
       {triangle ? (
         location === "A" ? (

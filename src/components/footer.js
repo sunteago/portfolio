@@ -2,6 +2,17 @@ import React from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../utils"
 
+export default function Footer() {
+  return (
+    <FooterBox>
+      <div>
+        <p>Designed by</p>
+        <p>Santiago Vallejo</p>
+      </div>
+    </FooterBox>
+  )
+}
+
 const FooterBox = styled.div`
   width: 100%;
   overflow: hidden;
@@ -34,14 +45,3 @@ const FooterBox = styled.div`
     display: none;
   }
 `
-
-export default function Footer() {
-  return (
-    <FooterBox>
-      <div>
-        <p>Designed by</p>
-        <p>Santiago Vallejo</p>
-      </div>
-    </FooterBox>
-  )
-}

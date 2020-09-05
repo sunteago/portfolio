@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
-import { breakpoints } from "../utils"
+import { breakpoints, getGridLayout } from "../utils"
 
 import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
@@ -48,17 +48,14 @@ const PageContainer = styled.main`
     min-height: 100vh;
     width: 100%;
     padding: 2rem;
-    grid-gap: 4rem 1rem;
+    grid-gap: ${prp => (prp.layout === "about" ? "1rem" : "2rem 1rem")};
 
     @media (min-width: ${breakpoints.lg}) {
       padding: 1rem;
       height: 100vh;
       grid-gap: 1rem;
       grid-template-columns: 2fr repeat(11, 1fr);
-      grid-template-rows: ${props =>
-        props.layout === "main"
-          ? "60px 3fr 1fr 3fr 3fr 1fr"
-          : "60px 2fr 1fr 3fr 1fr 1fr"};
+      grid-template-rows: ${prp => getGridLayout(prp.layout)};
       grid-template-areas:
         ". lang lang . . . . . . . netwrk netwrk"
         ". . pres pres pres pres pres pres . . . rnav"
@@ -94,6 +91,7 @@ export default function Layout({ children, pageContext }) {
       }
     }
   `)
+
   return (
     <>
       <Global

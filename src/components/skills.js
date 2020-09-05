@@ -1,8 +1,29 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Title } from "./common"
-import SectionContainer from "./common/SectionContainer"
 import { breakpoints } from "../utils"
+
+export default function Skills() {
+  return (
+    <>
+      <Title>Skills</Title>
+      <ListContainer>
+        <ul>
+          <li>Javascript</li>
+          <li>React.js</li>
+          <li>Redux</li>
+          <li>Node.js</li>
+          <li>Sass</li>
+          <li>GIT</li>
+          <li>SSH</li>
+          <li>Firebase</li>
+          <li>MongoDB</li>
+          <li>REST APIs</li>
+        </ul>
+      </ListContainer>
+    </>
+  )
+}
 
 const ListContainer = styled.div`
   font-size: 1.25rem;
@@ -27,33 +48,3 @@ const ListContainer = styled.div`
     }
   }
 `
-
-export default function Skills() {
-  return (
-    <SectionContainer
-      gridArea="skls"
-      extraStyles={`
-      justify-self: center;
-      @media(min-width: ${breakpoints.md}) {
-        justify-self: start;
-      }
-    `}
-    >
-      <Title>Skills</Title>
-      <ListContainer>
-        <ul>
-          <li>Javascript</li>
-          <li>React.js</li>
-          <li>Redux</li>
-          <li>Node.js</li>
-          <li>Sass</li>
-          <li>GIT</li>
-          <li>SSH</li>
-          <li>Firebase</li>
-          <li>MongoDB</li>
-          <li>REST APIs</li>
-        </ul>
-      </ListContainer>
-    </SectionContainer>
-  )
-}

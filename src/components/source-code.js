@@ -3,6 +3,17 @@ import styled from "@emotion/styled"
 import { GithubIcon, IconLink } from "./common"
 import { breakpoints } from "../utils"
 
+export default function SourceCode() {
+  return (
+    <SourceText>
+      <IconLink hover href="https://github.com/sunteago/portfolio">
+        <span>source code</span>
+        <GithubIcon />
+      </IconLink>
+    </SourceText>
+  )
+}
+
 const SourceText = styled.div`
   position: fixed;
   bottom: 0;
@@ -30,14 +41,3 @@ const SourceText = styled.div`
     align-items: center;
   }
 `
-
-export default function SourceCode() {
-  return (
-    <SourceText>
-      <IconLink hover href="https://github.com/sunteago/portfolio">
-        <span>source code</span>
-        <GithubIcon />
-      </IconLink>
-    </SourceText>
-  )
-}

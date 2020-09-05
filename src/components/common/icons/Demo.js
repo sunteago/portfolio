@@ -1,7 +1,6 @@
 import React from "react"
-import IconLink from "../IconLink"
 
-export default function DemoIcon({ link, width = 38, height = width }) {
+export default function DemoIcon({ width = 38, height = width }) {
   return (
     <div>
       <svg
