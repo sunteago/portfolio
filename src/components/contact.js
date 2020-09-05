@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "@emotion/styled"
-import SectionContainer from "./common/SectionContainer"
 import {
   breakpoints,
   defaultGithubLink,
@@ -14,6 +13,35 @@ import {
   EnvelopeIcon,
   IconLink,
 } from "./common"
+
+export default function Contact({ title = true }) {
+  return (
+    <>
+      {title ? <Title>Contact</Title> : null}
+      <ContactContainer>
+        <ul className="contact">
+          <li>
+            <IconLink href={contactMail} hover>
+              <EnvelopeIcon />
+              <span>E-mail</span>
+            </IconLink>
+          </li>
+          <li>
+            <IconLink href={defaultGithubLink} hover>
+              <GithubIcon /> <span>Github</span>
+            </IconLink>
+          </li>
+          <li>
+            <IconLink href={linkedinLink} hover>
+              <LinkedinIcon />
+              <span>LinkedIn</span>
+            </IconLink>
+          </li>
+        </ul>
+      </ContactContainer>
+    </>
+  )
+}
 
 const ContactContainer = styled.div`
   font-size: 1.125rem;
@@ -47,31 +75,3 @@ const ContactContainer = styled.div`
     font-size: calc(0.7rem + 0.5vw);
   }
 `
-export default function Skills() {
-  return (
-    <SectionContainer gridArea="cntc">
-      <Title>Contact</Title>
-      <ContactContainer>
-        <ul>
-          <li>
-            <IconLink href={contactMail} hover>
-              <EnvelopeIcon />
-              <span>E-mail</span>
-            </IconLink>
-          </li>
-          <li>
-            <IconLink href={defaultGithubLink} hover>
-              <GithubIcon /> <span>Github</span>
-            </IconLink>
-          </li>
-          <li>
-            <IconLink href={linkedinLink} hover>
-              <LinkedinIcon />
-              <span>LinkedIn</span>
-            </IconLink>
-          </li>
-        </ul>
-      </ContactContainer>
-    </SectionContainer>
-  )
-}
