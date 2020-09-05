@@ -1,7 +1,6 @@
 import React from "react"
-import IconLink from "../IconLink"
 
-export default function LinkedinIcon({ link, width = 38, height = width }) {
+export default function LinkedinIcon({ width = 38, height = width }) {
   return (
     <div>
       <svg
