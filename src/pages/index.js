@@ -26,12 +26,19 @@ export default function Home() {
 }
 
 const extraStylesSkills = `
-justify-self: center;
-@media(min-width: ${breakpoints.md}) {
-  justify-self: start;
-}
+  justify-self: center;
+  @media(min-width: ${breakpoints.md}) {
+    justify-self: start;
+  }
 `
 
-const extraStylesProjects = `justify-self: center; width: 95%`
+const extraStylesProjects = `
+  margin-top: 4rem;
+  justify-self: center; 
+  width: 95%;
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: 0;
+  };
+`
 
 const extraStylesPresentation = `align-self: end`

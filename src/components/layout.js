@@ -48,7 +48,7 @@ const PageContainer = styled.main`
     min-height: 100vh;
     width: 100%;
     padding: 2rem;
-    grid-gap: 4rem 1rem;
+    grid-gap: ${prp => (prp.layout === "about" ? "1rem" : "2rem 1rem")};
 
     @media (min-width: ${breakpoints.lg}) {
       padding: 1rem;

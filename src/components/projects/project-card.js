@@ -222,7 +222,7 @@ const Bar = styled.div`
 const CardContainer = styled.div`
   position: relative;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 60px;
   background: var(--dark);
   padding: 0 15px;
   border-radius: var(--radius);

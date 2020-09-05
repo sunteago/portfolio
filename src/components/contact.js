@@ -50,9 +50,12 @@ const ContactContainer = styled.div`
     list-style: none;
     flex-direction: column;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 2rem;
+
     li {
-      width: 80%;
+      width: 50%;
+      max-width: 130px;
       margin-bottom: 0.3rem;
       a {
         text-decoration: none;
