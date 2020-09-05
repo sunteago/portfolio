@@ -6,13 +6,10 @@ import ProjectCard from "./project-card"
 import SectionContainer from "../common/SectionContainer"
 import { css } from "@emotion/core"
 
-export default function Works() {
+export default function Projects() {
   const projects = useProjects()
   return (
-    <SectionContainer
-      gridArea="wrk"
-      extraStyles={`justify-self: center; width: 95%`}
-    >
+    <>
       <Title>Projects</Title>
       <ProjectCard projects={projects} />
       <div
@@ -39,6 +36,6 @@ export default function Works() {
           See more
         </Button>
       </div>
-    </SectionContainer>
+    </>
   )
 }
