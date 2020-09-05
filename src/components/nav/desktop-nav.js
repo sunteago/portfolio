@@ -46,6 +46,7 @@ const NavBarContainer = styled.div`
     height: 120vh;
     transform: rotate(7deg);
     transition: width 0.15s ease-out;
+    z-index: 30;
     ::after {
       content: "";
       z-index: 2;
