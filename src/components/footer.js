@@ -41,7 +41,7 @@ const FooterBox = styled.div`
       color: var(--light);
     }
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
     display: none;
   }
 `

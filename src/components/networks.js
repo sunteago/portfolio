@@ -9,7 +9,7 @@ const Networks = styled.div`
   align-items: flex-end;
   position: absolute;
   right: 1.5rem;
-  top: 2.5rem;
+  top: 2rem;
   z-index: 2;
 
   > a {

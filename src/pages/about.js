@@ -34,7 +34,11 @@ export default function About() {
           }
           grid-area: 1 / 1 / 2 / 3;
           text-align: center;
+          margin-top: 7rem;
+          margin-bottom: 0;
+          align-self: end;
           @media (min-width: ${breakpoints.lg}) {
+            margin-top: 0;
             align-self: start;
             text-align: right;
             grid-area: 3 / 6 / 4 / 10;

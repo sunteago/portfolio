@@ -5,6 +5,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         nodes {
           frontmatter {
             slug
+            title
           }
         }
       }
@@ -23,32 +24,37 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: require.resolve("./src/templates/project.js"),
       context: {
         slug: project.frontmatter.slug,
+        sectionTitle: project.frontmatter.title,
         layout: "projectPage",
       },
     })
   })
 }
 
-const setGridLayout = path => {
+const setPageInfo = path => {
   switch (path) {
     case "/about/":
-      return "about"
+      return { layout: "about", title: "About" }
     case "/dev-404-page/":
-      return "404"
+      return { layout: "404" }
     case "/":
     default:
-      return "main"
+      return { layout: "main" }
   }
 }
 
 exports.onCreatePage = ({ page, actions, reporter }) => {
   const { createPage, deletePage } = actions
+
+  const pageInfo = setPageInfo(page.path)
+
   deletePage(page)
   createPage({
     ...page,
     context: {
       ...page.context,
-      layout: setGridLayout(page.path),
+      layout: pageInfo.layout,
+      sectionTitle: pageInfo.title,
     },
   })
 }

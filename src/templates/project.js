@@ -123,10 +123,10 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
 const ProjectTitle = styled.div`
   grid-area: 1 / 1 / 2 / 3;
   font-family: var(--font-primary);
+  margin-top: 5rem;
   @media (min-height: 768px) {
     margin-top: 2rem;
   }
-  margin-top: -1rem;
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 2 / 3 / 4 / 10;
     align-self: center;

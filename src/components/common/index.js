@@ -4,6 +4,7 @@ import TriangleIcon from "./icons/Triangle"
 import DemoIcon from "./icons/Demo"
 import InfoIcon from "./icons/Info"
 import EnvelopeIcon from "./icons/Envelope"
+import DarkModeIcon from "./icons/DarkMode"
 import Title from "./Title"
 import SectionContainer from "./SectionContainer"
 import Button from "./Button"
@@ -16,6 +17,7 @@ export {
   DemoIcon,
   InfoIcon,
   EnvelopeIcon,
+  DarkModeIcon,
   Title,
   SectionContainer,
   Button,
