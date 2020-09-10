@@ -1,16 +1,21 @@
 import React from "react"
+import { css } from "@emotion/core"
 import { Title, Button } from "../common"
 import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
-import SectionContainer from "../common/SectionContainer"
-import { css } from "@emotion/core"
 
 export default function Projects() {
   const projects = useProjects()
   return (
     <>
-      <Title>Projects</Title>
+      <Title
+        css={css`
+          font-family: var(--font-primary);
+        `}
+      >
+        Projects
+      </Title>
       <ProjectCard projects={projects} />
       <div
         css={css`

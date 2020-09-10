@@ -29,7 +29,7 @@ export default function Title(props) {
         font-size: 2.5rem;
         margin-bottom: 1.5rem;
         font-weight: 600;
-        font-family: var(--font-primary);
+        font-family: var(--font-secondary);
         svg {
           vertical-align: middle;
         }

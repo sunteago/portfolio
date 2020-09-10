@@ -99,7 +99,7 @@ export default function Layout({ children, pageContext }) {
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500;900&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500;700&display=swap");
           *,
           *::after,
           *::before {

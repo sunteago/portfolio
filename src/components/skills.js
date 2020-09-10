@@ -1,12 +1,19 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import { Title } from "./common"
 import { breakpoints } from "../utils"
 
 export default function Skills() {
   return (
     <>
-      <Title>Skills</Title>
+      <Title
+        css={css`
+          font-family: var(--font-primary);
+        `}
+      >
+        Skills
+      </Title>
       <ListContainer>
         <ul>
           <li>Javascript</li>

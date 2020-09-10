@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import {
   breakpoints,
   defaultGithubLink,
@@ -17,7 +18,15 @@ import {
 export default function Contact({ title = true }) {
   return (
     <>
-      {title ? <Title>Contact</Title> : null}
+      {title ? (
+        <Title
+          css={css`
+            font-family: var(--font-primary);
+          `}
+        >
+          Contact
+        </Title>
+      ) : null}
       <ContactContainer>
         <ul className="contact">
           <li>
