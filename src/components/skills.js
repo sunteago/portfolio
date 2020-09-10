@@ -38,7 +38,7 @@ const ListContainer = styled.div`
   ul {
     column-count: 2;
     column-gap: 4rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     list-style: none;
     li {
       margin-bottom: 1rem;

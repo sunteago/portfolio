@@ -60,7 +60,7 @@ const ContactContainer = styled.div`
     flex-direction: column;
     display: flex;
     align-items: flex-start;
-    padding-left: 2rem;
+    padding-left: 1rem;
 
     li {
       width: 50%;

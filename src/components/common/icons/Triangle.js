@@ -8,8 +8,8 @@ export default function Triangle({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="38"
-      height="38"
+      width={width}
+      height={height}
       fill="none"
       viewBox="0 0 45 45"
     >
@@ -18,12 +18,18 @@ export default function Triangle({
         stroke="currentColor"
         strokeWidth="2"
         d={
-          position === "A" ? "M6 1h34.54L6 34.63V1z" : "M37 31H2.74L37 2.15V31z"
+          position === "A"
+            ? "M6 1h34.54L6 34.63V1z"
+            : "M43.758 36.8H3.646L43.758 2.185V36.8z"
         }
       ></path>
       <path
         fill="currentColor"
-        d={position === "A" ? "M38 0L0 37V0h38z" : "M0 38L38 6v32H0z"}
+        d={
+          position === "A"
+            ? "M38 0L0 37V0h38z"
+            : "M10.557 42l34.2-40.201V42h-34.2z"
+        }
       ></path>
     </svg>
   )
