@@ -59,12 +59,12 @@ const ContactContainer = styled.div`
     list-style: none;
     flex-direction: column;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding-left: 1rem;
 
     li {
       width: 50%;
-      max-width: 130px;
+      max-width: 160px;
       margin-bottom: 0.3rem;
       a {
         text-decoration: none;
@@ -85,5 +85,8 @@ const ContactContainer = styled.div`
   }
   @media (min-width: ${breakpoints.lg}) {
     font-size: calc(0.7rem + 0.5vw);
+    ul {
+      align-items: flex-start;
+    }
   }
 `

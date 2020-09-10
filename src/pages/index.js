@@ -27,7 +27,7 @@ export default function Home() {
 
 const extraStylesSkills = `
   justify-self: center;
-  @media(min-width: ${breakpoints.md}) {
+  @media(min-width: ${breakpoints.lg}) {
     padding-left: 1rem;
     justify-self: start;
   }
@@ -36,7 +36,8 @@ const extraStylesSkills = `
 const extraStylesProjects = `
   margin-top: 4rem;
   justify-self: center; 
-  @media (min-width: ${breakpoints.md}) {
+  width: 95%;
+  @media (min-width: ${breakpoints.lg}) {
     width: 93%;
     margin-top: 0;
     justify-self: start;

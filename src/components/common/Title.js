@@ -25,34 +25,36 @@ export default function Title(props) {
 
   return (
     <TitleContainer>
-      {triangle && location === "A" ? (
-        <TriangleIcon position={position} width={40} />
-      ) : null}
-      <HeadingCmp
-        css={css`
-          text-align: center;
-          font-size: 2.5rem;
-          font-weight: 600;
-          font-family: var(--font-secondary);
-          margin-left: 0.125rem;
-          svg {
-            vertical-align: middle;
-          }
+      <TitleComponent>
+        {triangle && location === "A" ? (
+          <TriangleIcon position={position} width={40} />
+        ) : null}
+        <HeadingCmp
+          css={css`
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            margin-left: 0.125rem;
+            svg {
+              vertical-align: middle;
+            }
 
-          @media (min-width: ${breakpoints.lg}) {
-            text-align: left;
-            font-size: calc(1rem + 1vw);
-          }
-        `}
-        {...props}
-      >
-        {children}
-      </HeadingCmp>
+            @media (min-width: ${breakpoints.lg}) {
+              text-align: left;
+              font-size: calc(1rem + 1vw);
+            }
+          `}
+          {...props}
+        >
+          {children}
+        </HeadingCmp>
+      </TitleComponent>
     </TitleContainer>
   )
 }
 
-const TitleContainer = styled.div`
+const TitleComponent = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
@@ -65,5 +67,12 @@ const TitleContainer = styled.div`
   }
   @media (min-width: ${breakpoints.lg}) {
     margin-bottom: 1vh;
+  }
+`
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  @media (min-width: ${breakpoints.lg}) {
+    justify-content: flex-start;
   }
 `
