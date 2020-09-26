@@ -43,18 +43,16 @@ const Greet = styled.h1`
   @media (min-width: ${breakpoints.md}) {
     font-size: calc(2rem + 1vw);
     width: 100%;
-    /* margin-bottom: 1rem; */
   }
   @media (min-width: ${breakpoints.xl}) {
-    /* margin-bottom: 2rem; */
   }
 `
 
 const ShortBio = styled.p`
-  margin: 0.5rem;
+  margin: 0.3rem 0.5rem;
   margin-bottom: 0;
   font-size: 1.25rem;
-  @media (min-width: ${breakpoints.xl}) {
-    font-size: calc(1rem + 0.5vw);
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.9rem + 0.5vw);
   }
 `

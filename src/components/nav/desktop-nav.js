@@ -9,18 +9,28 @@ export default function RightNav() {
     <>
       <NavBarContainer>
         <NavBar>
-          <NavLink hex="#2c2c54" paintDrip title="Works" active="true" to="/">
-            Works
+          <NavLink fade title="Home" activeClassName="active" to="/">
+            Home
           </NavLink>
-          <NavLink fade title="About" to="/about">
+          <NavLink
+            fade
+            title="Projects"
+            activeClassName="active"
+            to="/projects"
+          >
+            Projects
+          </NavLink>
+          <NavLink fade title="About" activeClassName="active" to="/about">
             About
           </NavLink>
-          <NavLink cover bg="#2c2c54" title="Contact" to="/">
-            Contact
-          </NavLink>
-          <NavLink title="Resume" to="/">
+          <ResumeLink
+            title="Resume"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="./resume-santiago-vallejo.pdf"
+          >
             Resume
-          </NavLink>
+          </ResumeLink>
         </NavBar>
         <FooterBox>
           <div>
@@ -76,8 +86,8 @@ const NavBar = styled.nav`
   display: flex;
 `
 
-const NavLink = styled(Link)`
-  color: var(--light);
+const MenuLink = `
+color: var(--light);
   font-size: calc(4vh + 0.5rem);
   margin: 1.5rem calc(1vw);
   font-weight: 300;
@@ -85,10 +95,11 @@ const NavLink = styled(Link)`
   text-align: center;
   user-select: none;
   text-decoration: none;
-
-  :hover {
+  &.active,
+  &:hover {
     font-weight: 500;
   }
+
   ::before {
     display: block;
     content: attr(title);
@@ -97,7 +108,14 @@ const NavLink = styled(Link)`
     overflow: hidden;
     visibility: hidden;
   }
-  ${props => props.active && "font-weight: 400;"}
+  `
+
+const NavLink = styled(Link)`
+  ${MenuLink}
+`
+
+const ResumeLink = styled.a`
+  ${MenuLink}
 `
 
 const FooterBox = styled.div`

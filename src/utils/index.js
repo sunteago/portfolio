@@ -12,7 +12,7 @@ export const linkedinLink = "https://www.linkedin.com/in/santiago-vallejo-dev/"
 export const getGridLayout = layout => {
   switch (layout) {
     case "about":
-      return "60px 1fr 1fr 2fr 0fr 1fr"
+      return "60px 1fr 80px 2fr 0fr 1fr"
     case "projectPage":
       return "60px 2fr 1fr 3fr 1fr 1fr"
     default:

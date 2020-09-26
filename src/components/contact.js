@@ -81,8 +81,8 @@ const ContactContainer = styled.div`
     padding-left: 1rem;
 
     li {
-      width: 50%;
-      max-width: 160px;
+      width: 90%;
+      max-width: 300px;
       margin-bottom: 0.3rem;
       a {
         text-decoration: none;

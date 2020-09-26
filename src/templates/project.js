@@ -78,7 +78,13 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
             triangle={false}
             css={css`
               font-family: var(--font-secondary);
-              font-weight: 400;
+              h2 {
+                font-weight: 400;
+                margin-top: 2rem;
+                @media (min-width: ${breakpoints.lg}) {
+                  margin-top: 0;
+                }
+              }
             `}
           >
             Description

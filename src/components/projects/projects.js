@@ -34,7 +34,7 @@ export default function Projects() {
               margin-top: calc(1.3vw + 1rem);
             }
             @media (min-width: ${breakpoints.lg}) {
-              font-size: calc(0.2vw + 0.8rem);
+              font-size: calc(0.4vw + 0.5rem);
             }
           `}
           component="Link"
