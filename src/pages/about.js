@@ -28,7 +28,7 @@ export default function About() {
         css={css`
           h1 {
             font-family: var(--font-secondary);
-            font-size: calc(2rem + 1vw);
+            font-size: calc(3rem + 1vw);
             font-weight: 300;
             width: 100%;
           }

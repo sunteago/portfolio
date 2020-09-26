@@ -103,15 +103,6 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
           </IconLink>
         </ProjectLinks>
       </ProjectDetails>
-      {/* <ProjectPreview>
-        <Title fontFamily="var(--font-secondary)">Description</Title>
-
-        <div>
-          {previewImages.map(img => (
-            <Image key={Math.random()} fluid={img.sharp.fluid} fadeIn />
-          ))}
-        </div> 
-      </ProjectPreview>*/}
       <GoBackButton>
         <Button
           component="Link"

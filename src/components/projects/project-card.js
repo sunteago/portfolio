@@ -44,7 +44,7 @@ export default function ProjectCard({ projects }) {
                 <p>{project.description}</p>
               </div>
               <Bar>
-                <AniLink fade to={project.slug}>
+                <AniLink fade to={`/project/${project.slug}`}>
                   <InfoIcon width={28} />
                   <span>Details</span>
                 </AniLink>

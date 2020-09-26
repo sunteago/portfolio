@@ -20,7 +20,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   projects.forEach(project => {
     actions.createPage({
-      path: project.frontmatter.slug,
+      path: `project/${project.frontmatter.slug}`,
       component: require.resolve("./src/templates/project.js"),
       context: {
         slug: project.frontmatter.slug,
@@ -37,6 +37,8 @@ const setPageInfo = path => {
       return { layout: "about", title: "About" }
     case "/dev-404-page/":
       return { layout: "404" }
+    case "/projects/":
+      return { layout: "projects", title: "Projects" }
     case "/":
     default:
       return { layout: "main" }
