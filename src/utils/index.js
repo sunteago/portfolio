@@ -8,7 +8,6 @@ export const breakpoints = {
 
 export const defaultGithubLink = "https://github.com/sunteago/"
 export const linkedinLink = "https://www.linkedin.com/in/santiago-vallejo-dev/"
-export const contactMail = "mailto:santi.vallejo@gmail.com"
 
 export const getGridLayout = layout => {
   switch (layout) {

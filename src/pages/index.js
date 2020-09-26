@@ -16,7 +16,7 @@ export default function Home() {
         <Projects />
       </Section>
       <Section gridArea="cntc" extraStyles={extraStylesContact}>
-        <Contact />
+        <Contact fullEmail />
       </Section>
       <Section gridArea="skls" extraStyles={extraStylesSkills}>
         <Skills />

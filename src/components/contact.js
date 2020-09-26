@@ -17,7 +17,7 @@ import {
   IconLink,
 } from "./common"
 
-export default function Contact({ title = true }) {
+export default function Contact({ title = true, fullEmail }) {
   return (
     <>
       {title ? (
@@ -33,16 +33,20 @@ export default function Contact({ title = true }) {
       ) : null}
       <ContactContainer>
         <ul className="contact">
-          <EmailItem>
+          <li>
             <IconLink href="#" onClick={generateMailto} hover>
               <EnvelopeIcon />
-              <span
-                data-name={emailobj.name}
-                data-domain={emailobj.domain}
-                data-tld={emailobj.tld}
-              ></span>
+              {fullEmail ? (
+                <GeneratedEmail
+                  data-name={emailobj.name}
+                  data-domain={emailobj.domain}
+                  data-tld={emailobj.tld}
+                />
+              ) : (
+                <span>E-Mail</span>
+              )}
             </IconLink>
-          </EmailItem>
+          </li>
           <li>
             <IconLink href={defaultGithubLink} hover>
               <GithubIcon /> <span>Github</span>
@@ -60,8 +64,8 @@ export default function Contact({ title = true }) {
   )
 }
 
-const EmailItem = styled.li`
-  span::after {
+const GeneratedEmail = styled.span`
+  ::after {
     content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
   }
 `
