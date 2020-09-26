@@ -8,7 +8,7 @@ export default function DemoIcon({ width = 38, height = width }) {
         width={width}
         height={height}
         fill="none"
-        viewBox="0 0 35 36"
+        viewBox="0 0 36 36"
       >
         <path
           fill="currentColor"

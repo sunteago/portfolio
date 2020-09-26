@@ -21,3 +21,15 @@ export const getGridLayout = layout => {
       return "60px 3fr 1fr 3fr 3fr 1fr"
   }
 }
+
+export const emailobj = {
+  name: "santi.vallejo",
+  domain: "gmail",
+  tld: "com",
+}
+
+export const generateMailto = e => {
+  window.location.href =
+    "mailto:" + emailobj.name + "@" + emailobj.domain + "." + emailobj.tld
+  e.preventDefault()
+}

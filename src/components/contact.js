@@ -6,6 +6,8 @@ import {
   defaultGithubLink,
   linkedinLink,
   contactMail,
+  generateMailto,
+  emailobj,
 } from "../utils"
 import {
   Title,
@@ -31,12 +33,16 @@ export default function Contact({ title = true }) {
       ) : null}
       <ContactContainer>
         <ul className="contact">
-          <li>
-            <IconLink href={contactMail} hover>
+          <EmailItem>
+            <IconLink href="#" onClick={generateMailto} hover>
               <EnvelopeIcon />
-              <span>E-mail</span>
+              <span
+                data-name={emailobj.name}
+                data-domain={emailobj.domain}
+                data-tld={emailobj.tld}
+              ></span>
             </IconLink>
-          </li>
+          </EmailItem>
           <li>
             <IconLink href={defaultGithubLink} hover>
               <GithubIcon /> <span>Github</span>
@@ -53,6 +59,12 @@ export default function Contact({ title = true }) {
     </>
   )
 }
+
+const EmailItem = styled.li`
+  span::after {
+    content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+  }
+`
 
 const ContactContainer = styled.div`
   font-size: 1.125rem;
@@ -81,7 +93,10 @@ const ContactContainer = styled.div`
         }
       }
       div {
-        margin-right: 0.5rem;
+        margin-right: 0.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
