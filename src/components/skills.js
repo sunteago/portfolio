@@ -1,12 +1,21 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import { Title } from "./common"
 import { breakpoints } from "../utils"
 
 export default function Skills() {
   return (
     <>
-      <Title>Skills</Title>
+      <Title
+        css={css`
+          h2 {
+            font-family: var(--font-primary);
+          }
+        `}
+      >
+        Skills
+      </Title>
       <ListContainer>
         <ul>
           <li>Javascript</li>
@@ -31,7 +40,7 @@ const ListContainer = styled.div`
   ul {
     column-count: 2;
     column-gap: 4rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     list-style: none;
     li {
       margin-bottom: 1rem;

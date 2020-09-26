@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import TriangleIcon from "./icons/Triangle"
 import { breakpoints } from "../../utils"
@@ -23,39 +24,54 @@ export default function Title(props) {
   const HeadingCmp = createHeading(heading)
 
   return (
-    <HeadingCmp
-      css={css`
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-        font-family: var(--font-primary);
-        svg {
-          vertical-align: middle;
-        }
+    <TitleContainer {...props}>
+      <TitleComponent>
+        {triangle && location === "A" ? (
+          <TriangleIcon position={position} width={40} />
+        ) : null}
+        <HeadingCmp
+          css={css`
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            font-family: var(--font-secondary);
+            margin-left: 0.125rem;
+            svg {
+              vertical-align: middle;
+            }
 
-        @media (min-width: ${breakpoints.lg}) {
-          text-align: left;
-          margin-bottom: 1vh;
-          font-size: calc(1rem + 1vw);
-        }
-      `}
-      {...props}
-    >
-      {triangle ? (
-        location === "A" ? (
-          <>
-            <TriangleIcon position={position} width={35} />
-            {children}
-          </>
-        ) : (
-          <>
-            {children} <TriangleIcon position={position} width={35} />
-          </>
-        )
-      ) : (
-        children
-      )}
-    </HeadingCmp>
+            @media (min-width: ${breakpoints.lg}) {
+              text-align: left;
+              font-size: calc(1rem + 1vw);
+            }
+          `}
+        >
+          {children}
+        </HeadingCmp>
+      </TitleComponent>
+    </TitleContainer>
   )
 }
+
+const TitleComponent = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  svg {
+    transform: translate(-90%);
+    position: absolute;
+    left: -2px;
+    width: 40px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    margin-bottom: 1vh;
+  }
+`
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  @media (min-width: ${breakpoints.lg}) {
+    justify-content: flex-start;
+  }
+`

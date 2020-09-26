@@ -6,7 +6,7 @@ const SimpleWrapper = props => <div {...props}>{props.children}</div>
 
 const StandardLink = props => <a {...props}>{props.children}</a>
 
-export default ({ href, children, internal, hover }) => {
+export default ({ href, children, internal, hover, onClick }) => {
   let WrapperComponent = SimpleWrapper
   if (href) {
     if (internal) WrapperComponent = Link
@@ -19,6 +19,7 @@ export default ({ href, children, internal, hover }) => {
       target={href ? "_blank" : undefined}
       href={!internal ? href : undefined}
       to={internal ? href : undefined}
+      onClick={onClick}
       css={css`
         color: unset;
         transition: color 0.15s ease-in;

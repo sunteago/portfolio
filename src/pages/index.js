@@ -15,8 +15,8 @@ export default function Home() {
       <Section gridArea="wrk" extraStyles={extraStylesProjects}>
         <Projects />
       </Section>
-      <Section gridArea="cntc">
-        <Contact />
+      <Section gridArea="cntc" extraStyles={extraStylesContact}>
+        <Contact fullEmail />
       </Section>
       <Section gridArea="skls" extraStyles={extraStylesSkills}>
         <Skills />
@@ -27,7 +27,8 @@ export default function Home() {
 
 const extraStylesSkills = `
   justify-self: center;
-  @media(min-width: ${breakpoints.md}) {
+  @media(min-width: ${breakpoints.lg}) {
+    padding-left: 1rem;
     justify-self: start;
   }
 `
@@ -36,9 +37,16 @@ const extraStylesProjects = `
   margin-top: 4rem;
   justify-self: center; 
   width: 95%;
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
+    width: 93%;
     margin-top: 0;
+    justify-self: start;
   };
 `
+
+const extraStylesContact = `
+@media(min-width: ${breakpoints.md}) {
+  padding-left: 1rem;
+}`
 
 const extraStylesPresentation = `align-self: end`

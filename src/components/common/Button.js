@@ -27,6 +27,7 @@ export default function Button(props) {
         font-size: 1.25rem;
         padding: 0.7rem;
         font-family: var(--font-primary);
+        align-items: center;
 
         z-index: 1;
         transition: background 0.15s ease-in;

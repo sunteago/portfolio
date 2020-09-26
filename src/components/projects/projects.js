@@ -1,16 +1,23 @@
 import React from "react"
+import { css } from "@emotion/core"
 import { Title, Button } from "../common"
 import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
-import SectionContainer from "../common/SectionContainer"
-import { css } from "@emotion/core"
 
 export default function Projects() {
   const projects = useProjects()
   return (
     <>
-      <Title>Projects</Title>
+      <Title
+        css={css`
+          h2 {
+            font-family: var(--font-primary);
+          }
+        `}
+      >
+        Projects
+      </Title>
       <ProjectCard projects={projects} />
       <div
         css={css`
@@ -27,7 +34,7 @@ export default function Projects() {
               margin-top: calc(1.3vw + 1rem);
             }
             @media (min-width: ${breakpoints.lg}) {
-              font-size: calc(0.2vw + 0.8rem);
+              font-size: calc(0.4vw + 0.5rem);
             }
           `}
           component="Link"

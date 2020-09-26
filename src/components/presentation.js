@@ -3,6 +3,21 @@ import styled from "@emotion/styled"
 import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
 
+export default function Presentation() {
+  return (
+    <>
+      <Greet>
+        Hi, I am <span className="accent">Santiago Vallejo</span>, frontend
+        develope
+        <span className="triangle">
+          r<TriangleIcon position="A" />
+        </span>
+      </Greet>
+      <ShortBio>Specialized in React and React-Native</ShortBio>
+    </>
+  )
+}
+
 const Greet = styled.h1`
   font-size: 3rem;
   font-weight: 300;
@@ -28,21 +43,16 @@ const Greet = styled.h1`
   @media (min-width: ${breakpoints.md}) {
     font-size: calc(2rem + 1vw);
     width: 100%;
-    /* margin-bottom: 1rem; */
   }
   @media (min-width: ${breakpoints.xl}) {
-    /* margin-bottom: 2rem; */
   }
 `
 
-export default function Presentation() {
-  return (
-    <Greet>
-      Hi, I am <span className="accent">Santiago Vallejo</span>, frontend
-      develope
-      <span className="triangle">
-        r<TriangleIcon position="A" />
-      </span>
-    </Greet>
-  )
-}
+const ShortBio = styled.p`
+  margin: 0.3rem 0.5rem;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: calc(0.9rem + 0.5vw);
+  }
+`

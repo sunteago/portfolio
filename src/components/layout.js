@@ -8,10 +8,12 @@ import Particles from "react-particles-js"
 import particlesConfig from "../utils/particles.json"
 import BackgroundImage from "gatsby-background-image"
 import Networks from "./networks"
-import Lang from "./lang"
+import PageOptions from "./page-options"
 import Nav from "../components/nav/nav"
 import Footer from "../components/footer"
 import SourceCode from "../components/source-code"
+import Brand from "../components/brand"
+import SectionWatermark from "../components/section-watermark"
 
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
@@ -91,12 +93,13 @@ export default function Layout({ children, pageContext }) {
       }
     }
   `)
+  const { layout, sectionTitle } = pageContext
 
   return (
     <>
       <Global
         styles={css`
-          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Raleway:wght@300;400;500;700&display=swap");
           *,
           *::after,
           *::before {
@@ -128,13 +131,15 @@ export default function Layout({ children, pageContext }) {
         `}
       />
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
-        <PageContainer layout={pageContext.layout || "main"}>
-          <Lang />
+        <PageContainer layout={layout || "main"}>
+          {layout !== "main" ? <Brand /> : null}
+          <PageOptions />
           <Networks />
           <Nav />
           {children}
           <SourceCode />
         </PageContainer>
+        {layout !== "main" ? <SectionWatermark title={sectionTitle} /> : null}
         <Footer />
         {/* <BackgroundParticles params={particlesConfig} /> */}
       </BackgroundImg>

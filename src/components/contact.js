@@ -1,10 +1,13 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 import {
   breakpoints,
   defaultGithubLink,
   linkedinLink,
   contactMail,
+  generateMailto,
+  emailobj,
 } from "../utils"
 import {
   Title,
@@ -14,16 +17,34 @@ import {
   IconLink,
 } from "./common"
 
-export default function Contact({ title = true }) {
+export default function Contact({ title = true, fullEmail }) {
   return (
     <>
-      {title ? <Title>Contact</Title> : null}
+      {title ? (
+        <Title
+          css={css`
+            h2 {
+              font-family: var(--font-primary);
+            }
+          `}
+        >
+          Contact
+        </Title>
+      ) : null}
       <ContactContainer>
         <ul className="contact">
           <li>
-            <IconLink href={contactMail} hover>
+            <IconLink href="#" onClick={generateMailto} hover>
               <EnvelopeIcon />
-              <span>E-mail</span>
+              {fullEmail ? (
+                <GeneratedEmail
+                  data-name={emailobj.name}
+                  data-domain={emailobj.domain}
+                  data-tld={emailobj.tld}
+                />
+              ) : (
+                <span>E-Mail</span>
+              )}
             </IconLink>
           </li>
           <li>
@@ -43,6 +64,12 @@ export default function Contact({ title = true }) {
   )
 }
 
+const GeneratedEmail = styled.span`
+  ::after {
+    content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+  }
+`
+
 const ContactContainer = styled.div`
   font-size: 1.125rem;
   margin: 0 auto;
@@ -50,12 +77,12 @@ const ContactContainer = styled.div`
     list-style: none;
     flex-direction: column;
     display: flex;
-    align-items: flex-start;
-    padding-left: 2rem;
+    align-items: center;
+    padding-left: 1rem;
 
     li {
-      width: 50%;
-      max-width: 130px;
+      width: 90%;
+      max-width: 300px;
       margin-bottom: 0.3rem;
       a {
         text-decoration: none;
@@ -70,11 +97,17 @@ const ContactContainer = styled.div`
         }
       }
       div {
-        margin-right: 0.5rem;
+        margin-right: 0.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
   @media (min-width: ${breakpoints.lg}) {
     font-size: calc(0.7rem + 0.5vw);
+    ul {
+      align-items: flex-start;
+    }
   }
 `

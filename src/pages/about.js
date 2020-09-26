@@ -26,7 +26,7 @@ export default function About() {
         heading="h1"
         className="aboutme"
         css={css`
-          &.aboutme {
+          h1 {
             font-family: var(--font-secondary);
             font-size: calc(2rem + 1vw);
             font-weight: 300;
@@ -34,8 +34,14 @@ export default function About() {
           }
           grid-area: 1 / 1 / 2 / 3;
           text-align: center;
+          margin-top: 7rem;
+          margin-bottom: 0;
+          align-self: end;
           @media (min-width: ${breakpoints.lg}) {
+            margin-top: 0;
             align-self: start;
+            display: flex;
+            justify-content: flex-end;
             text-align: right;
             grid-area: 3 / 6 / 4 / 10;
           }
@@ -46,9 +52,9 @@ export default function About() {
       <AboutImage fluid={image.sharp.fluid} />
       <AboutDescription>
         I am Santiago Vallejo, a versatile web and mobile developer, currently
-        working with React. I do enjoy learning new things and I love to meet
-        talented people, In my free time I either make music or go for a bike
-        ride. You will find me here:
+        working with React and React Native. I do enjoy learning new things and
+        love to meet talented people, In my free time I either make music or go
+        for a bike ride. You will find me here:
       </AboutDescription>
       <ContactContainer>
         <Contact title={false} />
@@ -73,8 +79,8 @@ const AboutDescription = styled.p`
   font-size: 1.25rem;
   text-align: center;
   @media (min-width: ${breakpoints.lg}) {
-    text-align: left;
-    font-size: calc(0.7rem + 0.7vw);
+    text-align: right;
+    font-size: calc(0.9rem + 0.4vw);
     grid-area: 4 / 6 / 6 / 10;
   }
 `
