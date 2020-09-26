@@ -26,7 +26,7 @@ export default function About() {
         heading="h1"
         className="aboutme"
         css={css`
-          &.aboutme {
+          h1 {
             font-family: var(--font-secondary);
             font-size: calc(2rem + 1vw);
             font-weight: 300;
@@ -40,6 +40,8 @@ export default function About() {
           @media (min-width: ${breakpoints.lg}) {
             margin-top: 0;
             align-self: start;
+            display: flex;
+            justify-content: flex-end;
             text-align: right;
             grid-area: 3 / 6 / 4 / 10;
           }

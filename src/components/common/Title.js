@@ -24,7 +24,7 @@ export default function Title(props) {
   const HeadingCmp = createHeading(heading)
 
   return (
-    <TitleContainer>
+    <TitleContainer {...props}>
       <TitleComponent>
         {triangle && location === "A" ? (
           <TriangleIcon position={position} width={40} />
@@ -45,7 +45,6 @@ export default function Title(props) {
               font-size: calc(1rem + 1vw);
             }
           `}
-          {...props}
         >
           {children}
         </HeadingCmp>

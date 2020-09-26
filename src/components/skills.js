@@ -9,7 +9,9 @@ export default function Skills() {
     <>
       <Title
         css={css`
-          font-family: var(--font-primary);
+          h2 {
+            font-family: var(--font-primary);
+          }
         `}
       >
         Skills

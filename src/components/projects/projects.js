@@ -11,7 +11,9 @@ export default function Projects() {
     <>
       <Title
         css={css`
-          font-family: var(--font-primary);
+          h2 {
+            font-family: var(--font-primary);
+          }
         `}
       >
         Projects

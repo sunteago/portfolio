@@ -21,7 +21,9 @@ export default function Contact({ title = true }) {
       {title ? (
         <Title
           css={css`
-            font-family: var(--font-primary);
+            h2 {
+              font-family: var(--font-primary);
+            }
           `}
         >
           Contact
