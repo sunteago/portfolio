@@ -53,5 +53,8 @@ const Greet = styled.h1`
 const ShortBio = styled.p`
   margin: 0.5rem;
   margin-bottom: 0;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: calc(1rem + 0.5vw);
+  }
 `

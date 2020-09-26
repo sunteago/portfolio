@@ -30,7 +30,7 @@ export default function TopNav() {
         </ToggleLangBtn>
       </Lang>
       <DarkMode darkMode={darkMode} onClick={() => setDarkMode(prev => !prev)}>
-        <DarkModeIcon width={35} />
+        <DarkModeIcon />
       </DarkMode>
     </PageOptions>
   )
@@ -54,6 +54,7 @@ const ToggleLangBtn = styled.span`
   display: inline-block;
   cursor: pointer;
   transition: all 0.3s ease-in;
+  font-size: calc(0.7rem + 0.7vw);
   ${props =>
     props.active &&
     `background: var(--dark);
@@ -77,6 +78,7 @@ const DarkMode = styled.div`
   svg {
     transition: all 0.3s ease-in;
     color: var(--dark);
+    width: calc(1.4rem + 0.7vw);
     ${props =>
       props.darkMode
         ? `
