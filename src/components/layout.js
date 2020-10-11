@@ -113,6 +113,8 @@ export default function Layout({ children, pageContext }) {
             --dark: #2c2c54;
             --accent: #a40e4c;
             --radius: 3px;
+            --scrollbarBG: #cfd8dc;
+            --thumbBG: #90a4ae;
             --font-primary: Raleway, Arial, Helvetica, sans-serif, sans-serif;
             --font-secondary: Oswald, "Franklin Gothic Medium", "Arial Narrow",
               Arial, sans-serif;

@@ -148,13 +148,15 @@ const ProjectTitle = styled.div`
     @media (min-width: ${breakpoints.lg}) {
       font-size: calc(0.7vw + 0.5rem);
       margin-top: 0;
-      margin-left: 1rem;
+      margin-left: 0.5rem;
+      margin-bottom: 1rem;
     }
   }
 `
 
 const ProjectImage = styled.div`
   grid-area: 2 / 1 / 3 / 3;
+  max-height: 400px;
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 4 / 6 / 6 / 11;
     align-self: start;

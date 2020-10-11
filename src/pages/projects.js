@@ -1,7 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
-import { Title } from "../components/common"
+import { Title, InfoIcon, IconLink } from "../components/common"
 import useProjects from "../hooks/use-projects"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
@@ -17,12 +17,12 @@ export default function Home() {
         css={css`
           margin-top: 5rem;
           margin-bottom: 0;
-          grid-area: 2/ 1 / 3/ 3;
+          grid-area: 2 / 1 / 3/ 3;
           @media (min-width: ${breakpoints.md}) {
             margin: 0;
           }
           @media (min-width: ${breakpoints.lg}) {
-            grid-area: 3 / 4 / 4 / 10;
+            grid-area: 2 / 3 / 4 / 10;
           }
           h1 {
             font-family: var(--font-secondary);
@@ -38,7 +38,7 @@ export default function Home() {
         {projects.map((project, idx) => {
           const oddNum = idx % 2 !== 0
           return (
-            <SingleProject to={`/project/${project.slug}`}>
+            <SingleProject>
               <SingleProjectTitle title={project.title} />
               <SingleProjectImg
                 side={oddNum ? "left" : "right"}
@@ -46,9 +46,29 @@ export default function Home() {
               />
 
               <SingleProjectDetails side={oddNum ? "right" : "left"}>
-                <SingleProjectTitle title={project.title} />
+                <SingleProjectTitle
+                  title={project.title}
+                  side={oddNum ? "right" : "left"}
+                />
                 <p>{project.subtitle}</p>
                 <p>{clipAtChar(project.excerpt)}</p>
+                <IconLink
+                  cssStyles={css`
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    margin-top: 0.5rem;
+                    div {
+                      margin-right: 0.2rem;
+                    }
+                  `}
+                  internal
+                  href={`/project/${project.slug}`}
+                  hover
+                >
+                  <InfoIcon width={32} />
+                  <span>Details</span>
+                </IconLink>
               </SingleProjectDetails>
             </SingleProject>
           )
@@ -58,14 +78,16 @@ export default function Home() {
   )
 }
 
-const SingleProjectTitle = ({ title }) => (
+const SingleProjectTitle = ({ title, side }) => (
   <Title
     className="project-title"
     css={css`
+      text-align: ${side};
       h2 {
-        font-family: var(--font-secondary);
+        font-family: var(--font-primary);
         font-weight: 300;
         font-size: 2rem;
+        ${side === "right" ? "margin-left: auto;" : "margin-right: auto;"}
       }
     `}
     triangle={false}
@@ -77,11 +99,25 @@ const SingleProjectTitle = ({ title }) => (
 const ProjectsContainer = styled.div`
   grid-area: 3 / 1 /4 / 3;
   @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 4 / 6 / 10;
+    grid-area: 4 / 3 / 6 / 11;
+    overflow-y: scroll;
+    padding: 0 2rem 0 0;
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 6px;
+    }
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--primary);
   }
 `
 
-const SingleProject = styled(Link)`
+const SingleProject = styled.article`
   display: flex;
   color: var(--dark);
   text-decoration: none;
@@ -91,7 +127,7 @@ const SingleProject = styled(Link)`
   @media (min-width: ${breakpoints.md}) {
     justify-content: space-between;
     flex-direction: row;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     .project-title {
       display: none;
     }
@@ -122,7 +158,7 @@ const SingleProjectDetails = styled.div`
 
 const SingleProjectImg = styled(Image)`
   width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto 0 auto;
   @media (min-width: ${breakpoints.md}) {
     height: 150px;
   width: 100%;
