@@ -40,7 +40,7 @@ export default function Projects() {
           component="Link"
           to="/projects"
         >
-          See more
+          See All
         </Button>
       </div>
     </>

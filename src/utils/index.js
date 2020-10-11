@@ -15,6 +15,8 @@ export const getGridLayout = layout => {
       return "60px 1fr 80px 2fr 0fr 1fr"
     case "projectPage":
       return "60px 2fr 1fr 3fr 1fr 1fr"
+    case "projects":
+      return "60px 1fr 1fr 3fr 3fr 1fr"
     default:
     case "main":
       return "60px 3fr 1fr 3fr 3fr 1fr"
@@ -31,4 +33,8 @@ export const generateMailto = e => {
   window.location.href =
     "mailto:" + emailobj.name + "@" + emailobj.domain + "." + emailobj.tld
   e.preventDefault()
+}
+
+export const clipAtChar = (str = "", char) => {
+  return str.substr(0, char) + "..."
 }
