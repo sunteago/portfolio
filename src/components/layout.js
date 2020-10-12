@@ -18,6 +18,9 @@ import SectionWatermark from "../components/section-watermark"
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
   background-color: var(--light);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 `
 
 const BackgroundParticles = styled(Particles)`
@@ -30,6 +33,7 @@ const BackgroundParticles = styled(Particles)`
 `
 
 const PageContainer = styled.main`
+  flex-grow: 1;
   .tl-edges {
     overflow: hidden !important;
     overflow-y: hidden !important;
@@ -47,7 +51,6 @@ const PageContainer = styled.main`
       "skls skls"
       "cntc cntc"
       "fotr fotr";
-    min-height: 100vh;
     width: 100%;
     padding: 2rem;
     grid-gap: ${prp => (prp.layout === "about" ? "1rem" : "2rem 1rem")};

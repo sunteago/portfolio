@@ -41,6 +41,7 @@ const PageOptions = styled.div`
   position: absolute;
   top: 1rem;
   left: 20%;
+  z-index: 100;
   @media (min-width: ${breakpoints.lg}) {
     font-size: 1.25rem;
     display: flex;
