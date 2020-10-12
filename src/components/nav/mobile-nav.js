@@ -79,7 +79,7 @@ const MobileToggle = styled.div`
         transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
       }
 
-      &::before {
+      &::before { 
         top: -10px;
         width: 70%;
       }
