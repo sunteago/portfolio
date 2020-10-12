@@ -20,8 +20,8 @@ export default function NotFound404({ navigate }) {
   `)
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate("/"), 3000)
-    return () => clearTimeout(timer)
+    //const timer = setTimeout(() => navigate("/"), 3000)
+    //return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -31,7 +31,7 @@ export default function NotFound404({ navigate }) {
           heading="h1"
           css={css`
             h1 {
-              font-size: 3.5rem;
+              font-size: calc(0.5vw + 2.5rem);
             }
           `}
         >
@@ -44,6 +44,8 @@ export default function NotFound404({ navigate }) {
           <Link
             css={css`
               color: var(--dark);
+              text-decoration: none;
+              font-weight: bold;
             `}
             to="/"
           >
@@ -58,7 +60,7 @@ export default function NotFound404({ navigate }) {
         css={css`
           position: fixed !important;
           width: 100vw;
-          height: 100vh;
+          height: 100%;
           top: 0;
           left: 0;
           filter: opacity(30%);
@@ -71,17 +73,20 @@ export default function NotFound404({ navigate }) {
 
 const NotFoundPageContainer = styled.div`
   grid-area: 1 / 1 / -1 / -1;
+  margin: 3rem auto;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
-  margin: 0 auto;
   text-align: center;
   padding-bottom: 5rem;
+  @media (min-width: ${breakpoints.md}) {
+    margin: 0 auto;
+    width: 50%;
+  }
 `
 
 const Paragraph = styled.p`
-  font-size: 1.5rem;
+  font-size: calc(0.5vw + 1.2rem);
 `
