@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+import PageOptionsState from "../context/PageOptionsState"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/core"
@@ -17,7 +18,7 @@ import SectionWatermark from "../components/section-watermark"
 
 const BackgroundImg = styled(BackgroundImage)`
   background: unset;
-  background-color: var(--light);
+  background-color: var(--primary);
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -96,7 +97,14 @@ export default function Layout({ children, pageContext }) {
       }
     }
   `)
+
+  const [pageOptions, setPageOptions] = useState({
+    darkMode: false,
+    lang: "en",
+  })
+
   const { layout, sectionTitle } = pageContext
+  const { lang, darkMode } = pageOptions
 
   return (
     <>
@@ -112,9 +120,10 @@ export default function Layout({ children, pageContext }) {
           }
 
           :root {
-            --light: #f5d6ba;
-            --dark: #2c2c54;
+            --primary: ${darkMode ? "#2c2c54" : "#f5d6ba"};
+            --secondary: ${darkMode ? "#f5d6ba" : "#2c2c54"};
             --accent: #a40e4c;
+            --accent-light: #d66593;
             --radius: 3px;
             --scrollbarBG: #cfd8dc;
             --thumbBG: #90a4ae;
@@ -125,8 +134,8 @@ export default function Layout({ children, pageContext }) {
 
           body {
             font-family: var(--font-primary);
-            color: var(--dark);
-            background: var(--light);
+            color: var(--secondary);
+            background: var(--primary);
             @media (min-width: ${breakpoints.lg}) {
               width: 100vw;
               height: 100vh;
@@ -138,15 +147,28 @@ export default function Layout({ children, pageContext }) {
       <BackgroundImg Tag="section" fluid={image.sharp.fluid} fadeIn>
         <PageContainer layout={layout || "main"}>
           {layout !== "main" ? <Brand /> : null}
-          <PageOptions />
+          <PageOptions setPageOptions={setPageOptions} />
           <Networks />
-          <Nav />
-          {children}
+          <Nav darkMode={darkMode} />
+          <PageOptionsState
+            pageOptions={pageOptions}
+            setPageOptions={setPageOptions}
+          >
+            {children}
+          </PageOptionsState>
           <SourceCode />
         </PageContainer>
         {layout !== "main" ? <SectionWatermark title={sectionTitle} /> : null}
         <Footer />
-        {/* <BackgroundParticles params={particlesConfig} /> */}
+        {/* <BackgroundParticles
+          params={{
+            ...particlesConfig,
+            particles: {
+              ...particlesConfig.particles,
+              color: darkMode ? "#f5d6ba" : "#2c2c54",
+            },
+          }}
+        /> */}
       </BackgroundImg>
     </>
   )

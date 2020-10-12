@@ -2,16 +2,19 @@ import React, { useState } from "react"
 import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
 
-export default function MobileNav() {
+export default function MobileNav({ darkMode }) {
   const [toggled, setToggled] = useState(false)
 
   return (
     <>
-      <MobileToggle toggled={toggled} onClick={() => setToggled(!toggled)}>
+      <MobileToggle
+        darkMode={darkMode}
+        toggled={toggled}
+        onClick={() => setToggled(!toggled)}
+      >
         <div>
           <div></div>
         </div>
-        <span>&times;</span>
       </MobileToggle>
       <MobileNavMenu toggled={toggled}>
         <ul>
@@ -34,10 +37,10 @@ const MobileToggle = styled.div`
   right: 0;
   top: 40vh;
   transform: translate(90%, 0%) rotate(45deg);
-  background: var(--dark);
+  background: var(--secondary);
   border-radius: 5px;
-  border: 2px solid var(--light);
-  box-shadow: 2px 2px 2px var(--dark);
+  border: 2px solid var(--primary);
+  box-shadow: 2px 2px 2px var(--secondary);
   z-index: 1000;
   transform-origin: left bottom;
   transition: all 0.3s ease-in;
@@ -63,7 +66,7 @@ const MobileToggle = styled.div`
       position: relative;
       width: 100%;
       height: 2.5px;
-      background: var(--light);
+      background: var(--primary);
       &::before,
       &::after {
         content: "";
@@ -76,7 +79,7 @@ const MobileToggle = styled.div`
         transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
       }
 
-      &::before {
+      &::before { 
         top: -10px;
         width: 70%;
       }
@@ -85,14 +88,18 @@ const MobileToggle = styled.div`
         bottom: -10px;
         width: 85%;
       }
-      ${props =>
-        props.toggled &&
-        `
+      ${props => {
+        const closeColor = props.darkMode
+          ? "var(--secondary)"
+          : "var(--primary)"
+        return (
+          props.toggled &&
+          `
 					background: transparent;
 					
 					&::before, &::after {
             width: 100%;
-						background: var(--light);
+						background: ${closeColor};
 					}
 					
 					&::before {
@@ -103,8 +110,9 @@ const MobileToggle = styled.div`
 						transform: rotate(-45deg);
 						bottom: 0;
 					}
-      `}
-    }
+      `
+        )
+      }}
   }
   span {
     display: none;
@@ -121,7 +129,7 @@ const MobileNavMenu = styled.nav`
   z-index: 100;
   height: 100vh;
   width: 100vw;
-  background: var(--dark);
+  background: var(--secondary);
   transition: all 0.3s ease-in-out;
   ${props =>
     props.toggled &&
@@ -130,7 +138,7 @@ const MobileNavMenu = styled.nav`
   ul {
     list-style: none;
     height: 100%;
-    color: var(--light);
+    color: var(--primary);
     display: flex;
     flex-direction: column;
     justify-content: center;

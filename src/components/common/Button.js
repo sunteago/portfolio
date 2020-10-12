@@ -21,8 +21,8 @@ export default function Button(props) {
         display: flex;
         text-decoration: none;
         position: relative;
-        background: var(--dark);
-        color: var(--light);
+        background: var(--secondary);
+        color: var(--primary);
         border: none;
         font-size: 1.25rem;
         padding: 0.7rem;
@@ -40,7 +40,7 @@ export default function Button(props) {
           z-index: -1;
           top: -4px;
           left: 3px;
-          border: 2px solid var(--dark);
+          border: 2px solid var(--secondary);
           transition: all 0.15s ease-in;
         }
         :hover,

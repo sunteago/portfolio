@@ -19,7 +19,7 @@ const FooterBox = styled.div`
   height: 25vw;
   height: calc(25vw + 16px);
   div {
-    background: var(--dark);
+    background: var(--secondary);
     position: relative;
     height: 40vw;
     width: 120%;
@@ -34,11 +34,11 @@ const FooterBox = styled.div`
     }
     p:nth-of-type(1) {
       top: -2rem;
-      color: var(--dark);
+      color: var(--secondary);
     }
     p:nth-of-type(2) {
       top: 0;
-      color: var(--light);
+      color: var(--primary);
     }
   }
   @media (min-width: ${breakpoints.lg}) {

@@ -20,12 +20,12 @@ const BrandContainer = styled(Link)`
   cursor: pointer;
   user-select: none;
   text-decoration: none;
-  color: var(--dark);
+  color: var(--secondary);
   span {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 63%);
-    background: var(--dark);
+    background: var(--secondary);
     padding: 0.2rem 0 0.4rem 2rem;
-    color: var(--light);
+    color: var(--primary);
     display: inline-block;
     margin-right: 0.2rem;
   }

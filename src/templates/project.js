@@ -194,8 +194,8 @@ const ProjectImage = styled.div`
       content: "";
       position: absolute;
       z-index: -1;
-      background: var(--dark);
-      border: 3px solid var(--dark);
+      background: var(--secondary);
+      border: 3px solid var(--secondary);
       width: 100%;
       height: 100%;
       top: -5px;

@@ -2,11 +2,11 @@ import React from "react"
 import DesktopNav from "./desktop-nav"
 import MobileNav from "./mobile-nav"
 
-export default function RightNav() {
+export default function RightNav({ darkMode }) {
   return (
     <>
-      <DesktopNav />
-      <MobileNav />
+      <DesktopNav darkMode={darkMode} />
+      <MobileNav darkMode={darkMode} />
     </>
   )
 }

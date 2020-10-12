@@ -43,7 +43,7 @@ export default function NotFound404({ navigate }) {
           click{" "}
           <Link
             css={css`
-              color: var(--dark);
+              color: var(--secondary);
               text-decoration: none;
               font-weight: bold;
             `}

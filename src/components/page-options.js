@@ -1,14 +1,35 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../utils"
+import { localStorageOpts } from "../constants"
 import { DarkModeIcon } from "./common"
 
-export default function TopNav() {
+export default function PageOptions({ setPageOptions }) {
   const [lang, setLang] = React.useState("en")
   const [darkMode, setDarkMode] = React.useState(true)
 
+  useEffect(() => {
+    const savedPageOptions = localStorage.getItem(localStorageOpts)
+    if (savedPageOptions) {
+      const pageOptions = JSON.parse(savedPageOptions)
+      setLang(pageOptions.lang)
+      setDarkMode(pageOptions.darkMode)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(
+      localStorageOpts,
+      JSON.stringify({
+        lang,
+        darkMode,
+      })
+    )
+    setPageOptions({ lang, darkMode })
+  }, [lang, darkMode])
+
   return (
-    <PageOptions>
+    <PageOptionsContainer>
       <Lang>
         <ToggleLangBtn
           id="en"
@@ -32,11 +53,11 @@ export default function TopNav() {
       <DarkMode darkMode={darkMode} onClick={() => setDarkMode(prev => !prev)}>
         <DarkModeIcon />
       </DarkMode>
-    </PageOptions>
+    </PageOptionsContainer>
   )
 }
 
-const PageOptions = styled.div`
+const PageOptionsContainer = styled.div`
   display: none;
   position: absolute;
   top: 1rem;
@@ -51,15 +72,15 @@ const PageOptions = styled.div`
 const Lang = styled.div``
 
 const ToggleLangBtn = styled.span`
-  color: var(--dark);
+  color: var(--secondary);
   display: inline-block;
   cursor: pointer;
   transition: all 0.3s ease-in;
   font-size: calc(0.7rem + 0.7vw);
   ${props =>
     props.active &&
-    `background: var(--dark);
-     color: var(--light);
+    `background: var(--secondary);
+     color: var(--primary);
      font-weight: bold;
        `}
   &#en {
@@ -78,14 +99,16 @@ const DarkMode = styled.div`
   cursor: pointer;
   svg {
     transition: all 0.3s ease-in;
-    color: var(--dark);
+    color: var(--secondary);
     width: calc(1.4rem + 0.7vw);
+    :hover {
+      color: var(--accent);
+    }
     ${props =>
       props.darkMode
         ? `
           transform: translate(-50%, 0);
           rotate(180deg);
-          color: var(--accent);
         `
         : `transform: translate(-50%, 0) `};
   }

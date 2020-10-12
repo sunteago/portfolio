@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import PageOptionsContext from "../../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
@@ -18,6 +19,10 @@ import "swiper/swiper-bundle.min.css"
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
 export default function ProjectCard({ projects }) {
+  const {
+    pageOptions: { darkMode },
+  } = useContext(PageOptionsContext)
+
   return (
     <CardContainer>
       <Swiper
@@ -43,7 +48,7 @@ export default function ProjectCard({ projects }) {
                 <h3>{project.subtitle}</h3>
                 <p>{project.description}</p>
               </div>
-              <Bar>
+              <Bar darkMode={darkMode}>
                 <AniLink fade to={`/project/${project.slug}`}>
                   <InfoIcon width={28} />
                   <span>Details</span>
@@ -121,7 +126,7 @@ const CardContent = styled.div`
   flex: 0 1 100%;
   height: 100%;
   padding: 0;
-  color: var(--light);
+  color: var(--primary);
   @media (min-width: ${breakpoints.lg}) {
     align-self: start;
     padding-top: 1rem;
@@ -160,7 +165,7 @@ const CardContent = styled.div`
   h2 {
     font-size: 1.5rem;
     font-family: var(--font-secondary);
-    color: var(--light);
+    color: var(--primary);
     margin-bottom: 0.3rem;
     margin-top: 0.75rem;
   }
@@ -168,11 +173,11 @@ const CardContent = styled.div`
     font-family: var(--font-secondary);
     font-size: 1.125rem;
     font-weight: 300;
-    color: var(--light);
+    color: var(--primary);
     margin-bottom: 20px;
   }
   p {
-    color: var(--light);
+    color: var(--primary);
     margin-bottom: 2rem;
     font-size: 1rem;
     line-height: 1.5em;
@@ -189,7 +194,7 @@ const Bar = styled.div`
   background: var(--accent);
   padding: 0.2rem 0.4rem;
   border-radius: var(--radius);
-  color: var(--light);
+  color: var(--primary);
   text-decoration: none;
   justify-content: center;
   align-items: center;
@@ -206,7 +211,7 @@ const Bar = styled.div`
     flex: 0 1 20%;
     align-items: center;
     display: flex;
-    color: var(--light);
+    color: ${prp => (prp.darkMode ? "var(--secondary)" : "var(--primary)")};
     text-decoration: none;
     & > span {
       display: none;
@@ -223,7 +228,7 @@ const CardContainer = styled.div`
   position: relative;
   margin: auto;
   margin-top: 60px;
-  background: var(--dark);
+  background: var(--secondary);
   padding: 0 15px;
   border-radius: var(--radius);
   transition: all 0.3s;
@@ -234,8 +239,8 @@ const CardContainer = styled.div`
     left: 6px;
     width: 100%;
     height: 100%;
-    background: var(--light);
-    border: 3px solid var(--dark);
+    background: var(--primary);
+    border: 3px solid var(--secondary);
     z-index: -1;
   }
   > div {
@@ -300,7 +305,7 @@ const CardContainer = styled.div`
       width: 11px;
       height: 11px;
       display: block;
-      background: var(--light);
+      background: var(--primary);
       transition: all 0.3s;
       border-radius: 0;
       opacity: 0.7;
@@ -322,7 +327,7 @@ const CardContainer = styled.div`
 
 const Divider = styled.div`
   @media (min-width: ${breakpoints.lg}) {
-    background: var(--light);
+    background: var(--primary);
     height: 1px;
   }
 `
