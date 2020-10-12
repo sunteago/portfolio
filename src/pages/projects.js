@@ -119,7 +119,7 @@ const ProjectsContainer = styled.div`
 
 const SingleProject = styled.article`
   display: flex;
-  color: var(--dark);
+  color: var(--secondary);
   text-decoration: none;
   flex-direction: column;
   text-align: center;

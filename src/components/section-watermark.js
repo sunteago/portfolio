@@ -10,7 +10,7 @@ const Watermark = styled.h3`
   text-transform: uppercase;
   font-size: 3vw;
   display: none;
-  color: var(--dark);
+  color: var(--secondary);
   opacity: 0.15;
   font-family: var(--font-primary);
   font-weight: 900;

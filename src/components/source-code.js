@@ -31,7 +31,7 @@ const SourceText = styled.div`
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: var(--dark);
+    color: var(--secondary);
     > div {
       margin-left: 0.5rem;
     }

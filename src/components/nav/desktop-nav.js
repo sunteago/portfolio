@@ -4,7 +4,7 @@ import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-export default function RightNav() {
+export default function RightNav({ darkMode }) {
   return (
     <>
       <NavBarContainer>
@@ -32,7 +32,7 @@ export default function RightNav() {
             Resume
           </ResumeLink>
         </NavBar>
-        <FooterBox>
+        <FooterBox darkMode={darkMode}>
           <div>
             <p>Designed by</p>
             <p>Santiago Vallejo</p>
@@ -51,7 +51,7 @@ const NavBarContainer = styled.div`
     top: -10vh;
     right: 0;
     width: calc(5vh + 80px);
-    background: var(--dark);
+    background: var(--secondary);
     transform-origin: 50% 50%;
     height: 120vh;
     transform: rotate(7deg);
@@ -66,7 +66,7 @@ const NavBarContainer = styled.div`
       height: 120vh;
       width: 500px;
       transform: translate(99%);
-      background: var(--dark);
+      background: var(--secondary);
     }
     :hover {
       width: calc(5vh + 100px);
@@ -87,7 +87,7 @@ const NavBar = styled.nav`
 `
 
 const MenuLink = `
-color: var(--light);
+color: var(--primary);
   font-size: calc(4vh + 0.5rem);
   margin: 1.5rem calc(1vw);
   font-weight: 300;
@@ -123,18 +123,18 @@ const FooterBox = styled.div`
   bottom: 0;
   margin-bottom: 8.5vh;
   right: 0;
-  color: var(--light);
+  color: var(--primary);
   height: 200px;
   width: 100%;
   transform: translate(0%, 100%) rotate(-30deg);
-  background: var(--accent);
+  background: ${prp => (prp.darkMode ? "var(--primary)" : "var(--accent)")};
   z-index: 20;
   transform-origin: left top;
   ::after {
     content: "";
     right: 0;
     top: 0;
-    background: var(--accent);
+    background: ${prp => (prp.darkMode ? "var(--primary)" : "var(--accent)")};
     height: 100%;
     width: 300px;
     position: absolute;
@@ -152,10 +152,10 @@ const FooterBox = styled.div`
   }
   p:nth-of-type(1) {
     top: calc(-0.5vw + -0.85rem);
-    color: var(--light);
+    color: var(--primary);
   }
   p:nth-of-type(2) {
     top: 0;
-    color: var(--light);
+    color: ${prp => (prp.darkMode ? "var(--secondary)" : "var(--primary)")};
   }
 `

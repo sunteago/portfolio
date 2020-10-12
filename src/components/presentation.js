@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useContext } from "react"
+import pageOptionsContext from "../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
 
 export default function Presentation() {
+  const {
+    pageOptions: { darkMode },
+  } = useContext(pageOptionsContext)
+
   return (
     <>
-      <Greet>
+      <Greet color={darkMode ? "accent-light" : "accent"}>
         Hi, I am <span className="accent">Santiago Vallejo</span>, frontend
         develope
         <span className="triangle">
@@ -23,7 +28,7 @@ const Greet = styled.h1`
   font-weight: 300;
   position: relative;
   .accent {
-    color: var(--accent);
+    color: var(--${prp => prp.color});
   }
   .triangle {
     position: relative;
