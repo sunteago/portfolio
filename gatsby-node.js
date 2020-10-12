@@ -35,6 +35,7 @@ const setPageInfo = path => {
   switch (path) {
     case "/about/":
       return { layout: "about", title: "About" }
+    case "/404/":
     case "/dev-404-page/":
       return { layout: "404" }
     case "/projects/":
