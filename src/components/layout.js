@@ -160,7 +160,7 @@ export default function Layout({ children, pageContext }) {
         </PageContainer>
         {layout !== "main" ? <SectionWatermark title={sectionTitle} /> : null}
         <Footer />
-        {/* <BackgroundParticles
+        <BackgroundParticles
           params={{
             ...particlesConfig,
             particles: {
@@ -168,7 +168,7 @@ export default function Layout({ children, pageContext }) {
               color: darkMode ? "#f5d6ba" : "#2c2c54",
             },
           }}
-        /> */}
+        />
       </BackgroundImg>
     </>
   )
