@@ -7,6 +7,7 @@ import ProjectCard from "./project-card"
 
 export default function Projects() {
   const projects = useProjects()
+
   return (
     <>
       <Title

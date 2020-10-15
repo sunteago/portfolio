@@ -38,39 +38,42 @@ export default function Home() {
         {projects.map((project, idx) => {
           const oddNum = idx % 2 !== 0
           return (
-            <SingleProject>
-              <SingleProjectTitle title={project.title} />
-              <SingleProjectImg
-                side={oddNum ? "left" : "right"}
-                fluid={project.image.sharp.fluid}
-              />
-
-              <SingleProjectDetails side={oddNum ? "right" : "left"}>
-                <SingleProjectTitle
-                  title={project.title}
-                  side={oddNum ? "right" : "left"}
+            <>
+              <SingleProject>
+                <SingleProjectTitle title={project.title} />
+                <SingleProjectImg
+                  side={oddNum ? "left" : "right"}
+                  fluid={project.image.sharp.fluid}
                 />
-                <p>{project.subtitle}</p>
-                <p>{clipAtChar(project.excerpt)}</p>
-                <IconLink
-                  cssStyles={css`
-                    text-decoration: none;
-                    display: inline-flex;
-                    align-items: center;
-                    margin-top: 0.5rem;
-                    div {
-                      margin-right: 0.2rem;
-                    }
-                  `}
-                  internal
-                  href={`/project/${project.slug}`}
-                  hover
-                >
-                  <InfoIcon width={32} />
-                  <span>Details</span>
-                </IconLink>
-              </SingleProjectDetails>
-            </SingleProject>
+
+                <SingleProjectDetails side={oddNum ? "right" : "left"}>
+                  <SingleProjectTitle
+                    title={project.title}
+                    side={oddNum ? "right" : "left"}
+                  />
+                  <p>{project.subtitle}</p>
+                  <p>{clipAtChar(project.excerpt)}</p>
+                  <IconLink
+                    cssStyles={css`
+                      text-decoration: none;
+                      display: inline-flex;
+                      align-items: center;
+                      margin-top: 0.5rem;
+                      div {
+                        margin-right: 0.2rem;
+                      }
+                    `}
+                    internal
+                    href={`/project/${project.slug}`}
+                    hover
+                  >
+                    <InfoIcon width={32} />
+                    <span>Details</span>
+                  </IconLink>
+                </SingleProjectDetails>
+              </SingleProject>
+              <Divider />
+            </>
           )
         })}
       </ProjectsContainer>
@@ -137,6 +140,7 @@ const SingleProject = styled.article`
 const SingleProjectDetails = styled.div`
   margin-top: 1rem;
   line-height: 1.5;
+  flex-grow: 1;
   h2 {
     font-size: 1.5rem;
   }
@@ -180,4 +184,8 @@ const SingleProjectImg = styled(Image)`
       margin-left: 2rem;
     `};
   }
+`
+const Divider = styled.hr`
+  border: 1px solid var(--secondary);
+  margin: 1rem 0;
 `

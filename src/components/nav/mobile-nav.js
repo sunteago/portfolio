@@ -44,6 +44,9 @@ const MobileToggle = styled.div`
   z-index: 1000;
   transform-origin: left bottom;
   transition: all 0.3s ease-in;
+  @media (min-width: ${breakpoints.lg}) {
+    display: none;
+  }
 
   ${props =>
     props.toggled &&
@@ -114,13 +117,12 @@ const MobileToggle = styled.div`
         )
       }}
   }
+  
   span {
     display: none;
   }
 
-  @media (min-width: ${breakpoints.lg}) {
-    display: none;
-  }
+  
 `
 const MobileNavMenu = styled.nav`
   position: fixed;
