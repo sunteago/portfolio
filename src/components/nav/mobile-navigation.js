@@ -1,14 +1,17 @@
 import React, { useState } from "react"
 import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
+import pageOptionsContext from "../../context/pageOptionsContext"
+import { useContext } from "react"
 
-export default function MobileNav({ darkMode }) {
+export default function MobileNavigation() {
   const [toggled, setToggled] = useState(false)
+  const { pageOptions } = useContext(pageOptionsContext)
 
   return (
     <>
       <MobileToggle
-        darkMode={darkMode}
+        darkMode={pageOptions.darkMode}
         toggled={toggled}
         onClick={() => setToggled(!toggled)}
       >

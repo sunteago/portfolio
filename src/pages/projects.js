@@ -4,7 +4,6 @@ import styled from "@emotion/styled"
 import { Title, InfoIcon, IconLink } from "../components/common"
 import useProjects from "../hooks/use-projects"
 import Image from "gatsby-image"
-import { Link } from "gatsby"
 import { clipAtChar, breakpoints } from "../utils"
 
 export default function Home() {

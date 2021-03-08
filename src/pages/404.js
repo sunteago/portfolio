@@ -22,7 +22,7 @@ export default function NotFound404({ navigate }) {
   useEffect(() => {
     const timer = setTimeout(() => navigate("/"), 3000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [navigate])
 
   return (
     <>

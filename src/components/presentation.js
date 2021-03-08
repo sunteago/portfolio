@@ -5,13 +5,11 @@ import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
 
 export default function Presentation() {
-  const {
-    pageOptions: { darkMode },
-  } = useContext(pageOptionsContext)
+  const { pageOptions } = useContext(pageOptionsContext)
 
   return (
     <>
-      <Greet color={darkMode ? "accent-light" : "accent"}>
+      <Greet color={pageOptions.darkMode ? "accent-light" : "accent"}>
         Hi, I am <span className="accent">Santiago Vallejo</span>, frontend
         develope
         <span className="triangle">

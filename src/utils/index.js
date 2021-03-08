@@ -1,3 +1,5 @@
+import { pageLayouts } from "../constants/layouts"
+
 export const breakpoints = {
   xs: "387px",
   sm: "577px",
@@ -11,14 +13,14 @@ export const linkedinLink = "https://www.linkedin.com/in/santiago-vallejo-dev/"
 
 export const getGridLayout = layout => {
   switch (layout) {
-    case "about":
+    case pageLayouts.ABOUT:
       return "60px 1fr 80px 2fr 0fr 1fr"
-    case "projectPage":
+    case pageLayouts.PROJECT_PAGE:
       return "60px 2fr 1fr 3fr 1fr 1fr"
-    case "projects":
+    case pageLayouts.PROJECTS:
       return "60px 1fr 1fr 3fr 3fr 1fr"
     default:
-    case "main":
+    case pageLayouts.MAIN:
       return "60px 3fr 1fr 3fr 3fr 1fr"
   }
 }
@@ -37,4 +39,8 @@ export const generateMailto = e => {
 
 export const clipAtChar = (str = "", char) => {
   return str.substr(0, char) + "..."
+}
+
+export const isNotInMainPage = layout => {
+  return layout !== pageLayouts.MAIN
 }
