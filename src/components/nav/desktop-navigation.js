@@ -3,8 +3,12 @@ import { Link } from "gatsby"
 import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
+import pageOptionsContext from "../../context/pageOptionsContext"
+import { useContext } from "react"
 
-export default function RightNav({ darkMode }) {
+export default function RightNav() {
+  const { pageOptions } = useContext(pageOptionsContext)
+
   return (
     <>
       <NavBarContainer>
@@ -32,7 +36,7 @@ export default function RightNav({ darkMode }) {
             Resume
           </ResumeLink>
         </NavBar>
-        <FooterBox darkMode={darkMode}>
+        <FooterBox darkMode={pageOptions.darkMode}>
           <div>
             <p>Designed by</p>
             <p>Santiago Vallejo</p>

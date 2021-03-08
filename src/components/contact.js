@@ -5,7 +5,6 @@ import {
   breakpoints,
   defaultGithubLink,
   linkedinLink,
-  contactMail,
   generateMailto,
   emailobj,
 } from "../utils"

@@ -40,15 +40,7 @@ export const query = graphql`
 `
 
 export default function ProjectTemplate({ data: { mdx: project } }) {
-  const {
-    title,
-    subtitle,
-    tools,
-    image,
-    demo,
-    github,
-    previewImages,
-  } = project.frontmatter
+  const { title, subtitle, tools, image, demo, github } = project.frontmatter
 
   return (
     <>

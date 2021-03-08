@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { breakpoints } from "../utils"
+import { breakpoints } from "../../utils"
 
 export default function SectionWatermark({ title }) {
   return <Watermark>{title}</Watermark>

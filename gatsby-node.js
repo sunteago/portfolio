@@ -1,3 +1,5 @@
+const layouts = require("./src/constants/layouts")
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
@@ -34,15 +36,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 const setPageInfo = path => {
   switch (path) {
     case "/about/":
-      return { layout: "about", title: "About" }
+      return { layout: layouts.ABOUT, title: "About" }
     case "/404/":
     case "/dev-404-page/":
-      return { layout: "404" }
+      return { layout: layouts.NOT_FOUND_404 }
     case "/projects/":
-      return { layout: "projects", title: "Projects" }
+      return { layout: layouts.PROJECTS, title: "Projects" }
     case "/":
     default:
-      return { layout: "main" }
+      return { layout: layouts.MAIN }
   }
 }
 

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { breakpoints, defaultGithubLink, linkedinLink } from "../utils"
-import { GithubIcon, LinkedinIcon, IconLink } from "./common"
+import { breakpoints, defaultGithubLink, linkedinLink } from "../../utils"
+import { GithubIcon, LinkedinIcon, IconLink } from "../common"
 
 const Networks = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ const Networks = styled.div`
   }
 `
 
-export default function TopNav() {
+export default function SocialNetworks() {
   return (
     <Networks>
       <IconLink href={defaultGithubLink} hover>

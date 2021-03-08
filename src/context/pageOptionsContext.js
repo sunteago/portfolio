@@ -1,9 +1,11 @@
 import React from "react"
 
-export default React.createContext({
+const pageOptionsContext = React.createContext({
   pageOptions: {
     lang: "en",
     darkMode: false,
   },
   setPageOptions: () => {},
 })
+
+export default pageOptionsContext

@@ -6,14 +6,14 @@ const SimpleWrapper = props => <div {...props}>{props.children}</div>
 
 const StandardLink = props => <a {...props}>{props.children}</a>
 
-export default ({
+export default function IconLink({
   href,
   children,
   internal,
   hover,
   onClick,
   cssStyles = "",
-}) => {
+}) {
   let WrapperComponent = SimpleWrapper
   if (href) {
     if (internal) WrapperComponent = Link

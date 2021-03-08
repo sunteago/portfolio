@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { GithubIcon, IconLink } from "./common"
-import { breakpoints } from "../utils"
+import { GithubIcon, IconLink } from "../common"
+import { breakpoints } from "../../utils"
 
 export default function SourceCode() {
   return (

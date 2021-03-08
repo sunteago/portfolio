@@ -1,10 +1,13 @@
 import React, { useEffect } from "react"
 import styled from "@emotion/styled"
-import { breakpoints } from "../utils"
-import { localStorageOpts } from "../constants"
-import { DarkModeIcon } from "./common"
+import { breakpoints } from "../../utils"
+import { localStorageOpts } from "../../constants"
+import { DarkModeIcon } from "../common"
+import { useContext } from "react"
+import pageOptionsContext from "../../context/pageOptionsContext"
 
-export default function PageOptions({ setPageOptions }) {
+export default function PageOptions() {
+  const { setPageOptions } = useContext(pageOptionsContext)
   const [lang, setLang] = React.useState("en")
   const [darkMode, setDarkMode] = React.useState(true)
 
@@ -25,8 +28,10 @@ export default function PageOptions({ setPageOptions }) {
         darkMode,
       })
     )
+
+    console.log(setPageOptions)
     setPageOptions({ lang, darkMode })
-  }, [lang, darkMode])
+  }, [lang, darkMode, setPageOptions])
 
   return (
     <PageOptionsContainer>
