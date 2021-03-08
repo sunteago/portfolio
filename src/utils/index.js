@@ -1,4 +1,4 @@
-import { pageLayouts } from "../constants/layouts"
+import pageLayouts from "../constants/layouts"
 
 export const breakpoints = {
   xs: "387px",

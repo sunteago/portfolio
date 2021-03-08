@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { breakpoints, getGridLayout, isNotInMainPage } from "../../utils"
-import { pageLayouts } from "../../constants/layouts"
+import pageLayouts from "../../constants/layouts"
 import SocialNetworks from "./social-networks"
 import PageOptions from "./page-options"
 import SectionWatermark from "../common/section-watermark"
