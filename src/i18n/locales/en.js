@@ -2,6 +2,7 @@ import { translateKeys } from "../../constants/translate-keys"
 
 export const en = {
   translation: {
+    [translateKeys.HI_I_AM]: "Hi, i am",
     [translateKeys.ABOUT_ME]: "About me",
     [translateKeys.ABOUT_DESCRIPTION]: `
         I am Santiago Vallejo, a versatile web and mobile developer, 

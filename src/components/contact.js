@@ -19,7 +19,7 @@ import {
 export default function Contact({ title = true, fullEmail }) {
   return (
     <>
-      {title ? (
+      {title && (
         <Title
           css={css`
             h2 {
@@ -29,7 +29,8 @@ export default function Contact({ title = true, fullEmail }) {
         >
           Contact
         </Title>
-      ) : null}
+      )}
+
       <ContactContainer>
         <ul className="contact">
           <li>

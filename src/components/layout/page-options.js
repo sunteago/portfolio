@@ -32,7 +32,7 @@ export default function PageOptions() {
     )
 
     setPageOptions({ lang: i18n.language, darkMode })
-  }, [darkMode, setPageOptions])
+  }, [i18n.language, darkMode, setPageOptions])
 
   return (
     <PageOptionsContainer>
