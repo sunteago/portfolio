@@ -4,7 +4,7 @@ import styled from "@emotion/styled"
 import pageOptionsContext from "../../context/pageOptionsContext"
 import { useContext } from "react"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../../constants/translate-keys"
+import translateKeys from "../../constants/translate-keys"
 
 export default function MobileNavigation() {
   const [toggled, setToggled] = useState(false)

@@ -8,7 +8,7 @@ import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
 import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../constants/translate-keys"
+import translateKeys from "../constants/translate-keys"
 
 export const query = graphql`
   query($slug: String!) {

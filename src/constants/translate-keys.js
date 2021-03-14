@@ -1,10 +1,12 @@
-export const translateKeys = {
+//ES6 not supported by gatsby
+
+const translateKeys = {
   HI_I_AM: "hi-i-am",
   SHORT_BIO: "short-bio",
   ABOUT_ME: "about-me",
   ABOUT_DESCRIPTION: "about-description",
   HOME: "home",
-  PROJECTS: "project",
+  PROJECTS: "projects",
   ABOUT: "about",
   RESUME: "resume",
   DESIGNED_BY: "designed-by",
@@ -16,3 +18,5 @@ export const translateKeys = {
   DETAILS: "details",
   CODE: "code",
 }
+
+module.exports = translateKeys

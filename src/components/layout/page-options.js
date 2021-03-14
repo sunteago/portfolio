@@ -20,7 +20,7 @@ export default function PageOptions() {
       setDarkMode(pageOptions.darkMode)
       i18n.changeLanguage(pageOptions.lang)
     }
-  }, [])
+  }, [i18n])
 
   useEffect(() => {
     localStorage.setItem(

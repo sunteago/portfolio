@@ -9,6 +9,6 @@ export const skills = [
   "SSH",
   "Firebase",
   "AWS",
-  "Mysql",
+  "MySQL",
   "MongoDB",
 ]

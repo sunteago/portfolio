@@ -4,8 +4,8 @@ import styled from "@emotion/styled"
 import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../constants/translate-keys"
 import { locales } from "../constants/locales"
+import translateKeys from "../constants/translate-keys"
 
 export default function Presentation() {
   const { pageOptions } = useContext(pageOptionsContext)

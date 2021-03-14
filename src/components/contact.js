@@ -16,7 +16,7 @@ import {
   IconLink,
 } from "./common"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../constants/translate-keys"
+import translateKeys from "../constants/translate-keys"
 
 export default function Contact({ title = true, fullEmail }) {
   const { t } = useTranslation()

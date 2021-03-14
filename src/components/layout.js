@@ -34,10 +34,8 @@ export default function Layout({ children, pageContext }) {
           fluid={backgroundImage.sharp.fluid}
           fadeIn
         >
-          <PageContainer pageContext={pageContext}>
-            <PageNavigation />
-            {children}
-          </PageContainer>
+          <PageNavigation />
+          <PageContainer pageContext={pageContext}>{children}</PageContainer>
           <Footer />
           <Particles />
         </BackgroundImage>

@@ -61,7 +61,7 @@ const PageBoxContainer = styled.main`
 `
 
 export default function PageContainer({ children, pageContext }) {
-  const { layout, sectionTitle } = pageContext
+  let { layout, sectionTitle } = pageContext
 
   if (!layout) {
     layout = pageLayouts.MAIN
@@ -70,13 +70,13 @@ export default function PageContainer({ children, pageContext }) {
   const getSinglePageSections = () => (
     <>
       <Brand />
-      <SectionWatermark title={sectionTitle} />
+      <SectionWatermark titleKey={sectionTitle} />
     </>
   )
 
   const getAdditionalSections = () => (
     <>
-      {isNotInMainPage(layout) && getSinglePageSections}
+      {isNotInMainPage(layout) && getSinglePageSections()}
       <SocialNetworks />
       <PageOptions />
       <SourceCode />

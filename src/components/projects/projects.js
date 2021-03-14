@@ -5,7 +5,7 @@ import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../../constants/translate-keys"
+import translateKeys from "../../constants/translate-keys"
 
 export default function Projects() {
   const projects = useProjects()
@@ -20,7 +20,7 @@ export default function Projects() {
           }
         `}
       >
-        Projects
+        {t(translateKeys.PROJECTS)}
       </Title>
       <ProjectCard projects={projects} />
       <div

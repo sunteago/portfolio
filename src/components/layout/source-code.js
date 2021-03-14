@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 import { GithubIcon, IconLink } from "../common"
 import { breakpoints } from "../../utils"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../../constants/translate-keys"
+import translateKeys from "../../constants/translate-keys"
 
 export default function SourceCode() {
   const { t } = useTranslation()

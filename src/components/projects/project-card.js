@@ -16,13 +16,13 @@ import SwiperCore, {
 } from "swiper"
 import "swiper/swiper-bundle.min.css"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../../constants/translate-keys"
+import translateKeys from "../../constants/translate-keys"
+import { css } from "@emotion/core"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
 export default function ProjectCard({ projects }) {
   const { pageOptions } = useContext(PageOptionsContext)
-
   const { t } = useTranslation()
 
   return (
@@ -39,10 +39,20 @@ export default function ProjectCard({ projects }) {
       >
         {projects.map(project => (
           <SwiperSlide key={project.slug}>
-            <ProjectImage
-              fluid={project.image.sharp.fluid}
-              alt={project.title}
-            />
+            <AniLink
+              fade
+              to={`/project/${project.slug}`}
+              css={css`
+                width: 100%;
+                display: flex;
+                justify-content: center;
+              `}
+            >
+              <ProjectImage
+                fluid={project.image.sharp.fluid}
+                alt={project.title}
+              />
+            </AniLink>
             <CardContent className="project-card-content">
               <div>
                 <h2>{project.title}</h2>
@@ -362,4 +372,9 @@ const Divider = styled.div`
     background: var(--primary);
     height: 1px;
   }
+`
+
+const StyledAniLink = styled(AniLink)`
+  text-decoration: none;
+  color: unset;
 `

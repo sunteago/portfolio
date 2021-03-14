@@ -1,4 +1,4 @@
-import { translateKeys } from "../../constants/translate-keys"
+import translateKeys from "../../constants/translate-keys"
 
 export const en = {
   translation: {

@@ -5,7 +5,7 @@ import { Title } from "./common"
 import { breakpoints } from "../utils"
 import { skills } from "../constants/skills"
 import { useTranslation } from "react-i18next"
-import { translateKeys } from "../constants/translate-keys"
+import translateKeys from "../constants/translate-keys"
 
 export default function Skills() {
   const { t } = useTranslation()
