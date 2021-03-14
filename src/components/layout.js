@@ -11,6 +11,7 @@ import PageNavigation from "../components/nav/navigation"
 import PageContainer from "./layout/page-container"
 import { colors } from "../constants/colors"
 import { fonts } from "../constants/fonts"
+import "../i18n/i18n"
 
 const initialPageOptions = {
   darkMode: false,
@@ -91,6 +92,7 @@ const globalStyles = pageOptions => css`
     font-family: var(--font-primary);
     color: var(--secondary);
     background: var(--primary);
+
     @media (min-width: ${breakpoints.lg}) {
       width: 100vw;
       height: 100vh;

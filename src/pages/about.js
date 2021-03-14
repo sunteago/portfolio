@@ -6,6 +6,8 @@ import { Title } from "../components/common"
 import Contact from "../components/contact"
 import { graphql, useStaticQuery } from "gatsby"
 import { breakpoints } from "../utils"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../constants/translate-keys"
 
 export default function About() {
   const { image } = useStaticQuery(graphql`
@@ -20,42 +22,15 @@ export default function About() {
     }
   `)
 
+  const { t } = useTranslation()
+
   return (
     <>
-      <Title
-        heading="h1"
-        className="aboutme"
-        css={css`
-          h1 {
-            font-family: var(--font-secondary);
-            font-size: calc(3rem + 1vw);
-            font-weight: 300;
-            width: 100%;
-          }
-          grid-area: 1 / 1 / 2 / 3;
-          text-align: center;
-          margin-top: 7rem;
-          margin-bottom: 0;
-          align-self: end;
-          @media (min-width: ${breakpoints.lg}) {
-            margin-top: 0;
-            align-self: start;
-            display: flex;
-            justify-content: flex-end;
-            text-align: right;
-            grid-area: 3 / 6 / 4 / 10;
-          }
-        `}
-      >
-        About me
+      <Title heading="h1" className="aboutme" css={titleStyle}>
+        {t(translateKeys.ABOUT_ME)}
       </Title>
       <AboutImage fluid={image.sharp.fluid} />
-      <AboutDescription>
-        I am Santiago Vallejo, a versatile web and mobile developer, currently
-        working with React and React Native. I do enjoy learning new things and
-        love to meet talented people, In my free time I either make music or go
-        for a bike ride. You will find me here:
-      </AboutDescription>
+      <AboutDescription>{t(translateKeys.ABOUT_DESCRIPTION)}</AboutDescription>
       <ContactContainer>
         <Contact title={false} />
       </ContactContainer>
@@ -109,5 +84,29 @@ const ContactContainer = styled.div`
   }
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 5 / 6 / 6 / 10;
+  }
+`
+
+const titleStyle = css`
+  h1 {
+    font-family: var(--font-secondary);
+    font-size: calc(3rem + 1vw);
+    font-weight: 300;
+    width: 100%;
+  }
+
+  grid-area: 1 / 1 / 2 / 3;
+  text-align: center;
+  margin-top: 7rem;
+  margin-bottom: 0;
+  align-self: end;
+
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: 0;
+    align-self: start;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    grid-area: 3 / 6 / 4 / 10;
   }
 `

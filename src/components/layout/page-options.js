@@ -5,18 +5,20 @@ import { localStorageOpts } from "../../constants"
 import { DarkModeIcon } from "../common"
 import { useContext } from "react"
 import pageOptionsContext from "../../context/pageOptionsContext"
+import { useTranslation } from "react-i18next"
 
 export default function PageOptions() {
   const { setPageOptions } = useContext(pageOptionsContext)
-  const [lang, setLang] = React.useState("en")
   const [darkMode, setDarkMode] = React.useState(true)
+  const { i18n } = useTranslation()
 
   useEffect(() => {
     const savedPageOptions = localStorage.getItem(localStorageOpts)
+
     if (savedPageOptions) {
       const pageOptions = JSON.parse(savedPageOptions)
-      setLang(pageOptions.lang)
       setDarkMode(pageOptions.darkMode)
+      i18n.changeLanguage(pageOptions.lang)
     }
   }, [])
 
@@ -24,37 +26,32 @@ export default function PageOptions() {
     localStorage.setItem(
       localStorageOpts,
       JSON.stringify({
-        lang,
+        lang: i18n.language,
         darkMode,
       })
     )
 
-    console.log(setPageOptions)
-    setPageOptions({ lang, darkMode })
-  }, [lang, darkMode, setPageOptions])
+    setPageOptions({ lang: i18n.language, darkMode })
+  }, [darkMode, setPageOptions])
 
   return (
     <PageOptionsContainer>
-      <Lang>
-        <ToggleLangBtn
+      <LanguageSwitch>
+        <ToggleLanguageButton
           id="en"
-          active={lang === "en" && "true"}
-          onClick={() => {
-            setLang("en")
-          }}
+          active={i18n.language === "en" && "true"}
+          onClick={() => i18n.changeLanguage("en")}
         >
           en
-        </ToggleLangBtn>
-        <ToggleLangBtn
+        </ToggleLanguageButton>
+        <ToggleLanguageButton
           id="es"
-          active={lang === "es" && "true"}
-          onClick={() => {
-            setLang("es")
-          }}
+          active={i18n.language === "es" && "true"}
+          onClick={() => i18n.changeLanguage("es")}
         >
           es
-        </ToggleLangBtn>
-      </Lang>
+        </ToggleLanguageButton>
+      </LanguageSwitch>
       <DarkMode darkMode={darkMode} onClick={() => setDarkMode(prev => !prev)}>
         <DarkModeIcon />
       </DarkMode>
@@ -74,9 +71,9 @@ const PageOptionsContainer = styled.div`
   }
 `
 
-const Lang = styled.div``
+const LanguageSwitch = styled.div``
 
-const ToggleLangBtn = styled.span`
+const ToggleLanguageButton = styled.span`
   color: var(--secondary);
   display: inline-block;
   cursor: pointer;

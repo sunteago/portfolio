@@ -18,6 +18,7 @@ const FooterBox = styled.div`
   overflow: hidden;
   height: 25vw;
   height: calc(25vw + 16px);
+
   div {
     background: var(--secondary);
     position: relative;
@@ -26,21 +27,25 @@ const FooterBox = styled.div`
     left: -10%;
     transform: rotate(13deg);
     transform-origin: left top;
+
     p {
       position: absolute;
       transform: translate(-50%, 0);
       font-size: 1.5rem;
       left: 50%;
     }
+
     p:nth-of-type(1) {
       top: -2rem;
       color: var(--secondary);
     }
+
     p:nth-of-type(2) {
       top: 0;
       color: var(--primary);
     }
   }
+
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }

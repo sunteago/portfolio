@@ -5,11 +5,7 @@ import TriangleIcon from "./icons/Triangle"
 import { breakpoints } from "../../utils"
 
 const createHeading = heading => props => {
-  const element = {
-    h1: <h1 {...props}>{props.children}</h1>,
-    h2: <h2 {...props}>{props.children}</h2>,
-  }
-  return element[heading]
+  return React.createElement(heading, props, props.children)
 }
 
 export default function Title(props) {
@@ -21,33 +17,15 @@ export default function Title(props) {
     children,
   } = props
 
-  const HeadingCmp = createHeading(heading)
+  const HeadingComponent = createHeading(heading)
 
   return (
     <TitleContainer {...props}>
       <TitleComponent>
-        {triangle && location === "A" ? (
+        {triangle && location === "A" && (
           <TriangleIcon position={position} width={40} />
-        ) : null}
-        <HeadingCmp
-          css={css`
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 600;
-            font-family: var(--font-secondary);
-            margin-left: 0.125rem;
-            svg {
-              vertical-align: middle;
-            }
-
-            @media (min-width: ${breakpoints.lg}) {
-              text-align: left;
-              font-size: calc(1rem + 1vw);
-            }
-          `}
-        >
-          {children}
-        </HeadingCmp>
+        )}
+        <HeadingComponent css={headingStyle}>{children}</HeadingComponent>
       </TitleComponent>
     </TitleContainer>
   )
@@ -58,12 +36,14 @@ const TitleComponent = styled.div`
   align-items: center;
   margin-bottom: 1.5rem;
   position: relative;
+
   svg {
     transform: translate(-90%);
     position: absolute;
     left: -2px;
     width: 40px;
   }
+
   @media (min-width: ${breakpoints.lg}) {
     margin-bottom: 1vh;
   }
@@ -71,7 +51,24 @@ const TitleComponent = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
+
   @media (min-width: ${breakpoints.lg}) {
     justify-content: flex-start;
   }
+`
+
+const headingStyle = css`
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: var(--font-secondary);
+  margin-left: 0.125rem;
+
+  svg {
+    vertical-align: middle;
+  }
+
+  @media (min-width: ${breakpoints.lg}) {
+    text-align: left;
+    font-size: calc(1rem + 1vw);
 `
