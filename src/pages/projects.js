@@ -5,9 +5,12 @@ import { Title, InfoIcon, IconLink } from "../components/common"
 import useProjects from "../hooks/use-projects"
 import Image from "gatsby-image"
 import { clipAtChar, breakpoints } from "../utils"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../constants/translate-keys"
 
 export default function Home() {
   const projects = useProjects()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -31,11 +34,12 @@ export default function Home() {
           }
         `}
       >
-        Projects
+        {t(translateKeys.PROJECTS)}
       </Title>
       <ProjectsContainer>
         {projects.map((project, idx) => {
           const oddNum = idx % 2 !== 0
+
           return (
             <>
               <SingleProject>
@@ -148,10 +152,10 @@ const SingleProjectDetails = styled.div`
   }
   @media (min-width: ${breakpoints.md}) {
     margin-top: 0;
-    text-align: ${prp => (prp.side === "left" ? "left" : "right")};
+    text-align: ${props => (props.side === "left" ? "left" : "right")};
     div {
-      ${prp =>
-        prp.side === "right" ? "margin-left: auto;" : "margin-right: auto;"}
+      ${props =>
+        props.side === "right" ? "margin-left: auto;" : "margin-right: auto;"}
     }
     .project-title {
       display: block;

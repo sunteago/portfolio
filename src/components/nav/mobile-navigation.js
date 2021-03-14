@@ -3,10 +3,13 @@ import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
 import pageOptionsContext from "../../context/pageOptionsContext"
 import { useContext } from "react"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../../constants/translate-keys"
 
 export default function MobileNavigation() {
   const [toggled, setToggled] = useState(false)
   const { pageOptions } = useContext(pageOptionsContext)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -21,11 +24,11 @@ export default function MobileNavigation() {
       </MobileToggle>
       <MobileNavMenu toggled={toggled}>
         <ul>
-          <li>Projects</li>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Resume</li>
+          <li>{t(translateKeys.PROJECTS)}</li>
+          <li>{t(translateKeys.HOME)}</li>
+          <li>{t(translateKeys.ABOUT)}</li>
+          <li>{t(translateKeys.CONTACT)}</li>
+          <li>{t(translateKeys.RESUME)}</li>
         </ul>
       </MobileNavMenu>
     </>

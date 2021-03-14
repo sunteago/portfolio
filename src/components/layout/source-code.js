@@ -2,12 +2,16 @@ import React from "react"
 import styled from "@emotion/styled"
 import { GithubIcon, IconLink } from "../common"
 import { breakpoints } from "../../utils"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../../constants/translate-keys"
 
 export default function SourceCode() {
+  const { t } = useTranslation()
+
   return (
     <SourceText>
       <IconLink hover href="https://github.com/sunteago/portfolio">
-        <span>source code</span>
+        <span>{t(translateKeys.SOURCE_CODE).toLowerCase()}</span>
         <GithubIcon />
       </IconLink>
     </SourceText>

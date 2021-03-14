@@ -15,8 +15,12 @@ import {
   EnvelopeIcon,
   IconLink,
 } from "./common"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../constants/translate-keys"
 
 export default function Contact({ title = true, fullEmail }) {
+  const { t } = useTranslation()
+
   return (
     <>
       {title && (
@@ -27,7 +31,7 @@ export default function Contact({ title = true, fullEmail }) {
             }
           `}
         >
-          Contact
+          {t(translateKeys.CONTACT)}
         </Title>
       )}
 

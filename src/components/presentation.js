@@ -3,57 +3,47 @@ import pageOptionsContext from "../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
-import { Translation } from "react-i18next"
+import { useTranslation } from "react-i18next"
 import { translateKeys } from "../constants/translate-keys"
 import { locales } from "../constants/locales"
 
 export default function Presentation() {
   const { pageOptions } = useContext(pageOptionsContext)
+  const { t, i18n } = useTranslation()
 
-  const getPresentation = () => (
-    <Translation>
-      {(t, { i18n }) => (
-        <>
-          {t(translateKeys.HI_I_AM)}{" "}
-          <span className="accent">Santiago Vallejo</span>,{" "}
-          {getProfession(i18n.language)}
-        </>
-      )}
-    </Translation>
-  )
+  const getProfession = () => {
+    switch (i18n.language) {
+      case locales.ES:
+        return (
+          <>
+            desarrollador fronten
+            <span className="triangle">
+              d<TriangleIcon position="A" />
+            </span>
+          </>
+        )
+      case locales.EN:
+      default:
+        return (
+          <>
+            frontend develope
+            <span className="triangle">
+              r<TriangleIcon position="A" />
+            </span>
+          </>
+        )
+    }
+  }
 
   return (
     <>
       <Greet color={pageOptions.darkMode ? "accent-light" : "accent"}>
-        {getPresentation()}
+        {t(translateKeys.HI_I_AM)}{" "}
+        <span className="accent">Santiago Vallejo</span>, {getProfession()}{" "}
       </Greet>
-      <ShortBio>Specialized in React and React-Native</ShortBio>
+      <ShortBio>{t(translateKeys.SHORT_BIO)}</ShortBio>
     </>
   )
-}
-
-const getProfession = language => {
-  switch (language) {
-    case locales.ES:
-      return (
-        <>
-          desarrollador fronten
-          <span className="triangle">
-            d<TriangleIcon position="A" />
-          </span>
-        </>
-      )
-    case locales.EN:
-    default:
-      return (
-        <>
-          frontend develope
-          <span className="triangle">
-            r<TriangleIcon position="A" />
-          </span>
-        </>
-      )
-  }
 }
 
 const Greet = styled.h1`
@@ -61,7 +51,7 @@ const Greet = styled.h1`
   font-weight: 300;
   position: relative;
   .accent {
-    color: var(--${prp => prp.color});
+    color: var(--${props => props.color});
   }
   .triangle {
     position: relative;

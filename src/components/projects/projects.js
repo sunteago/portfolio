@@ -4,9 +4,12 @@ import { Title, Button } from "../common"
 import { breakpoints } from "../../utils"
 import useProjects from "../../hooks/use-projects"
 import ProjectCard from "./project-card"
+import { useTranslation } from "react-i18next"
+import { translateKeys } from "../../constants/translate-keys"
 
 export default function Projects() {
   const projects = useProjects()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -41,7 +44,7 @@ export default function Projects() {
           component="Link"
           to="/projects"
         >
-          See All
+          {t(translateKeys.SEE_ALL)}
         </Button>
       </div>
     </>
