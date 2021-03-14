@@ -15,13 +15,15 @@ import SwiperCore, {
   Autoplay,
 } from "swiper"
 import "swiper/swiper-bundle.min.css"
+import { useTranslation } from "react-i18next"
+import translateKeys from "../../constants/translate-keys"
+import { css } from "@emotion/core"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
 export default function ProjectCard({ projects }) {
-  const {
-    pageOptions: { darkMode },
-  } = useContext(PageOptionsContext)
+  const { pageOptions } = useContext(PageOptionsContext)
+  const { t } = useTranslation()
 
   return (
     <CardContainer>
@@ -37,10 +39,20 @@ export default function ProjectCard({ projects }) {
       >
         {projects.map(project => (
           <SwiperSlide key={project.slug}>
-            <ProjectImage
-              fluid={project.image.sharp.fluid}
-              alt={project.title}
-            />
+            <AniLink
+              fade
+              to={`/project/${project.slug}`}
+              css={css`
+                width: 100%;
+                display: flex;
+                justify-content: center;
+              `}
+            >
+              <ProjectImage
+                fluid={project.image.sharp.fluid}
+                alt={project.title}
+              />
+            </AniLink>
             <CardContent className="project-card-content">
               <div>
                 <h2>{project.title}</h2>
@@ -48,18 +60,18 @@ export default function ProjectCard({ projects }) {
                 <h3>{project.subtitle}</h3>
                 <p>{project.description}</p>
               </div>
-              <Bar darkMode={darkMode}>
+              <Bar darkMode={pageOptions.darkMode}>
                 <AniLink fade to={`/project/${project.slug}`}>
                   <InfoIcon width={28} />
-                  <span>Details</span>
+                  <span>{t(translateKeys.DETAILS)}</span>
                 </AniLink>
                 <IconLink href={project.github}>
                   <GithubIcon width={24} />
-                  <span>Code</span>
+                  <span>{t(translateKeys.CODE)}</span>
                 </IconLink>
                 <IconLink href={project.demo}>
                   <DemoIcon width={24} />
-                  <span>Demo</span>
+                  <span>{t(translateKeys.DEMO)}</span>
                 </IconLink>
               </Bar>
             </CardContent>
@@ -72,11 +84,13 @@ export default function ProjectCard({ projects }) {
 
 const generateFade = n => {
   let fadeStyles = ""
+
   for (let i = 1; i <= n; i++) {
     fadeStyles += `.swiper-slide-active .project-card-content > *:nth-of-type(${i}) {
       transition-delay: ${0.3 + i / 10}s;
     }`
   }
+
   return fadeStyles
 }
 
@@ -87,17 +101,21 @@ const ProjectImage = styled(Image)`
   height: 175px;
   border-radius: var(--radius);
   overflow: hidden;
+
   @media screen and (min-width: ${breakpoints.sm}) {
     width: 90%;
   }
+
   @media screen and (min-width: ${breakpoints.lg}) {
     transform: translate(-70px, 20px);
     width: 175px;
   }
+
   @media screen and (min-width: ${breakpoints.xl}) {
     width: 250px;
     height: 250px;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -108,6 +126,7 @@ const ProjectImage = styled(Image)`
     border-radius: var(--radius);
     opacity: 0.8;
   }
+
   img {
     width: 100%;
     height: 100%;
@@ -127,6 +146,7 @@ const CardContent = styled.div`
   height: 100%;
   padding: 0;
   color: var(--primary);
+
   @media (min-width: ${breakpoints.lg}) {
     align-self: start;
     padding-top: 1rem;
@@ -134,11 +154,13 @@ const CardContent = styled.div`
     text-align: left;
     padding-right: 20px;
   }
+
   & > * {
     opacity: 0;
     transform: translateY(25px);
     transition: all 0.4s;
   }
+
   h2 {
     font-family: var(--font-secondary);
     font-size: 1.5rem;
@@ -148,12 +170,14 @@ const CardContent = styled.div`
       margin-top: 0rem;
     }
   }
+
   h3 {
     font-family: var(--font-secondary);
     font-size: 1.125rem;
     font-weight: 300;
     margin-bottom: 20px;
   }
+
   p {
     margin-bottom: 2rem;
     font-size: 1rem;
@@ -162,6 +186,7 @@ const CardContent = styled.div`
       margin-bottom: 0;
     }
   }
+
   h2 {
     font-size: 1.5rem;
     font-family: var(--font-secondary);
@@ -169,6 +194,7 @@ const CardContent = styled.div`
     margin-bottom: 0.3rem;
     margin-top: 0.75rem;
   }
+
   h3 {
     font-family: var(--font-secondary);
     font-size: 1.125rem;
@@ -176,6 +202,7 @@ const CardContent = styled.div`
     color: var(--primary);
     margin-bottom: 20px;
   }
+
   p {
     color: var(--primary);
     margin-bottom: 2rem;
@@ -200,19 +227,22 @@ const Bar = styled.div`
   align-items: center;
   letter-spacing: 1px;
   display: inline-flex;
+
   @media (min-width: ${breakpoints.lg}) {
     left: auto;
     top: auto;
     right: 5px;
     transform: none !important;
   }
+
   & > a {
     margin: 0 0.4rem;
     flex: 0 1 20%;
     align-items: center;
     display: flex;
-    color: ${prp => (prp.darkMode ? "var(--secondary)" : "var(--primary)")};
+    color: ${props => (props.darkMode ? "var(--secondary)" : "var(--primary)")};
     text-decoration: none;
+
     & > span {
       display: none;
       margin-left: 0.3rem;
@@ -232,6 +262,7 @@ const CardContainer = styled.div`
   padding: 0 15px;
   border-radius: var(--radius);
   transition: all 0.3s;
+
   &::after {
     content: "";
     position: absolute;
@@ -243,17 +274,21 @@ const CardContainer = styled.div`
     border: 3px solid var(--secondary);
     z-index: -1;
   }
+
   > div {
     overflow: visible;
   }
+
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 24px;
   }
+
   .swiper {
     &-wrapper {
       z-index: 23;
       width: 400%;
     }
+
     &-slide {
       height: auto;
       display: flex;
@@ -262,11 +297,13 @@ const CardContainer = styled.div`
       @media screen and (min-width: ${breakpoints.lg}) {
         flex-direction: row;
       }
+
       &-active {
         img {
           opacity: 1;
           transition-delay: 0.3s;
         }
+
         .project-card-content > * {
           opacity: 1;
           transform: none;
@@ -274,6 +311,7 @@ const CardContainer = styled.div`
       }
     }
   }
+
   ${() => generateFade(8)}
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
@@ -282,6 +320,7 @@ const CardContainer = styled.div`
     left: 0;
     width: 100%;
   }
+
   .swiper-pagination {
     position: absolute;
     transform: translateX(-50%);
@@ -300,6 +339,7 @@ const CardContainer = styled.div`
       top: 50%;
       bottom: auto !important;
     }
+
     &-bullet {
       margin: 0 5px;
       width: 11px;
@@ -309,6 +349,7 @@ const CardContainer = styled.div`
       transition: all 0.3s;
       border-radius: 0;
       opacity: 0.7;
+
       &-active {
         background: var(--accent);
         height: 11px;
@@ -318,6 +359,7 @@ const CardContainer = styled.div`
           height: 30px;
         }
       }
+
       @media screen and (min-width: ${breakpoints.lg}) {
         margin: 8px 0 !important;
       }
@@ -330,4 +372,9 @@ const Divider = styled.div`
     background: var(--primary);
     height: 1px;
   }
+`
+
+const StyledAniLink = styled(AniLink)`
+  text-decoration: none;
+  color: unset;
 `

@@ -1,9 +1,12 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { breakpoints } from "../../utils"
+import { useTranslation } from "react-i18next"
 
-export default function SectionWatermark({ title }) {
-  return <Watermark>{title}</Watermark>
+export default function SectionWatermark({ titleKey }) {
+  const { t } = useTranslation()
+
+  return <Watermark>{t(titleKey)}</Watermark>
 }
 
 const Watermark = styled.h3`
@@ -15,6 +18,7 @@ const Watermark = styled.h3`
   font-family: var(--font-primary);
   font-weight: 900;
   user-select: none;
+
   @media (min-width: ${breakpoints.lg}) {
     position: absolute;
     display: block;

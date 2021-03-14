@@ -5,40 +5,37 @@ import styled from "@emotion/styled"
 // import AniLink from "gatsby-plugin-transition-link/AniLink"
 import pageOptionsContext from "../../context/pageOptionsContext"
 import { useContext } from "react"
+import { useTranslation } from "react-i18next"
+import translateKeys from "../../constants/translate-keys"
 
 export default function RightNav() {
   const { pageOptions } = useContext(pageOptionsContext)
+  const { t } = useTranslation()
 
   return (
     <>
       <NavBarContainer>
         <NavBar>
-          <NavLink fade title="Home" activeClassName="active" to="/">
-            Home
+          <NavLink fade activeClassName="active" to="/">
+            {t(translateKeys.HOME)}
           </NavLink>
-          <NavLink
-            fade
-            title="Projects"
-            activeClassName="active"
-            to="/projects"
-          >
-            Projects
+          <NavLink fade activeClassName="active" to="/projects">
+            {t(translateKeys.PROJECTS)}
           </NavLink>
-          <NavLink fade title="About" activeClassName="active" to="/about">
-            About
+          <NavLink fade activeClassName="active" to="/about">
+            {t(translateKeys.ABOUT)}
           </NavLink>
           <ResumeLink
-            title="Resume"
             target="_blank"
             rel="noopener noreferrer"
             href="./resume-santiago-vallejo.pdf"
           >
-            Resume
+            {t(translateKeys.RESUME)}
           </ResumeLink>
         </NavBar>
         <FooterBox darkMode={pageOptions.darkMode}>
           <div>
-            <p>Designed by</p>
+            <p>{t(translateKeys.DESIGNED_BY)}</p>
             <p>Santiago Vallejo</p>
           </div>
         </FooterBox>
@@ -49,6 +46,7 @@ export default function RightNav() {
 
 const NavBarContainer = styled.div`
   display: none;
+
   @media (min-width: ${breakpoints.lg}) {
     display: block;
     position: fixed;
@@ -61,6 +59,7 @@ const NavBarContainer = styled.div`
     transform: rotate(7deg);
     transition: width 0.15s ease-out;
     z-index: 30;
+
     ::after {
       content: "";
       z-index: 2;
@@ -72,6 +71,7 @@ const NavBarContainer = styled.div`
       transform: translate(99%);
       background: var(--secondary);
     }
+
     :hover {
       width: calc(5vh + 100px);
       p {
@@ -91,14 +91,16 @@ const NavBar = styled.nav`
 `
 
 const MenuLink = `
-color: var(--primary);
+  color: var(--primary);
   font-size: calc(4vh + 0.5rem);
-  margin: 1.5rem calc(1vw);
+  margin: 1.5rem 1vw;
   font-weight: 300;
   display: block;
   text-align: center;
   user-select: none;
   text-decoration: none;
+  white-space: nowrap;
+
   &.active,
   &:hover {
     font-weight: 500;
@@ -106,8 +108,8 @@ color: var(--primary);
 
   ::before {
     display: block;
-    content: attr(title);
     font-weight: 500;
+    white-space: nowrap;
     height: 0;
     overflow: hidden;
     visibility: hidden;
@@ -131,20 +133,23 @@ const FooterBox = styled.div`
   height: 200px;
   width: 100%;
   transform: translate(0%, 100%) rotate(-30deg);
-  background: ${prp => (prp.darkMode ? "var(--primary)" : "var(--accent)")};
+  background: ${props => (props.darkMode ? "var(--primary)" : "var(--accent)")};
   z-index: 20;
   transform-origin: left top;
+
   ::after {
     content: "";
     right: 0;
     top: 0;
-    background: ${prp => (prp.darkMode ? "var(--primary)" : "var(--accent)")};
+    background: ${props =>
+      props.darkMode ? "var(--primary)" : "var(--accent)"};
     height: 100%;
     width: 300px;
     position: absolute;
     transform: translate(99%, 0%);
     z-index: -100;
   }
+
   p {
     position: absolute;
     transform: translate(-50%, 0);
@@ -154,12 +159,14 @@ const FooterBox = styled.div`
     transition: left 0.15s ease-out;
     user-select: none;
   }
+
   p:nth-of-type(1) {
     top: calc(-0.5vw + -0.85rem);
     color: var(--primary);
   }
+
   p:nth-of-type(2) {
     top: 0;
-    color: ${prp => (prp.darkMode ? "var(--secondary)" : "var(--primary)")};
+    color: ${props => (props.darkMode ? "var(--secondary)" : "var(--primary)")};
   }
 `

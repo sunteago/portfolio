@@ -3,20 +3,45 @@ import pageOptionsContext from "../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import { TriangleIcon } from "./common"
 import { breakpoints } from "../utils"
+import { useTranslation } from "react-i18next"
+import { locales } from "../constants/locales"
+import translateKeys from "../constants/translate-keys"
 
 export default function Presentation() {
   const { pageOptions } = useContext(pageOptionsContext)
+  const { t, i18n } = useTranslation()
+
+  const getProfession = () => {
+    switch (i18n.language) {
+      case locales.ES:
+        return (
+          <>
+            desarrollador fronten
+            <span className="triangle">
+              d<TriangleIcon position="A" />
+            </span>
+          </>
+        )
+      case locales.EN:
+      default:
+        return (
+          <>
+            frontend develope
+            <span className="triangle">
+              r<TriangleIcon position="A" />
+            </span>
+          </>
+        )
+    }
+  }
 
   return (
     <>
       <Greet color={pageOptions.darkMode ? "accent-light" : "accent"}>
-        Hi, I am <span className="accent">Santiago Vallejo</span>, frontend
-        develope
-        <span className="triangle">
-          r<TriangleIcon position="A" />
-        </span>
+        {t(translateKeys.HI_I_AM)}{" "}
+        <span className="accent">Santiago Vallejo</span>, {getProfession()}{" "}
       </Greet>
-      <ShortBio>Specialized in React and React-Native</ShortBio>
+      <ShortBio>{t(translateKeys.SHORT_BIO)}</ShortBio>
     </>
   )
 }
@@ -26,7 +51,7 @@ const Greet = styled.h1`
   font-weight: 300;
   position: relative;
   .accent {
-    color: var(--${prp => prp.color});
+    color: var(--${props => props.color});
   }
   .triangle {
     position: relative;

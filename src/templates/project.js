@@ -7,6 +7,8 @@ import IconLink from "../components/common/IconLink"
 import { Title, Button, GithubIcon, DemoIcon } from "../components/common"
 import Image from "gatsby-image"
 import { breakpoints } from "../utils"
+import { useTranslation } from "react-i18next"
+import translateKeys from "../constants/translate-keys"
 
 export const query = graphql`
   query($slug: String!) {
@@ -41,6 +43,7 @@ export const query = graphql`
 
 export default function ProjectTemplate({ data: { mdx: project } }) {
   const { title, subtitle, tools, image, demo, github } = project.frontmatter
+  const { t } = useTranslation()
 
   return (
     <>
@@ -87,11 +90,11 @@ export default function ProjectTemplate({ data: { mdx: project } }) {
         <ProjectLinks>
           <IconLink hover href={github}>
             <GithubIcon width={24} />
-            <span>Source code</span>
+            <span>{t(translateKeys.SOURCE_CODE)}</span>
           </IconLink>
           <IconLink hover href={demo}>
             <DemoIcon width={24} />
-            <span>Demo</span>
+            <span>{t(translateKeys.DEMO)}</span>
           </IconLink>
         </ProjectLinks>
       </ProjectDetails>

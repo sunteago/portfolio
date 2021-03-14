@@ -8,14 +8,15 @@ const createLinkCmp = linkCmp => props => {
     a: <a {...props}>{props.children}</a>,
     button: <button {...props}>{props.children}</button>,
   }
+
   return element[linkCmp]
 }
 
 export default function Button(props) {
-  const LinkCmp = createLinkCmp(props.component || "Link")
+  const LinkComponent = createLinkCmp(props.component || "Link")
 
   return (
-    <LinkCmp
+    <LinkComponent
       {...props}
       css={css`
         display: flex;
@@ -55,6 +56,6 @@ export default function Button(props) {
       `}
     >
       {props.children}
-    </LinkCmp>
+    </LinkComponent>
   )
 }

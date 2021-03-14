@@ -1,0 +1,22 @@
+//ES6 not supported by gatsby
+
+const translateKeys = {
+  HI_I_AM: "hi-i-am",
+  SHORT_BIO: "short-bio",
+  ABOUT_ME: "about-me",
+  ABOUT_DESCRIPTION: "about-description",
+  HOME: "home",
+  PROJECTS: "projects",
+  ABOUT: "about",
+  RESUME: "resume",
+  DESIGNED_BY: "designed-by",
+  SOURCE_CODE: "source-code",
+  DEMO: "demo",
+  SEE_ALL: "see-all",
+  SKILLS: "skills",
+  CONTACT: "contact",
+  DETAILS: "details",
+  CODE: "code",
+}
+
+module.exports = translateKeys
