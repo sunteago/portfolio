@@ -10,8 +10,8 @@ import translateKeys from "../constants/translate-keys"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Home() {
-  const projects = useProjects()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const projects = useProjects(i18n.language)
 
   return (
     <>
@@ -163,8 +163,8 @@ const ProjectItemImage = styled(Image)`
   margin: 1rem auto 0 auto;
   @media (min-width: ${breakpoints.md}) {
     height: 150px;
-  width: 100%;
-  max-width: 250px;
+    width: 100%;
+    max-width: 250px;
 
     ${props =>
       props.side === "left"

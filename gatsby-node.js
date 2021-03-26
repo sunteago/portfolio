@@ -34,7 +34,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
 }
 
-const setPageInfo = path => {
+const getPageMetadataFromPath = path => {
   switch (path) {
     case "/about/":
       return { layout: layouts.ABOUT, title: translateKeys.ABOUT }
@@ -52,7 +52,7 @@ const setPageInfo = path => {
 exports.onCreatePage = ({ page, actions, reporter }) => {
   const { createPage, deletePage } = actions
 
-  const pageInfo = setPageInfo(page.path)
+  const pageInfo = getPageMetadataFromPath(page.path)
 
   deletePage(page)
   createPage({

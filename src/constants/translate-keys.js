@@ -17,6 +17,10 @@ const translateKeys = {
   CONTACT: "contact",
   DETAILS: "details",
   CODE: "code",
+  NOT_FOUND: "not-found",
+  ERROR_404: "error-404",
+  REDIRECTING_TO: "redirecting-to",
+  HERE: "here",
 }
 
 module.exports = translateKeys
