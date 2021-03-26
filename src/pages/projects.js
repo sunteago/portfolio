@@ -163,8 +163,8 @@ const ProjectItemImage = styled(Image)`
   margin: 1rem auto 0 auto;
   @media (min-width: ${breakpoints.md}) {
     height: 150px;
-  width: 100%;
-  max-width: 250px;
+    width: 100%;
+    max-width: 250px;
 
     ${props =>
       props.side === "left"

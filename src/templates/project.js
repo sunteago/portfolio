@@ -54,6 +54,7 @@ export default function ProjectTemplate(props) {
   )
 
   const { title, subtitle, tools, image, demo, github } = project.frontmatter
+  const { t } = useTranslation()
 
   useEffect(() => {
     const translatedProject = projects.find(
