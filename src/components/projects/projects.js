@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
 
 export default function Projects() {
-  const projects = useProjects()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const projects = useProjects(i18n.language)
 
   return (
     <>

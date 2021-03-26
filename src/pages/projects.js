@@ -10,8 +10,8 @@ import translateKeys from "../constants/translate-keys"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export default function Home() {
-  const projects = useProjects()
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const projects = useProjects(i18n.language)
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import { graphql } from "gatsby"
@@ -9,41 +9,61 @@ import Image from "gatsby-image"
 import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
+import { langs } from "../constants/langs"
 
 export const query = graphql`
   query($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        slug
-        title
-        subtitle
-        tools
-        github
-        demo
-        image {
-          sharp: childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
+    allMdx(filter: { frontmatter: { slug: { eq: $slug } } }) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          subtitle
+          lang
+          tools
+          github
+          demo
+          image {
+            sharp: childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          previewImages {
+            sharp: childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
             }
           }
         }
-        previewImages {
-          sharp: childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
+        excerpt
+        body
       }
-      excerpt
-      body
     }
   }
 `
 
-export default function ProjectTemplate({ data: { mdx: project } }) {
+export default function ProjectTemplate(props) {
+  const projects = props.data.allMdx.nodes
+  const { t, i18n } = useTranslation()
+
+  const [project, setProject] = useState(
+    projects.find(project => project.frontmatter.lang === langs.EN)
+  )
+
   const { title, subtitle, tools, image, demo, github } = project.frontmatter
-  const { t } = useTranslation()
+
+  useEffect(() => {
+    const translatedProject = projects.find(
+      project => project.frontmatter.lang === i18n.language
+    )
+
+    if (translatedProject) {
+      setProject(translatedProject)
+    }
+  }, [i18n.language])
 
   return (
     <>

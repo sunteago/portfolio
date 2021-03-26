@@ -25,5 +25,10 @@ export const es = {
     [translateKeys.DETAILS]: "Detalles",
     [translateKeys.DEMO]: "Demo",
     [translateKeys.CODE]: "Código",
+    [translateKeys.NOT_FOUND]: "Esta página no se encontró",
+    [translateKeys.ERROR_404]: "Error 404",
+    [translateKeys.REDIRECTING_TO]: `
+    Serás redirigido a la página principal. Si no sos redirigido, haz click `,
+    [translateKeys.HERE]: "aquí",
   },
 }

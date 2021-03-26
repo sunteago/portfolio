@@ -24,5 +24,10 @@ export const en = {
     [translateKeys.DETAILS]: "Details",
     [translateKeys.DEMO]: "Demo",
     [translateKeys.CODE]: "Code",
+    [translateKeys.NOT_FOUND]: "This page could not be found.",
+    [translateKeys.ERROR_404]: "404 Error",
+    [translateKeys.REDIRECTING_TO]: `
+    You will be redirected to home. If you are not redirected, please click `,
+    [translateKeys.HERE]: "here",
   },
 }

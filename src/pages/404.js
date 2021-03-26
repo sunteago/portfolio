@@ -5,6 +5,8 @@ import { breakpoints } from "../utils"
 import { Title } from "../components/common"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
+import { useTranslation } from "react-i18next"
+import translateKeys from "../constants/translate-keys"
 
 export default function NotFound404({ navigate }) {
   const { image } = useStaticQuery(graphql`
@@ -24,6 +26,8 @@ export default function NotFound404({ navigate }) {
     return () => clearTimeout(timer)
   }, [navigate])
 
+  const { t } = useTranslation()
+
   return (
     <>
       <NotFoundPageContainer>
@@ -35,12 +39,11 @@ export default function NotFound404({ navigate }) {
             }
           `}
         >
-          Error 404
+          {t(translateKeys.ERROR_404)}
         </Title>
-        <Paragraph>This page could not be found.</Paragraph>
+        <Paragraph>{t(translateKeys.NOT_FOUND)}</Paragraph>
         <Paragraph>
-          You will be redirected to home. If you are not redirected, please
-          click{" "}
+          {t(translateKeys.REDIRECTING_TO)}
           <Link
             css={css`
               color: var(--secondary);
@@ -49,7 +52,7 @@ export default function NotFound404({ navigate }) {
             `}
             to="/"
           >
-            here
+            {t(translateKeys.HERE)}
           </Link>
         </Paragraph>
       </NotFoundPageContainer>
