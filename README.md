@@ -4,4 +4,4 @@ Important notes: I am not a designer, so maybe the layout could be improved. Sai
 
 Thanks you for being here!
 
-The current branch is deployed to https://santiagovallejo.netlify.com
+The ```main``` branch is deployed to https://santiagovallejo.netlify.com
