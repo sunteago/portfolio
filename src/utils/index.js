@@ -1,3 +1,4 @@
+/* eslint-disable */
 import pageLayouts from "../constants/layouts"
 
 export const breakpoints = {

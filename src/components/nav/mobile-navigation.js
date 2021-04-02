@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { breakpoints } from "../../utils"
 import styled from "@emotion/styled"
 import pageOptionsContext from "../../context/pageOptionsContext"
@@ -10,6 +10,11 @@ export default function MobileNavigation() {
   const [toggled, setToggled] = useState(false)
   const { pageOptions } = useContext(pageOptionsContext)
   const { t } = useTranslation()
+
+  useEffect(() => {
+    //Disables scroll when toggling on mobile
+    document.body.style.overflow = toggled ? "hidden" : "visible"
+  }, [toggled])
 
   return (
     <>
