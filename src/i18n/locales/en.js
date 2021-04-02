@@ -29,5 +29,6 @@ export const en = {
     [translateKeys.REDIRECTING_TO]: `
     You will be redirected to home. If you are not redirected, please click `,
     [translateKeys.HERE]: "here",
+    [translateKeys.REACT_DEVELOPER]: "React developer",
   },
 }

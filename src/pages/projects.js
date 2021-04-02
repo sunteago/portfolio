@@ -8,6 +8,7 @@ import { clipAtChar, breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Helmet } from "react-helmet"
 
 export default function Home() {
   const { t, i18n } = useTranslation()
@@ -15,6 +16,9 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Portfolio - Santiago Vallejo</title>
+      </Helmet>
       <Title
         heading="h1"
         css={css`

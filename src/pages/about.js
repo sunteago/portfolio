@@ -8,6 +8,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
+import { Helmet } from "react-helmet"
 
 export default function About() {
   const { image } = useStaticQuery(graphql`
@@ -26,6 +27,9 @@ export default function About() {
 
   return (
     <>
+      <Helmet>
+        <title>{t(translateKeys.ABOUT_ME)} - Santiago Vallejo</title>
+      </Helmet>
       <Title heading="h1" className="aboutme" css={titleStyle}>
         {t(translateKeys.ABOUT_ME)}
       </Title>

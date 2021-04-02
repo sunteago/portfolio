@@ -21,6 +21,7 @@ const translateKeys = {
   ERROR_404: "error-404",
   REDIRECTING_TO: "redirecting-to",
   HERE: "here",
+  REACT_DEVELOPER: "react-dev",
 }
 
 module.exports = translateKeys

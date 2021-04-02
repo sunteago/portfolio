@@ -7,6 +7,7 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
+import { Helmet } from "react-helmet"
 
 export default function NotFound404({ navigate }) {
   const { image } = useStaticQuery(graphql`
@@ -30,6 +31,9 @@ export default function NotFound404({ navigate }) {
 
   return (
     <>
+      <Helmet>
+        <title>{t(translateKeys.NOT_FOUND)}</title>
+      </Helmet>
       <NotFoundPageContainer>
         <Title
           heading="h1"

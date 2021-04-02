@@ -5,10 +5,18 @@ import Projects from "../components/projects/projects"
 import Contact from "../components/contact"
 import Skills from "../components/skills"
 import Section from "../components/common/SectionContainer"
+import { Helmet } from "react-helmet"
+import { useTranslation } from "react-i18next"
+import translateKeys from "../constants/translate-keys"
 
 export default function Home() {
+  const { t } = useTranslation()
+
   return (
     <>
+      <Helmet>
+        <title>Santiago Vallejo - {t(translateKeys.REACT_DEVELOPER)}</title>
+      </Helmet>
       <Section gridArea="pres" extraStyles={extraStylesPresentation}>
         <Presentation />
       </Section>

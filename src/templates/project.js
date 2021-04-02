@@ -10,6 +10,7 @@ import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 import { langs } from "../constants/langs"
+import { Helmet } from "react-helmet"
 
 export const query = graphql`
   query($slug: String!) {
@@ -67,6 +68,9 @@ export default function ProjectTemplate(props) {
 
   return (
     <>
+      <Helmet>
+        <title>{title} - Santiago Vallejo</title>
+      </Helmet>
       <ProjectTitle>
         <Title
           heading="h1"
