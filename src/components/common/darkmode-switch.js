@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { DarkModeIcon } from "."
-import { navigatesFromMobile } from "../../utils"
+import { isMobile } from "react-device-detect"
 
 export default function DarkModeSwitch({ darkMode, setDarkMode }) {
   return (
     <DarkMode
       darkMode={darkMode}
       onClick={() => setDarkMode(prev => !prev)}
-      mobile={navigatesFromMobile()}
+      mobile={isMobile}
     >
       <DarkModeIcon />
     </DarkMode>

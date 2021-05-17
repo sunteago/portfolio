@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { navigatesFromMobile } from "../../utils"
+import { isMobile } from "react-device-detect"
 
 export default function LanguageSwitch({ language, setLanguage }) {
   return (
@@ -8,7 +8,7 @@ export default function LanguageSwitch({ language, setLanguage }) {
       <ToggleLanguageButton
         id="en"
         active={language === "en" && "true"}
-        mobile={navigatesFromMobile()}
+        mobile={isMobile}
         onClick={() => setLanguage("en")}
       >
         en
@@ -16,7 +16,7 @@ export default function LanguageSwitch({ language, setLanguage }) {
       <ToggleLanguageButton
         id="es"
         active={language === "es" && "true"}
-        mobile={navigatesFromMobile()}
+        mobile={isMobile}
         onClick={() => setLanguage("es")}
       >
         es

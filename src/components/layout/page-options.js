@@ -6,7 +6,7 @@ import pageOptionsContext from "../../context/pageOptionsContext"
 import { useTranslation } from "react-i18next"
 import DarkModeSwitch from "../common/darkmode-switch"
 import LanguageSwitch from "../common/language-switch"
-import { navigatesFromMobile } from "../../utils"
+import { isMobile } from "react-device-detect"
 
 export default function PageOptions() {
   const { setPageOptions } = useContext(pageOptionsContext)
@@ -36,7 +36,7 @@ export default function PageOptions() {
   }, [i18n.language, darkMode, setPageOptions])
 
   return (
-    <PageOptionsContainer id="page-options" mobile={navigatesFromMobile()}>
+    <PageOptionsContainer id="page-options" mobile={isMobile}>
       <LanguageSwitch
         language={i18n.language}
         setLanguage={lang => i18n.changeLanguage(lang)}
