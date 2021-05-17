@@ -6,12 +6,13 @@ import pageOptionsContext from "../../context/pageOptionsContext"
 import { useTranslation } from "react-i18next"
 import DarkModeSwitch from "../common/darkmode-switch"
 import LanguageSwitch from "../common/language-switch"
-import { isMobile } from "react-device-detect"
+import useDeviceDetect from "../../hooks/use-device-detect"
 
 export default function PageOptions() {
   const { setPageOptions } = useContext(pageOptionsContext)
   const [darkMode, setDarkMode] = React.useState(true)
   const { i18n } = useTranslation()
+  const { isMobile } = useDeviceDetect()
 
   useEffect(() => {
     const savedPageOptions = localStorage.getItem(localStorageOpts)

@@ -1,9 +1,11 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { DarkModeIcon } from "."
-import { isMobile } from "react-device-detect"
+import useDeviceDetect from "../../hooks/use-device-detect"
 
 export default function DarkModeSwitch({ darkMode, setDarkMode }) {
+  const { isMobile } = useDeviceDetect()
+
   return (
     <DarkMode
       darkMode={darkMode}
