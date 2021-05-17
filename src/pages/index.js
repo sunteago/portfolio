@@ -8,9 +8,22 @@ import Section from "../components/common/SectionContainer"
 import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
+import { isMobile, isDesktop, isTablet, browserName } from "react-device-detect"
 
 export default function Home() {
   const { t } = useTranslation()
+
+  if (isMobile) {
+    return <div>MOBILE</div>
+  }
+
+  if (isDesktop) {
+    return <div>DESKTOP</div>
+  }
+
+  if (isTablet) {
+    return <div>TABLET</div>
+  }
 
   return (
     <>
