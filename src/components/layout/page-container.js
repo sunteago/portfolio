@@ -8,6 +8,37 @@ import SectionWatermark from "../common/section-watermark"
 import Brand from "./brand"
 import SourceCode from "./source-code"
 
+export default function PageContainer({ children, pageContext }) {
+  let { layout, sectionTitle } = pageContext
+
+  if (!layout) {
+    layout = pageLayouts.MAIN
+  }
+
+  const getSinglePageSections = () => (
+    <>
+      <Brand />
+      <SectionWatermark titleKey={sectionTitle} />
+    </>
+  )
+
+  const getAdditionalSections = () => (
+    <>
+      {isNotInMainPage(layout) && getSinglePageSections()}
+      <SocialNetworks />
+      <PageOptions />
+      <SourceCode />
+    </>
+  )
+
+  return (
+    <PageBoxContainer layout={layout}>
+      {getAdditionalSections()}
+      {children}
+    </PageBoxContainer>
+  )
+}
+
 const PageBoxContainer = styled.main`
   flex-grow: 1;
   .tl-edges {
@@ -55,38 +86,16 @@ const PageBoxContainer = styled.main`
         ". . . . . . . . . . . rnav";
     }
   }
+
   @media (min-height: 768px) {
     padding-top: 1rem;
   }
-`
 
-export default function PageContainer({ children, pageContext }) {
-  let { layout, sectionTitle } = pageContext
-
-  if (!layout) {
-    layout = pageLayouts.MAIN
+  #page-options {
+    display: none;
+    @media (min-width: ${breakpoints.lg}) {
+      font-size: 1.25rem;
+      display: flex;
+    }
   }
-
-  const getSinglePageSections = () => (
-    <>
-      <Brand />
-      <SectionWatermark titleKey={sectionTitle} />
-    </>
-  )
-
-  const getAdditionalSections = () => (
-    <>
-      {isNotInMainPage(layout) && getSinglePageSections()}
-      <SocialNetworks />
-      <PageOptions />
-      <SourceCode />
-    </>
-  )
-
-  return (
-    <PageBoxContainer layout={layout}>
-      {getAdditionalSections()}
-      {children}
-    </PageBoxContainer>
-  )
-}
+`

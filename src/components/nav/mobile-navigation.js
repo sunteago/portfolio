@@ -5,6 +5,7 @@ import pageOptionsContext from "../../context/pageOptionsContext"
 import { useContext } from "react"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
+import PageOptions from "../layout/page-options"
 
 export default function MobileNavigation() {
   const [toggled, setToggled] = useState(false)
@@ -19,15 +20,12 @@ export default function MobileNavigation() {
   return (
     <>
       <MobileToggle
-        darkMode={pageOptions.darkMode}
         toggled={toggled}
-        onClick={() => setToggled(!toggled)}
-      >
-        <div>
-          <div></div>
-        </div>
-      </MobileToggle>
+        setToggled={setToggled}
+        pageOptions={pageOptions}
+      />
       <MobileNavMenu toggled={toggled}>
+        <PageOptions />
         <ul>
           <li>{t(translateKeys.PROJECTS)}</li>
           <li>{t(translateKeys.HOME)}</li>
@@ -40,7 +38,19 @@ export default function MobileNavigation() {
   )
 }
 
-const MobileToggle = styled.div`
+const MobileToggle = ({ setToggled, toggled, pageOptions }) => (
+  <MobileToggleContainer
+    darkMode={pageOptions.darkMode}
+    toggled={toggled}
+    onClick={() => setToggled(!toggled)}
+  >
+    <div>
+      <div />
+    </div>
+  </MobileToggleContainer>
+)
+
+const MobileToggleContainer = styled.div`
   cursor: pointer;
   position: fixed;
   height: 20vh;
@@ -133,8 +143,17 @@ const MobileToggle = styled.div`
     display: none;
   }
 
+  #page-options {
+    display: none;
+    //FIX
+    @media (max-width: ${breakpoints.md}) {
+      font-size: 1.25rem;
+      display: flex;
+    }
+  }
   
 `
+
 const MobileNavMenu = styled.nav`
   position: fixed;
   top: 0;
