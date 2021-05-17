@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { isMobile } from "react-device-detect"
+import useDeviceDetect from "../../hooks/use-device-detect"
 
 export default function LanguageSwitch({ language, setLanguage }) {
+  const { isMobile } = useDeviceDetect()
+
   return (
     <div>
       <ToggleLanguageButton

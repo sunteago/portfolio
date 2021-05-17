@@ -4,10 +4,11 @@ import particlesConfig from "../config/particles.json"
 import { useContext } from "react"
 import pageOptionsContext from "../context/pageOptionsContext"
 import ReactParticles from "react-particles-js"
-import { isMobile } from "react-device-detect"
+import useDeviceDetect from "../hooks/use-device-detect"
 
 const Particles = () => {
   const { pageOptions } = useContext(pageOptionsContext)
+  const { isMobile } = useDeviceDetect()
 
   let BackgroundComponent = () => React.createElement("div")
 
