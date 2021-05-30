@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import PageOptionsContext from "../../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import Image from "gatsby-image"
@@ -21,12 +21,18 @@ import { Link } from "gatsby"
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
 export default function ProjectCard({ projects }) {
+  const [mounted, setMounted] = useState(false)
   const { pageOptions } = useContext(PageOptionsContext)
   const { t } = useTranslation()
 
-  return (
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const getCard = () => (
     <CardContainer>
       <Swiper
+        on
         effect="fade"
         autoplay
         spaceBetween={30}
@@ -79,6 +85,12 @@ export default function ProjectCard({ projects }) {
       </Swiper>
     </CardContainer>
   )
+
+  if (!mounted) {
+    return null
+  }
+
+  return getCard()
 }
 
 const generateFade = n => {
