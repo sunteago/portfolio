@@ -57,7 +57,7 @@ export default function Contact({ showTitle = true, fullEmail }) {
           Github
         </ContactOptionItem>
 
-        <ContactOptionItem Icon={GithubIcon} href={linkedinLink}>
+        <ContactOptionItem Icon={LinkedinIcon} href={linkedinLink}>
           LinkedIn
         </ContactOptionItem>
       </ContactOptionList>

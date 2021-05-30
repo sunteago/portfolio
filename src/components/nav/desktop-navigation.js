@@ -6,10 +6,16 @@ import pageOptionsContext from "../../context/pageOptionsContext"
 import { useContext } from "react"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
+import { locales } from "../../constants/locales"
 
 export default function RightNav() {
   const { pageOptions } = useContext(pageOptionsContext)
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+
+  let resumeUrl = "./resume-santiago-vallejo.en.pdf"
+  if (i18n.language === locales.ES) {
+    resumeUrl = "./resume-santiago-vallejo.es.pdf"
+  }
 
   return (
     <>
@@ -24,13 +30,13 @@ export default function RightNav() {
           <NavLink fade activeClassName="active" to="/about">
             {t(translateKeys.ABOUT)}
           </NavLink>
-          <ResumeLink
+          <ResumeNavLink
             target="_blank"
             rel="noopener noreferrer"
-            href="./resume-santiago-vallejo.pdf"
+            href={resumeUrl}
           >
             {t(translateKeys.RESUME)}
-          </ResumeLink>
+          </ResumeNavLink>
         </NavBar>
         <FooterBox darkMode={pageOptions.darkMode}>
           <div>
@@ -119,7 +125,7 @@ const NavLink = styled(Link)`
   ${MenuLink}
 `
 
-const ResumeLink = styled.a`
+const ResumeNavLink = styled.a`
   ${MenuLink}
 `
 
