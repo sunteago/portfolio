@@ -90,11 +90,11 @@ const globalStyles = pageOptions => css`
     font-family: var(--font-primary);
     color: var(--secondary);
     background: var(--primary);
-    overflow: hidden !important;
 
-    @media (min-width: ${breakpoints.lg}) {
+    @media (min-width: ${breakpoints.md}) {
       width: 100vw;
       height: 100vh;
+      overflow: hidden !important;
     }
   }
 `
