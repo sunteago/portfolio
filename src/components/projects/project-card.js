@@ -20,26 +20,39 @@ import { Link } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
+const CARD_HEIGHT = "250px"
+
 export default function ProjectCard({ projects }) {
   const [mounted, setMounted] = useState(false)
   const { pageOptions } = useContext(PageOptionsContext)
   const { t } = useTranslation()
 
+  /**
+   * Gatsby image optimization makes swiper show their slide images
+   * before reaching their respective slide pages on first render
+   * With this simple logic we avoid that visual blink
+   */
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const getCard = () => (
-    <CardContainer>
+  const getCardContent = () => {
+    if (!mounted) {
+      return (
+        <CardContainer>
+          <div style={{ height: CARD_HEIGHT, flex: 1 }} />
+        </CardContainer>
+      )
+    }
+
+    return (
       <Swiper
         on
         effect="fade"
         autoplay
         spaceBetween={30}
         loop={true}
-        mousewheel={{
-          invert: false,
-        }}
+        mousewheel={{ invert: false }}
         pagination={{ clickable: true }}
       >
         {projects.map(project => (
@@ -83,14 +96,10 @@ export default function ProjectCard({ projects }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </CardContainer>
-  )
-
-  if (!mounted) {
-    return null
+    )
   }
 
-  return getCard()
+  return <CardContainer>{getCardContent()}</CardContainer>
 }
 
 const generateFade = n => {
@@ -123,7 +132,7 @@ const ProjectImage = styled(Image)`
   }
 
   @media screen and (min-width: ${breakpoints.xl}) {
-    width: 250px;
+    width: ${CARD_HEIGHT};
     height: 250px;
   }
 
@@ -323,6 +332,7 @@ const CardContainer = styled.div`
   }
 
   ${() => generateFade(8)}
+
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
