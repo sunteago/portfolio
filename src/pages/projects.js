@@ -199,9 +199,9 @@ const ProjectItemImage = styled(Image)`
 
       if (side === "right") {
         return `
-        margin-left: 2rem; order: 1;
-        clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0% 100%);
-        margin-left: 2rem;
+          margin-left: 2rem; order: 1;
+          clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0% 100%);
+          margin-left: 2rem;
         `
       }
     }}

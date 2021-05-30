@@ -5,7 +5,6 @@ import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
 import IconLink from "../common/IconLink"
-// import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
   Pagination,
@@ -17,7 +16,7 @@ import "swiper/swiper-bundle.min.css"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
 import { css } from "@emotion/core"
-import { Link as AniLink } from "gatsby"
+import { Link } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
@@ -39,7 +38,7 @@ export default function ProjectCard({ projects }) {
       >
         {projects.map(project => (
           <SwiperSlide key={project.slug}>
-            <AniLink
+            <Link
               fade
               to={`/project/${project.slug}`}
               css={css`
@@ -52,7 +51,7 @@ export default function ProjectCard({ projects }) {
                 fluid={project.image.sharp.fluid}
                 alt={project.title}
               />
-            </AniLink>
+            </Link>
             <CardContent className="project-card-content">
               <div>
                 <h2>{project.title}</h2>
@@ -61,10 +60,10 @@ export default function ProjectCard({ projects }) {
                 <p>{project.description}</p>
               </div>
               <Bar darkMode={pageOptions.darkMode}>
-                <AniLink fade to={`/project/${project.slug}`}>
+                <Link fade to={`/project/${project.slug}`}>
                   <InfoIcon width={28} />
                   <span>{t(translateKeys.DETAILS)}</span>
-                </AniLink>
+                </Link>
                 <IconLink href={project.github}>
                   <GithubIcon width={24} />
                   <span>{t(translateKeys.CODE)}</span>
@@ -374,7 +373,7 @@ const Divider = styled.div`
   }
 `
 
-const StyledAniLink = styled(AniLink)`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: unset;
 `
