@@ -1,12 +1,10 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import PageOptionsContext from "../../context/pageOptionsContext"
 import styled from "@emotion/styled"
 import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
 import IconLink from "../common/IconLink"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
   Pagination,
@@ -18,28 +16,48 @@ import "swiper/swiper-bundle.min.css"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
 import { css } from "@emotion/core"
+import { Link } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 
+const CARD_HEIGHT = "250px"
+
 export default function ProjectCard({ projects }) {
+  const [mounted, setMounted] = useState(false)
   const { pageOptions } = useContext(PageOptionsContext)
   const { t } = useTranslation()
 
-  return (
-    <CardContainer>
+  /**
+   * Gatsby image optimization makes swiper show their slide images
+   * before reaching their respective slide pages on first render
+   * With this simple logic we avoid that visual blink
+   */
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const getCardContent = () => {
+    if (!mounted) {
+      return (
+        <CardContainer>
+          <div style={{ height: CARD_HEIGHT, flex: 1 }} />
+        </CardContainer>
+      )
+    }
+
+    return (
       <Swiper
+        on
         effect="fade"
         autoplay
         spaceBetween={30}
         loop={true}
-        mousewheel={{
-          invert: false,
-        }}
+        mousewheel={{ invert: false }}
         pagination={{ clickable: true }}
       >
         {projects.map(project => (
           <SwiperSlide key={project.slug}>
-            <AniLink
+            <Link
               fade
               to={`/project/${project.slug}`}
               css={css`
@@ -52,7 +70,7 @@ export default function ProjectCard({ projects }) {
                 fluid={project.image.sharp.fluid}
                 alt={project.title}
               />
-            </AniLink>
+            </Link>
             <CardContent className="project-card-content">
               <div>
                 <h2>{project.title}</h2>
@@ -61,10 +79,10 @@ export default function ProjectCard({ projects }) {
                 <p>{project.description}</p>
               </div>
               <Bar darkMode={pageOptions.darkMode}>
-                <AniLink fade to={`/project/${project.slug}`}>
+                <Link fade to={`/project/${project.slug}`}>
                   <InfoIcon width={28} />
                   <span>{t(translateKeys.DETAILS)}</span>
-                </AniLink>
+                </Link>
                 <IconLink href={project.github}>
                   <GithubIcon width={24} />
                   <span>{t(translateKeys.CODE)}</span>
@@ -78,8 +96,10 @@ export default function ProjectCard({ projects }) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </CardContainer>
-  )
+    )
+  }
+
+  return <CardContainer>{getCardContent()}</CardContainer>
 }
 
 const generateFade = n => {
@@ -112,7 +132,7 @@ const ProjectImage = styled(Image)`
   }
 
   @media screen and (min-width: ${breakpoints.xl}) {
-    width: 250px;
+    width: ${CARD_HEIGHT};
     height: 250px;
   }
 
@@ -286,7 +306,6 @@ const CardContainer = styled.div`
   .swiper {
     &-wrapper {
       z-index: 23;
-      width: 400%;
     }
 
     &-slide {
@@ -313,6 +332,7 @@ const CardContainer = styled.div`
   }
 
   ${() => generateFade(8)}
+
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
@@ -374,7 +394,7 @@ const Divider = styled.div`
   }
 `
 
-const StyledAniLink = styled(AniLink)`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: unset;
 `

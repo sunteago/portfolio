@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { Title } from "../components/common"
@@ -7,88 +7,62 @@ import Image from "gatsby-image"
 import { clipAtChar, breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 import { Helmet } from "react-helmet"
+import Layout from "../components/layout"
 
-export default function Home() {
+export default function ProjectListPage() {
   const { t, i18n } = useTranslation()
-  const projects = useProjects(i18n.language)
+  const projectList = useProjects(i18n.language)
 
   return (
-    <>
+    <Fragment>
       <Helmet>
         <title>Portfolio - Santiago Vallejo</title>
       </Helmet>
-      <Title
-        heading="h1"
-        css={css`
-          margin-top: 5rem;
-          margin-bottom: 0;
-          grid-area: 2 / 1 / 3/ 3;
-          @media (min-width: ${breakpoints.md}) {
-            margin: 0;
-          }
-          @media (min-width: ${breakpoints.lg}) {
-            grid-area: 2 / 3 / 4 / 10;
-          }
-          h1 {
-            font-family: var(--font-secondary);
-            font-size: calc(3rem + 1vw);
-            font-weight: 300;
-            width: 100%;
-          }
-        `}
-      >
-        {t(translateKeys.PROJECTS)}
-      </Title>
+
+      <ProjectListPageTitle />
+
       <ProjectList>
-        {projects.map((project, index) => {
-          const oddNum = index % 2 !== 0
-
-          return (
-            <React.Fragment key={index}>
-              <ProjectItem fade to={`/project/${project.slug}`}>
-                <ProjectItemTitle title={project.title} />
-                <ProjectItemImage
-                  side={oddNum ? "left" : "right"}
-                  fluid={project.image.sharp.fluid}
-                />
-
-                <ProjectItemDetails side={oddNum ? "right" : "left"}>
-                  <ProjectItemTitle
-                    title={project.title}
-                    side={oddNum ? "right" : "left"}
-                  />
-                  <p>{project.subtitle}</p>
-                  <p>{clipAtChar(project.excerpt)}</p>
-                </ProjectItemDetails>
-              </ProjectItem>
-              <Divider />
-            </React.Fragment>
-          )
-        })}
+        {projectList.map((project, index) => (
+          <ProjectItem project={project} index={index} />
+        ))}
       </ProjectList>
-    </>
+    </Fragment>
   )
 }
 
-const ProjectItemTitle = ({ title, side }) => (
-  <Title
-    className="project-title"
-    css={css`
-      text-align: ${side};
-      h2 {
-        font-family: var(--font-primary);
-        font-weight: 300;
-        font-size: 2rem;
-        ${side === "right" ? "margin-left: auto;" : "margin-right: auto;"}
-      }
-    `}
-    triangle={false}
-  >
-    {title}
-  </Title>
-)
+ProjectListPage.Layout = Layout
+
+const ProjectListPageTitle = () => {
+  const { t } = useTranslation()
+
+  return (
+    <Title
+      heading="h1"
+      triangle={false}
+      css={css`
+        margin-top: 5rem;
+        margin-bottom: 0;
+        grid-area: 2 / 1 / 3/ 3;
+        @media (min-width: ${breakpoints.md}) {
+          margin: 0;
+        }
+        @media (min-width: ${breakpoints.lg}) {
+          grid-area: 2 / 3 / 4 / 10;
+        }
+        h1 {
+          font-family: var(--font-secondary);
+          font-size: calc(3rem + 1vw);
+          font-weight: 300;
+          width: 100%;
+        }
+      `}
+    >
+      {t(translateKeys.PROJECTS)}
+    </Title>
+  )
+}
 
 const ProjectList = styled.div`
   grid-area: 3 / 1 /4 / 3;
@@ -116,7 +90,50 @@ const ProjectList = styled.div`
   }
 `
 
-const ProjectItem = styled(AniLink)`
+const ProjectItem = ({ project, index }) => {
+  const alignedLeft = index % 2 !== 0
+
+  return (
+    <>
+      <ProjectItemLink fade to={`/project/${project.slug}`}>
+        <ProjectItemImage
+          side={alignedLeft ? "left" : "right"}
+          fluid={project.image.sharp.fluid}
+        />
+
+        <ProjectItemDetails side={alignedLeft ? "right" : "left"}>
+          <ProjectItemTitle
+            title={project.title}
+            side={alignedLeft ? "right" : "left"}
+          />
+          <p>{project.subtitle}</p>
+          <p>{clipAtChar(project.excerpt)}</p>
+        </ProjectItemDetails>
+      </ProjectItemLink>
+      <Divider />
+    </>
+  )
+}
+
+const ProjectItemTitle = ({ title, side }) => (
+  <Title
+    className="project-title"
+    css={css`
+      text-align: ${side};
+      h2 {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 2rem;
+        ${side === "right" ? "margin-left: auto;" : "margin-right: auto;"}
+      }
+    `}
+    triangle={false}
+  >
+    {title}
+  </Title>
+)
+
+const ProjectItemLink = styled(Link)`
   display: flex;
   color: var(--secondary);
   text-decoration: none;
@@ -165,29 +182,29 @@ const ProjectItemDetails = styled.div`
 const ProjectItemImage = styled(Image)`
   width: 90%;
   margin: 1rem auto 0 auto;
+
   @media (min-width: ${breakpoints.md}) {
     height: 150px;
     width: 100%;
     max-width: 250px;
 
-    ${props =>
-      props.side === "left"
-        ? `margin-right: 2rem; order: -1;`
-        : `margin-left: 2rem; order: 1;`}
+    ${({ side }) => {
+      if (side === "left") {
+        return `
+          margin-right: 2rem; order: -1;
+          clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+          margin-right: 2rem;
+        `
+      }
 
-    ${props =>
-      props.side === "left" &&
-      `
-      clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
-      margin-right: 2rem;
-    `}
-
-    ${props =>
-      props.side === "right" &&
-      `
-      clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0% 100%);
-      margin-left: 2rem;
-    `};
+      if (side === "right") {
+        return `
+          margin-left: 2rem; order: 1;
+          clip-path: polygon(15% 0%, 100% 0, 100% 100%, 0% 100%);
+          margin-left: 2rem;
+        `
+      }
+    }}
   }
 `
 const Divider = styled.hr`

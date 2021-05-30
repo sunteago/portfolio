@@ -32,7 +32,7 @@ export const emailobj = {
   tld: "com",
 }
 
-export const generateMailto = e => {
+export const generateMailTo = e => {
   window.location.href =
     "mailto:" + emailobj.name + "@" + emailobj.domain + "." + emailobj.tld
   e.preventDefault()

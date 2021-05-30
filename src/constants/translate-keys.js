@@ -22,6 +22,8 @@ const translateKeys = {
   REDIRECTING_TO: "redirecting-to",
   HERE: "here",
   REACT_DEVELOPER: "react-dev",
+  DESCRIPTION: "description",
+  GO_HOME: "go-home",
 }
 
 module.exports = translateKeys

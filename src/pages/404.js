@@ -8,19 +8,11 @@ import styled from "@emotion/styled"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 import { Helmet } from "react-helmet"
+import { Fragment } from "react"
+import Layout from "../components/layout"
 
-export default function NotFound404({ navigate }) {
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "404.jpg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+export default function NotFoundPage({ navigate }) {
+  const { image } = useStaticQuery(notFoundImageQuery)
 
   useEffect(() => {
     const timer = setTimeout(() => navigate("/"), 3000)
@@ -30,10 +22,11 @@ export default function NotFound404({ navigate }) {
   const { t } = useTranslation()
 
   return (
-    <>
+    <Fragment>
       <Helmet>
         <title>{t(translateKeys.NOT_FOUND)}</title>
       </Helmet>
+
       <NotFoundPageContainer>
         <Title
           heading="h1"
@@ -74,9 +67,23 @@ export default function NotFound404({ navigate }) {
           z-index: -100;
         `}
       />
-    </>
+    </Fragment>
   )
 }
+
+NotFoundPage.Layout = Layout
+
+const notFoundImageQuery = graphql`
+  query {
+    image: file(relativePath: { eq: "404.jpg" }) {
+      sharp: childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
 
 const NotFoundPageContainer = styled.div`
   grid-area: 1 / 1 / -1 / -1;

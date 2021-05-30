@@ -11,40 +11,7 @@ import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 import { langs } from "../constants/langs"
 import { Helmet } from "react-helmet"
-
-export const query = graphql`
-  query($slug: String!) {
-    allMdx(filter: { frontmatter: { slug: { eq: $slug } } }) {
-      nodes {
-        frontmatter {
-          slug
-          title
-          subtitle
-          lang
-          tools
-          github
-          demo
-          image {
-            sharp: childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-          previewImages {
-            sharp: childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        excerpt
-        body
-      }
-    }
-  }
-`
+import Layout from "../components/layout"
 
 export default function ProjectTemplate(props) {
   const projects = props.data.allMdx.nodes
@@ -71,6 +38,7 @@ export default function ProjectTemplate(props) {
       <Helmet>
         <title>{title} - Santiago Vallejo</title>
       </Helmet>
+
       <ProjectTitle>
         <Title
           heading="h1"
@@ -122,6 +90,7 @@ export default function ProjectTemplate(props) {
           </IconLink>
         </ProjectLinks>
       </ProjectDetails>
+
       <GoBackButton>
         <Button
           component="Link"
@@ -135,6 +104,42 @@ export default function ProjectTemplate(props) {
     </>
   )
 }
+
+ProjectTemplate.Layout = Layout
+
+export const query = graphql`
+  query($slug: String!) {
+    allMdx(filter: { frontmatter: { slug: { eq: $slug } } }) {
+      nodes {
+        frontmatter {
+          slug
+          title
+          subtitle
+          lang
+          tools
+          github
+          demo
+          image {
+            sharp: childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          previewImages {
+            sharp: childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        excerpt
+        body
+      }
+    }
+  }
+`
 
 const ProjectTitle = styled.div`
   grid-area: 1 / 1 / 2 / 3;

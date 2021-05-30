@@ -30,5 +30,7 @@ export const en = {
     You will be redirected to home. If you are not redirected, please click `,
     [translateKeys.HERE]: "here",
     [translateKeys.REACT_DEVELOPER]: "React developer",
+    [translateKeys.GO_HOME]: "Go home",
+    [translateKeys.DESCRIPTION]: "Description",
   },
 }

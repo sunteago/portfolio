@@ -1,16 +1,12 @@
 import React from "react"
 import { css } from "@emotion/core"
 
-export default function SectionContainer({
-  children,
-  gridArea,
-  extraStyles = ``,
-}) {
+export default function GridItem({ children, area, styles = `` }) {
   return (
     <div
       css={css`
-        grid-area: ${gridArea};
-        ${extraStyles}
+        grid-area: ${area};
+        ${styles}
       `}
     >
       {children}
