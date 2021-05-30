@@ -91,7 +91,7 @@ const globalStyles = pageOptions => css`
     color: var(--secondary);
     background: var(--primary);
 
-    @media (min-width: ${breakpoints.md}) {
+    @media (min-width: ${breakpoints.lg}) {
       width: 100vw;
       height: 100vh;
       overflow: hidden !important;
