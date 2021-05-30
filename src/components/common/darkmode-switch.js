@@ -9,7 +9,7 @@ export default function DarkModeSwitch({ darkMode, setDarkMode }) {
   return (
     <DarkMode
       darkMode={darkMode}
-      onClick={() => setDarkMode(prev => !prev)}
+      onClick={() => setDarkMode(!darkMode)}
       mobile={isMobile}
     >
       <DarkModeIcon />

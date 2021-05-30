@@ -65,6 +65,7 @@ const MobileToggleContainer = styled.div`
   z-index: 1000;
   transform-origin: left bottom;
   transition: all 0.3s ease-in;
+
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }
@@ -76,6 +77,7 @@ const MobileToggleContainer = styled.div`
       box-shadow: none;
       border: none;
   `}
+  
   & > div {
     width: 25px;
     position: absolute;
@@ -86,11 +88,13 @@ const MobileToggleContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+
     div {
       position: relative;
       width: 100%;
       height: 2.5px;
       background: var(--primary);
+
       &::before,
       &::after {
         content: "";
@@ -112,10 +116,12 @@ const MobileToggleContainer = styled.div`
         bottom: -10px;
         width: 85%;
       }
+
       ${props => {
         const closeColor = props.darkMode
           ? "var(--secondary)"
           : "var(--primary)"
+
         return (
           props.toggled &&
           `
@@ -145,6 +151,7 @@ const MobileToggleContainer = styled.div`
 
   #page-options {
     display: none;
+
     //FIX
     @media (max-width: ${breakpoints.md}) {
       font-size: 1.25rem;
@@ -163,10 +170,12 @@ const MobileNavMenu = styled.nav`
   width: 100vw;
   background: var(--secondary);
   transition: all 0.3s ease-in-out;
+
   ${props =>
     props.toggled &&
     `right: 0;
   `}
+
   ul {
     list-style: none;
     height: 100%;
@@ -178,6 +187,7 @@ const MobileNavMenu = styled.nav`
     text-align: center;
     font-size: 2.5rem;
     font-weight: bold;
+
     li {
       margin: 1.5rem 0;
     }
