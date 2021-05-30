@@ -26,5 +26,7 @@ export const es = {
     [translateKeys.DEMO]: "Demo",
     [translateKeys.CODE]: "Código",
     [translateKeys.REACT_DEVELOPER]: "Desarollador en React",
+    [translateKeys.GO_HOME]: "Inicio",
+    [translateKeys.DESCRIPTION]: "Descripción",
   },
 }

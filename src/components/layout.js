@@ -18,7 +18,7 @@ const initialPageOptions = {
   lang: "en",
 }
 
-export default function Layout({ children, pageContext }) {
+export default function Layout({ children }) {
   const { image: backgroundImage } = useStaticQuery(bgImageQuery)
   const [pageOptions, setPageOptions] = useState(initialPageOptions)
 
@@ -35,7 +35,7 @@ export default function Layout({ children, pageContext }) {
           fadeIn
         >
           <PageNavigation />
-          <PageContainer pageContext={pageContext}>{children}</PageContainer>
+          <PageContainer pageContext={pageOptions}>{children}</PageContainer>
           <Footer />
           <Particles />
         </BackgroundImage>
@@ -90,11 +90,11 @@ const globalStyles = pageOptions => css`
     font-family: var(--font-primary);
     color: var(--secondary);
     background: var(--primary);
+    overflow: hidden !important;
 
     @media (min-width: ${breakpoints.lg}) {
       width: 100vw;
       height: 100vh;
-      overflow: hidden;
     }
   }
 `

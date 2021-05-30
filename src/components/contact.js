@@ -5,7 +5,7 @@ import {
   breakpoints,
   defaultGithubLink,
   linkedinLink,
-  generateMailto,
+  generateMailto as generateMailTo,
   emailobj,
 } from "../utils"
 import {
@@ -18,12 +18,24 @@ import {
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 
-export default function Contact({ title = true, fullEmail }) {
+export default function Contact({ showTitle = true, fullEmail }) {
   const { t } = useTranslation()
+
+  let displayEmailText = "E-Mail"
+
+  if (fullEmail) {
+    displayEmailText = (
+      <DecomposedEmail
+        data-name={emailobj.name}
+        data-domain={emailobj.domain}
+        data-tld={emailobj.tld}
+      />
+    )
+  }
 
   return (
     <>
-      {title && (
+      {showTitle && (
         <Title
           css={css`
             h2 {
@@ -35,59 +47,63 @@ export default function Contact({ title = true, fullEmail }) {
         </Title>
       )}
 
-      <ContactContainer>
-        <ul className="contact">
-          <li>
-            <IconLink href="#" onClick={generateMailto} hover>
-              <EnvelopeIcon />
-              {fullEmail ? (
-                <GeneratedEmail
-                  data-name={emailobj.name}
-                  data-domain={emailobj.domain}
-                  data-tld={emailobj.tld}
-                />
-              ) : (
-                <span>E-Mail</span>
-              )}
-            </IconLink>
-          </li>
-          <li>
-            <IconLink href={defaultGithubLink} hover>
-              <GithubIcon /> <span>Github</span>
-            </IconLink>
-          </li>
-          <li>
-            <IconLink href={linkedinLink} hover>
-              <LinkedinIcon />
-              <span>LinkedIn</span>
-            </IconLink>
-          </li>
-        </ul>
-      </ContactContainer>
+      {/* Social networks */}
+      <ContactOptionList>
+        <ContactOptionItem Icon={EnvelopeIcon} onClick={generateMailTo}>
+          {displayEmailText}
+        </ContactOptionItem>
+
+        <ContactOptionItem Icon={GithubIcon} href={defaultGithubLink}>
+          Github
+        </ContactOptionItem>
+
+        <ContactOptionItem Icon={GithubIcon} href={linkedinLink}>
+          LinkedIn
+        </ContactOptionItem>
+      </ContactOptionList>
     </>
   )
 }
 
-const GeneratedEmail = styled.span`
+const DecomposedEmail = styled.span`
   ::after {
     content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
   }
 `
 
-const ContactContainer = styled.div`
-  font-size: 1.125rem;
-  margin: 0 auto;
-  ul {
-    list-style: none;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
+const ContactOptionList = ({ children }) => {
+  return (
+    <div
+      css={css`
+        font-size: 1.125rem;
+        margin: 0 auto;
+      `}
+    >
+      <ul
+        className="contact"
+        css={css`
+          list-style: none;
+          flex-direction: column;
+          display: flex;
+          align-items: center;
+          padding-left: 1rem;
+          align-items: flex-start;
+        `}
+      >
+        {children}
+      </ul>
+    </div>
+  )
+}
 
-    li {
+const ContactOptionItem = ({ Icon, children, onClick, href }) => (
+  <li
+    css={css`
       width: 90%;
       max-width: 300px;
       margin-bottom: 0.3rem;
+      font-size: 1.25rem;
+
       a {
         text-decoration: none;
         display: flex;
@@ -100,18 +116,17 @@ const ContactContainer = styled.div`
           height: 24px;
         }
       }
+
       div {
         margin-right: 0.7rem;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-    }
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    font-size: calc(0.7rem + 0.5vw);
-    ul {
-      align-items: flex-start;
-    }
-  }
-`
+    `}
+  >
+    <IconLink href={href || "#"} hover onClick={onClick}>
+      <Icon /> {children}
+    </IconLink>
+  </li>
+)

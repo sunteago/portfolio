@@ -106,7 +106,7 @@ export default function ProjectTemplate(props) {
               }
             `}
           >
-            Description
+            {t(translateKeys.DESCRIPTION)}
           </Title>
           <MDXRenderer>{project.body}</MDXRenderer>
         </article>
@@ -129,7 +129,7 @@ export default function ProjectTemplate(props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Go home
+          {t(translateKeys.GO_HOME)}
         </Button>
       </GoBackButton>
     </>
@@ -140,30 +140,37 @@ const ProjectTitle = styled.div`
   grid-area: 1 / 1 / 2 / 3;
   font-family: var(--font-primary);
   margin-top: 5rem;
+
   @media (min-height: 768px) {
     margin-top: 2rem;
   }
+
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 2 / 3 / 4 / 10;
     align-self: center;
   }
+
   @media (min-height: 768px) {
     align-self: start;
     margin-top: 3rem;
   }
+
   h1 {
     font-size: 3rem;
     font-weight: 300;
     text-align: left;
+    margin-bottom: 0;
+
     @media (min-width: ${breakpoints.lg}) {
       font-size: calc(3vw + 1rem);
       font-weight: 200;
     }
-    margin-bottom: 0;
   }
+
   p {
     margin-top: 0.5rem;
     font-size: 1.25rem;
+
     @media (min-width: ${breakpoints.lg}) {
       font-size: calc(0.7vw + 0.5rem);
       margin-top: 0;
@@ -176,13 +183,16 @@ const ProjectTitle = styled.div`
 const ProjectImage = styled.div`
   grid-area: 2 / 1 / 3 / 3;
   max-height: 400px;
+
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 4 / 6 / 6 / 11;
     align-self: start;
     height: 100%;
   }
+
   background: red;
   position: relative;
+
   ul {
     display: flex;
     margin-bottom: 1rem;
@@ -193,12 +203,14 @@ const ProjectImage = styled.div`
     bottom: -2.5rem;
     transform: translate(50%, 50%);
     right: 50%;
+
     @media (min-width: ${breakpoints.md}) {
       top: -2.5rem;
       right: 0;
       bottom: auto;
       transform: none;
     }
+
     li {
       list-style: none;
       margin-left: 0.5rem;
@@ -225,18 +237,22 @@ const ProjectImage = styled.div`
 
 const ProjectDetails = styled.div`
   grid-area: 3 / 1 / 4 / 3;
-  @media (min-width: ${breakpoints.lg}) {
-    grid-area: 4 / 3 / 6 / 6;
-  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: ${breakpoints.lg}) {
+    grid-area: 4 / 3 / 6 / 6;
+  }
+
   article {
     flex-grow: 1;
+
     p {
       font-size: calc(1.125rem);
       text-align: center;
       line-height: 1.6;
+
       @media (min-width: ${breakpoints.lg}) {
         font-size: calc(0.7vw + 0.5rem);
         text-align: left;
@@ -248,15 +264,18 @@ const ProjectDetails = styled.div`
 const ProjectLinks = styled.div`
   display: flex;
   justify-content: center;
+
   > a {
     display: flex;
     margin: 0 1rem;
     text-decoration: none;
     font-family: var(--font-secondary);
     font-size: 1.5rem;
+
     @media (min-width: ${breakpoints.lg}) {
       font-size: calc(0.8rem + 0.8vw);
     }
+
     > div {
       margin-right: 0.3rem;
     }
@@ -267,6 +286,7 @@ const GoBackButton = styled.div`
   grid-area: 4 / 1 / 5 / 3;
   display: flex;
   justify-content: flex-end;
+
   @media (min-width: ${breakpoints.lg}) {
     display: none;
   }

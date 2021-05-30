@@ -5,8 +5,7 @@ import Image from "gatsby-image"
 import { breakpoints } from "../../utils"
 import { GithubIcon, InfoIcon, DemoIcon } from "../common"
 import IconLink from "../common/IconLink"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+// import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, {
   Pagination,
@@ -18,6 +17,7 @@ import "swiper/swiper-bundle.min.css"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../../constants/translate-keys"
 import { css } from "@emotion/core"
+import { Link as AniLink } from "gatsby"
 
 SwiperCore.use([Pagination, EffectFade, Mousewheel, Autoplay])
 

@@ -4,12 +4,14 @@ import Presentation from "../components/presentation"
 import Projects from "../components/projects/projects"
 import Contact from "../components/contact"
 import Skills from "../components/skills"
-import Section from "../components/common/SectionContainer"
+import GridItem from "../components/common/GridItem"
 import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
+import Layout from "../components/layout"
+import { gridAreas } from "../constants/gridAreas"
 
-export default function Home() {
+export default function HomePage() {
   const { t } = useTranslation()
 
   return (
@@ -17,23 +19,27 @@ export default function Home() {
       <Helmet>
         <title>Santiago Vallejo - {t(translateKeys.REACT_DEVELOPER)}</title>
       </Helmet>
-      <Section gridArea="pres" extraStyles={extraStylesPresentation}>
+
+      {/* Grid items */}
+      <GridItem area={gridAreas.PRESENTATION} styles={presentationStyles}>
         <Presentation />
-      </Section>
-      <Section gridArea="wrk" extraStyles={extraStylesProjects}>
+      </GridItem>
+      <GridItem area={gridAreas.PROJECTS} styles={projectsStyles}>
         <Projects />
-      </Section>
-      <Section gridArea="cntc" extraStyles={extraStylesContact}>
+      </GridItem>
+      <GridItem area={gridAreas.CONTACT} styles={contactStyles}>
         <Contact fullEmail />
-      </Section>
-      <Section gridArea="skls" extraStyles={extraStylesSkills}>
+      </GridItem>
+      <GridItem area={gridAreas.SKILLS} styles={skillsStyles}>
         <Skills />
-      </Section>
+      </GridItem>
     </>
   )
 }
 
-const extraStylesSkills = `
+HomePage.Layout = Layout
+
+const skillsStyles = `
   justify-self: center;
 
   @media(min-width: ${breakpoints.lg}) {
@@ -42,7 +48,7 @@ const extraStylesSkills = `
   }
 `
 
-const extraStylesProjects = `
+const projectsStyles = `
   margin-top: 4rem;
   justify-self: center; 
   width: 95%;
@@ -54,9 +60,9 @@ const extraStylesProjects = `
   };
 `
 
-const extraStylesContact = `
+const contactStyles = `
   @media(min-width: ${breakpoints.md}) {
     padding-left: 1rem;
 }`
 
-const extraStylesPresentation = `align-self: end`
+const presentationStyles = `align-self: end`

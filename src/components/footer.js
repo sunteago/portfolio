@@ -4,16 +4,16 @@ import { breakpoints } from "../utils"
 
 export default function Footer() {
   return (
-    <FooterBox>
+    <FooterContainer>
       <div>
         <p>Designed by</p>
         <p>Santiago Vallejo</p>
       </div>
-    </FooterBox>
+    </FooterContainer>
   )
 }
 
-const FooterBox = styled.div`
+const FooterContainer = styled.div`
   width: 100%;
   overflow: hidden;
   height: 25vw;

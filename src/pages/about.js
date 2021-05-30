@@ -9,43 +9,56 @@ import { breakpoints } from "../utils"
 import { useTranslation } from "react-i18next"
 import translateKeys from "../constants/translate-keys"
 import { Helmet } from "react-helmet"
+import Layout from "../components/layout"
 
-export default function About() {
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "profile.jpg" }) {
-        sharp: childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `)
+export default function AboutMePage() {
+  const { image } = useStaticQuery(profileImageQuery)
 
   const { t } = useTranslation()
 
   return (
+    // <Layout>
     <>
       <Helmet>
         <title>{t(translateKeys.ABOUT_ME)} - Santiago Vallejo</title>
       </Helmet>
+
       <Title heading="h1" className="aboutme" css={titleStyle}>
         {t(translateKeys.ABOUT_ME)}
       </Title>
-      <AboutImage fluid={image.sharp.fluid} />
-      <AboutDescription>{t(translateKeys.ABOUT_DESCRIPTION)}</AboutDescription>
+
+      <ProfileImage fluid={image.sharp.fluid} />
+      <AboutMeDescription>
+        {t(translateKeys.ABOUT_DESCRIPTION)}
+      </AboutMeDescription>
+
       <ContactContainer>
-        <Contact title={false} />
+        <Contact showTitle={false} />
       </ContactContainer>
+      {/* // </Layout> */}
     </>
   )
 }
 
-const AboutImage = styled(Image)`
+AboutMePage.Layout = Layout
+
+const profileImageQuery = graphql`
+  query {
+    image: file(relativePath: { eq: "profile.jpg" }) {
+      sharp: childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
+
+const ProfileImage = styled(Image)`
   grid-area: 2 / 1 / 3 / 3;
   width: 60%;
   margin: 0 auto;
+
   @media (min-width: ${breakpoints.lg}) {
     width: 100%;
     grid-area: 3 / 3 / 6 / 6;
@@ -53,10 +66,11 @@ const AboutImage = styled(Image)`
   }
 `
 
-const AboutDescription = styled.p`
+const AboutMeDescription = styled.p`
   grid-area: 3 / 1 / 4 / 3;
   font-size: 1.25rem;
   text-align: center;
+
   @media (min-width: ${breakpoints.lg}) {
     text-align: right;
     font-size: calc(0.9rem + 0.4vw);
@@ -66,26 +80,32 @@ const AboutDescription = styled.p`
 
 const ContactContainer = styled.div`
   grid-area: 4 / 1 / 5 / 3;
+
   ul.contact {
     align-items: center;
+
     li {
       width: 70%;
       max-width: 170px;
+
       div {
         margin-right: 0.8rem;
       }
     }
   }
+
   @media (min-width: ${breakpoints.sm}) {
     ul.contact {
       flex-direction: row;
       justify-content: center;
+
       li {
         width: auto;
         margin: 0 1rem;
       }
     }
   }
+
   @media (min-width: ${breakpoints.lg}) {
     grid-area: 5 / 6 / 6 / 10;
   }

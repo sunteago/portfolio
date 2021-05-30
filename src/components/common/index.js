@@ -6,7 +6,7 @@ import InfoIcon from "./icons/Info"
 import EnvelopeIcon from "./icons/Envelope"
 import DarkModeIcon from "./icons/DarkMode"
 import Title from "./Title"
-import SectionContainer from "./SectionContainer"
+import SectionContainer from "./GridItem"
 import Button from "./Button"
 import IconLink from "./IconLink"
 
