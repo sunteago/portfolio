@@ -285,7 +285,6 @@ const CardContainer = styled.div`
   .swiper {
     &-wrapper {
       z-index: 23;
-      width: 400%;
     }
 
     &-slide {
